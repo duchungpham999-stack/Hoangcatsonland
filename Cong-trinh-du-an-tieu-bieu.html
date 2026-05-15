@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Công trình - Dự án tiêu biểu | Hoa Lư Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="linh-vuc-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .project-category-section { padding: 60px 0; }
+        .category-group { margin-bottom: 80px; }
+        
+        .category-header { 
+            border-left: 5px solid var(--primary-red); 
+            padding-left: 20px; 
+            margin-bottom: 40px; 
+        }
+        .category-header h2 { 
+            font-size: 32px; 
+            text-transform: uppercase; 
+            color: var(--dark-bg);
+            margin: 0;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .project-item-card {
+            background: #fff;
+            border: 1px solid #eee;
+            transition: var(--transition-smooth);
+            overflow: hidden;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-item-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .project-thumb {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .project-content { padding: 25px; }
+        .project-content h3 { 
+            font-size: 20px; 
+            margin-bottom: 15px; 
+            color: var(--primary-red);
+            text-align: left;
+        }
+        
+        .project-content p { 
+            font-size: 15px; 
+            color: #555; 
+            text-align: justify; /* Căn đều hai bên */
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        .category-intro-text {
+            font-size: 17px;
+            color: #666;
+            margin-bottom: 30px;
+            text-align: justify;
+            max-width: 1000px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="category-banner" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920');">
+            <div class="banner-content">
+                <h1>CÔNG TRÌNH - DỰ ÁN TIÊU BIỂU</h1>
+                <p>Kiến tạo những giá trị sống bền vững qua từng công trình trọng điểm</p>
+            </div>
+        </section>
+
+        <section class="project-category-section">
+            <div class="container">
+                
+                <div class="category-group">
+                    <div class="category-header">
+                        <h2>1. Khu đô thị, chung cư</h2>
+                    </div>
+                    <p class="category-intro-text">Phát triển các không gian sống hiện đại, tích hợp tiện ích thông minh và cảnh quan xanh bền vững cho cộng đồng cư dân.</p>
+                    <div class="project-grid">
+                        <a href="Khu-do-thi-chung-cu/Chung-cu-35-Phan-Ke-Binh.html" class="project-item-card">
+                            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800" class="project-thumb">
+                            <div class="project-content">
+                                <h3>Chung cư 35 Phan Kế Bính</h3>
+                                <p>Tổ hợp căn hộ cao cấp tại vị trí đắc địa, mang lại không gian sống đẳng cấp với đầy đủ dịch vụ tiện ích tiêu chuẩn quốc tế.</p>
+                            </div>
+                        </a>
+                        <a href="Khu-do-thi-chung-cu/Khu-do-thi-Green-City" class="project-item-card">
+                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800" class="project-thumb">
+                            <div class="project-content">
+                                <h3>Khu đô thị Green City</h3>
+                                <p>Dự án đô thị xanh tập trung vào sự cân bằng giữa kiến trúc hiện đại và thiên nhiên, tạo dựng môi trường sống trong lành.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="category-group">
+                    <div class="category-header">
+                        <h2>2. Công nghiệp</h2>
+                    </div>
+                    <p class="category-intro-text">Cung cấp hạ tầng kỹ thuật nhà xưởng và trung tâm logistics đạt chuẩn, hỗ trợ tối đa cho hoạt động sản xuất và vận hành của doanh nghiệp.</p>
+                    <div class="project-grid">
+                        <a href="Cong_nghiep.html" class="project-item-card">
+                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800" class="project-thumb">
+                            <div class="project-content">
+                                <h3>Cụm công nghiệp Đông Sơn</h3>
+                                <p>Hệ thống hạ tầng kỹ thuật đồng bộ, xử lý chất thải hiện đại, thu hút các nhà đầu tư trong và ngoài nước.</p>
+                            </div>
+                        </a>
+                        <a href="He_thong_Kho_van_Logistics.html" class="project-item-card">
+                            <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=800" class="project-thumb">
+                            <div class="project-content">
+                                <h3>Hệ thống Kho vận Logistics</h3>
+                                <p>Giải pháp lưu trữ thông minh với vị trí chiến lược, kết nối trực tiếp với các tuyến giao thông huyết mạch.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="category-group">
+                    <div class="category-header">
+                        <h2>3. Hạ tầng kỹ thuật - Giao thông</h2>
+                    </div>
+                    <p class="category-intro-text">Xây dựng nền tảng giao thông và hệ thống kỹ thuật cốt lõi, thúc đẩy giao thương và phát triển kinh tế vùng.</p>
+                    <div class="project-grid">
+                        <a href="#" class="project-item-card">
+                            <img src="https://images.unsplash.com/photo-1590487988256-9ed24133863e?q=80&w=800" class="project-thumb">
+                            <div class="project-content">
+                                <h3>Tuyến đường huyết mạch nội khu</h3>
+                                <p>Quy hoạch và xây dựng hệ thống đường giao thông chất lượng cao, kết nối các phân khu chức năng hiệu quả.</p>
+                            </div>
+                        </a>
+                        <a href="#" class="project-item-card">
+                            <img src="https://images.unsplash.com/photo-1545143333-11bbbc200385?q=80&w=800" class="project-thumb">
+                            <div class="project-content">
+                                <h3>Trạm biến áp & Hệ thống điện</h3>
+                                <p>Đảm bảo nguồn năng lượng ổn định cho toàn khu vực dự án với các thiết bị kỹ thuật tiên tiến nhất.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="category-group">
+                    <div class="category-header">
+                        <h2>4. Dự án đầu tư xây dựng</h2>
+                    </div>
+                    <p class="category-intro-text">Thực thi các dự án trọng điểm với quy trình quản lý nghiêm ngặt, đảm bảo tiến độ và chất lượng công trình vượt trội.</p>
+                    <div class="project-grid">
+                        <a href="Tu-van-phap-ly.html" class="project-item-card">
+                            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800" class="project-thumb">
+                            <div class="project-content">
+                                <h3>Tòa nhà điều hành Trung tâm</h3>
+                                <p>Công trình biểu tượng với thiết kế kiến trúc độc đáo, tối ưu hóa công năng sử dụng và hiệu quả vận hành.</p>
+                            </div>
+                        </a>
+                        <a href="#" class="project-item-card">
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800" class="project-thumb">
+                            <div class="project-content">
+                                <h3>Tổ hợp Văn phòng cho thuê</h3>
+                                <p>Kiến tạo môi trường làm việc chuyên nghiệp, hiện đại, đáp ứng nhu cầu của các doanh nghiệp trong kỷ nguyên mới.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

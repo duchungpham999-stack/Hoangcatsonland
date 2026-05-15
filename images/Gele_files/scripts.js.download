@@ -1,0 +1,108 @@
+/**
+ * js all site
+ */
+jQuery(document).ready(function ($) {
+  $(window).on("scroll", function () {
+    if ($(window).scrollTop() > 200) {
+      $(".back").addClass("active");
+    } else {
+      $(".back").removeClass("active");
+    }
+  });
+  $(".back").on("click", function () {
+    $("html").animate(
+      {
+        scrollTop: 0,
+      },
+      800
+    );
+  });
+  AOS.init({
+    duration: 700,
+    easing: "linear",
+    //disable: "mobile",
+    once: false,
+  });
+});
+
+(function ($) {
+  $.fn.tabs_new = function () {
+    var wrap = $(this);
+    var head = wrap.find("[data-head]");
+    var content = wrap.find("[data-content]");
+    this.reset = function () {
+      head.not(head.first()).removeClass("is-active");
+      content.not(content.first()).hide();
+    }.call(this);
+
+    this.headClick = head.click(function (event) {
+      event.preventDefault();
+
+      if ($(this).hasClass("is-active")) {
+        return false;
+      }
+
+      var content_target = $(this).attr("href");
+
+      head.removeClass("is-active");
+      content.hide();
+
+      $(this).addClass("is-active");
+      $(content_target).fadeIn();
+    });
+
+    return this;
+  };
+})(jQuery);
+
+function operatePagination_templateNew2(
+  El,
+  postType = "post",
+  catSlug = null,
+  taxonomy_slug,
+  termSlug = null,
+  postsPerPage = -1,
+  postNotIN = null,
+  ElPaginationCommon
+) {
+  var hrefThis = El.attr("href");
+  var page = hrefThis.match(/\/\d+\//)[0];
+  const pagination_nonce = document.getElementById("pagination_nonce").value;
+  page = page.match(/\d+/)[0];
+  ElPaginationCommon = ElPaginationCommon
+    ? ElPaginationCommon
+    : jQuery(".list_sanpham");
+  if (!page) page = 1;
+  jQuery.ajax({
+    type: "POST",
+    dataType: "JSON",
+    url: obj.AJAX_URL,
+    data: {
+      action: "pagination_item_template_new",
+      post_type: postType,
+      paged: page,
+      category_slug: catSlug,
+      taxonomy_slug: taxonomy_slug,
+      term_slug: termSlug,
+      post__not_in: postNotIN,
+      posts_per_page: postsPerPage,
+      nonce: pagination_nonce,
+    },
+    context: this,
+
+    success: function (response) {
+      if (response.success) {
+        ElPaginationCommon.empty();
+        ElPaginationCommon.append(jQuery(response.data));
+      } else {
+      }
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      console.log(
+        "The following error occured: " + jqXHR,
+        textStatus,
+        errorThrown
+      );
+    },
+  });
+}

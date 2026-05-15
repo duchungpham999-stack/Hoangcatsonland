@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chung cư 35 Phan Kế Bính | Hoa Lư Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .project-detail-header { padding: 80px 0; }
+        
+        /* Chỉnh lại layout thành 1 cột vì đã bỏ sidebar */
+        .detail-container { max-width: 1000px; margin: 0 auto; }
+        
+        .main-info h1 { font-size: 36px; color: var(--primary-red); margin-bottom: 20px; text-transform: uppercase; text-align: center; }
+        .location-tag { color: #666; margin-bottom: 30px; font-size: 18px; text-align: center; }
+        
+        /* Table thông số mở rộng toàn màn hình */
+        .spec-table { width: 100%; border-collapse: collapse; margin-top: 30px; background: #f9f9f9; }
+        .spec-table td { padding: 15px; border-bottom: 1px solid #ddd; }
+        .spec-table td:first-child { font-weight: bold; width: 30%; color: #444; }
+
+        .project-description { margin: 40px 0; line-height: 1.8; text-align: justify; }
+
+        /* Hệ thống thư viện ảnh */
+        .image-gallery { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 20px; 
+            margin-top: 30px; 
+        }
+        .image-gallery img { 
+            width: 100%; 
+            height: 300px; 
+            object-fit: cover; 
+            border-radius: 8px; 
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .image-gallery img:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .full-width-img { width: 100%; border-radius: 8px; margin-bottom: 20px; }
+
+        @media (max-width: 768px) {
+            .image-gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920');">
+            <div class="banner-content">
+                <h1>DỰ ÁN TIÊU BIỂU</h1>
+                <p>Cải tạo chung cư cũ - Nâng tầm diện mạo đô thị</p>
+            </div>
+        </section>
+
+        <section class="project-detail-header">
+            <div class="container">
+                <div class="detail-container">
+                    
+                    <div class="main-info">
+                        <h1>Chung cư cũ 35 Phan Kế Bính</h1>
+                        <p class="location-tag"><i class="fas fa-map-marker-alt"></i> Số 35 Phan Kế Bính, P. Cống Vị, Q. Ba Đình, Hà Nội</p>
+                        
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1200" alt="Dự án chính" class="full-width-img">
+
+                        <div class="project-description">
+                            <h3>Tổng quan dự án</h3>
+                            <p>Dự án 35 Phan Kế Bính nằm trong kế hoạch trọng điểm của UBND Thành phố Hà Nội về việc cải tạo và xây dựng lại các khu chung cư cũ xuống cấp. Với vị trí "vàng" tại quận Ba Đình, dự án không chỉ giải quyết vấn đề an toàn chỗ ở cho cư dân mà còn hướng tới mục tiêu kiến tạo một không gian sống hiện đại, thông minh giữa lòng thủ đô.</p>
+                            
+                            <div class="image-gallery">
+                                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800" alt="Nội thất dự án">
+                                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800" alt="Phối cảnh đêm">
+                                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=800" alt="Tiện ích">
+                                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800" alt="Mặt bằng">
+                            </div>
+
+                            <p style="margin-top: 30px;">Hoa Lư Land tự hào tham gia vào quá trình tư vấn và phát triển dự án, đảm bảo sự hài hòa giữa lợi ích cộng đồng và sự phát triển bền vững của đô thị. Các căn hộ được thiết kế tối ưu ánh sáng tự nhiên và thông gió, mang lại môi trường sống khỏe mạnh.</p>
+                        </div>
+
+                        <table class="spec-table">
+                            <tr><td>Chủ đầu tư</td><td>Hoa Lư Land & Đối tác chiến lược</td></tr>
+                            <tr><td>Vị trí</td><td>Quận Ba Đình, Hà Nội</td></tr>
+                            <tr><td>Loại hình</td><td>Căn hộ chung cư & Thương mại</td></tr>
+                            <tr><td>Trạng thái</td><td>Đang triển khai quy hoạch</td></tr>
+                            <tr><td>Năm thực hiện</td><td>2026</td></tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

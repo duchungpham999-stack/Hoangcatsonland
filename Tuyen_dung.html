@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Liên hệ | Hoa Lư Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<body>
+    <div id="header-placeholder"></div>
+    <section class="recruitment-hero">
+        <div class="hero-overlay">
+            <h1>THÔNG TIN TUYỂN DỤNG</h1>
+            <div class="filter-container">
+                <div class="filter-item">
+                    <span class="label">Vị trí</span>
+                    <select id="position-filter">
+                        <option value="">Chọn vị trí tuyển dụng</option>
+                        <option value="kinh-doanh">Chuyên viên kế hoạch đầu tư</option>
+                        <option value="XNK">Chuyên viên tư vấn pháp lý</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <span class="label">Địa điểm</span>
+                    <select id="location-filter">
+                        <option value="">Chọn địa điểm làm việc</option>
+                        <option value="ha-noi">Hà Nội</option>
+                        <option value="hcm">TP. Hồ Chí Minh</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="job-opportunity">
+        <h2 class="section-title">CƠ HỘI VIỆC LÀM TẠI HOÀNG CÁT SƠN JSC</h2>
+        <section class="job-list-section">
+            <table class="recruitment-table">
+            <thead>
+            <tr>
+                <th>VỊ TRÍ TUYỂN DỤNG</th>
+                <th>MỨC LƯƠNG</th>
+                <th>SỐ LƯỢNG</th>
+                <th>ĐỊA ĐIỂM</th>
+                <th>HẠN NỘP HỒ SƠ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+        <tbody>
+            <!-- Hàng 1: Thêm data-position và data-location -->
+            <tr data-position="kinh-doanh" data-location="ha-noi">
+                <td class="job-title">
+                    <a href="KHDT.html" class="job-link">Chuyên viên Kế hoạch đầu tư – Mảng Bất động sản</a>
+                </td>
+                <td>Thỏa thuận</td>
+                <td>02</td>
+                <td>Hà Nội</td>
+                <td>30/05/2026</td>
+            </tr>
+            <!-- Hàng 2: Thêm data-position và data-location -->
+            <tr data-position="XNK" data-location="hcm">
+                <td class="job-title">Chuyên viên Xuất nhập khẩu</td>
+                <td>800$ - 1200$</td>
+                <td>01</td>
+                <td>TP. HCM</td>
+                <td>15/06/2026</td>
+            </tr>
+        </tbody>
+    </table>
+    </section>
+            </div>
+    </section>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="script.js"></script>
+</body>
+</html>

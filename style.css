@@ -2734,3 +2734,37 @@ html {
     }
 }
 
+/* --- TỐI ƯU GIAO DIỆN TRÊN ĐIỆN THOẠI (Màn hình dưới 768px) --- */
+@media screen and (max-width: 768px) {
+    /* 1. Ép tất cả các lưới dự án từ 3 cột về 1 cột */
+    .project-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        padding: 0 15px;
+    }
+
+    /* 2. Menu chính chuyển hướng ẩn bớt hoặc thu nhỏ (nếu chưa có menu mobile) */
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px !important;
+    }
+    .menu a, .menu .dropbtn {
+        font-size: 13px !important;
+        padding: 5px 8px !important;
+    }
+    
+    /* 3. Tối ưu lại kích thước chữ tiêu đề lớn cho vừa màn hình dọc */
+    .field-banner-xnk h1, .main-info h1 {
+        font-size: 28px !important;
+    }
+
+    /* 4. Ép các bảng thông số kỹ thuật (spec-table) hiển thị vừa vặn */
+    .spec-table {
+        font-size: 14px;
+    }
+    .spec-table td {
+        padding: 10px !important;
+    }
+}

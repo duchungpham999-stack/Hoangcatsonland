@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HCS Project Hub - Toàn Bộ Dự Án</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    
+    <style>
+        :root {
+            --primary-red: #d32f2f;
+            --bg-dark: #0f0f11;
+            --card-bg: #18181c;
+            --text-main: #ffffff;
+            --text-muted: #a0a0ab;
+            --border-color: #27272a;
+            --phone-green: #2e7d32;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            padding: 20px 15px 90px 15px; /* Tăng padding bottom để không bị nút điện thoại đè */
+        }
+
+        .app-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .app-header h1 {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .app-header p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 14px 15px 14px 45px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 3px rgba(213, 47, 47, 0.2);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        .section-title {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin: 25px 0 10px 5px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title i {
+            color: var(--primary-red);
+        }
+
+        .file-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .file-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .file-card:active {
+            transform: scale(0.98);
+            background-color: #222226;
+            border-color: var(--primary-red);
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .file-icon {
+            width: 42px;
+            height: 42px;
+            background-color: rgba(213, 47, 47, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-red);
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        /* Mã màu icon phụ */
+        .file-card.component .file-icon {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+        .file-card.lang-en .file-icon {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+        }
+        .file-card.hr-job .file-icon {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .file-text {
+            min-width: 0;
+        }
+
+        .file-name {
+            font-size: 15px;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 2px;
+        }
+
+        .file-path {
+            font-size: 12px;
+            color: var(--text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .arrow-right {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        /* NÚT THOẠI DI ĐỘNG CỐ ĐỊNH (STICKY PHONE BUTTON) */
+        .sticky-phone-bar {
+            position: fixed;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            background-color: var(--phone-green);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 8px 24px rgba(46, 125, 50, 0.4);
+            z-index: 999;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .sticky-phone-bar:active {
+            transform: scale(0.97);
+            background-color: #1b5e20;
+        }
+
+        .sticky-phone-bar i {
+            font-size: 18px;
+            animation: phoneWobble 1s ease infinite;
+        }
+
+        /* Hiệu ứng rung nhẹ cho icon điện thoại kích thích hành vi bấm */
+        @keyframes phoneWobble {
+            0% { transform: scale(1); }
+            10% { transform: scale(1.1) rotate(-10deg); }
+            20% { transform: scale(1.1) rotate(10deg); }
+            30% { transform: scale(1.1) rotate(-10deg); }
+            40% { transform: scale(1.1) rotate(10deg); }
+            50% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-header">
+        <h1><i class="fas fa-layer-group"></i> HCS Toàn Bộ File</h1>
+        <p>Hệ thống mục lục tối ưu xem trên Smartphone</p>
+    </div>
+
+    <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Gõ tên trang hoặc dự án cần xem..." onkeyup="filterFiles()">
+    </div>
+
+    <div class="section-title"><i class="fas fa-home"></i> Trang Chủ & Hệ Thống</div>
+    <div class="file-list">
+        
+        <a href="index.html" class="file-card">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-desktop"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Trang Chủ chính thức (Tiếng Việt)</div>
+                    <div class="file-path">index.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="index-en.html" class="file-card lang-en">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-globe-americas"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Home Page (Bản Tiếng Anh)</div>
+                    <div class="file-path">index-en.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="Gioi_thieu.html" class="file-card">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-info-circle"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Giới thiệu Công ty</div>
+                    <div class="file-path">Gioi_thieu.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="Lien_he.html" class="file-card">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-phone-alt"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Liên hệ & Gửi yêu cầu tư vấn</div>
+                    <div class="file-path">Lien_he.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="Tin_tuc.html" class="file-card">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-newspaper"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Tin tức & Sự kiện Archive</div>
+                    <div class="file-path">Tin_tuc.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+    </div>
+
+    <div class="section-title"><i class="fas fa-th-large"></i> Danh Mục Lĩnh Vực</div>
+    <div class="file-list">
+
+        <a href="Khu-chung-cu-do-thi.html" class="file-card">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-hotel"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Lĩnh vực: Khu chung cư & Đô thị</div>
+                    <div class="file-path">Khu-chung-cu-do-thi.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="Cong_nghiep.html" class="file-card">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-industry"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Lĩnh vực: BĐS Khu Công nghiệp</div>
+                    <div class="file-path">Cong_nghiep.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="HTKT.html" class="file-card">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-network-wired"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Lĩnh vực: Hạ tầng & Kỹ thuật đồng bộ</div>
+                    <div class="file-path">HTKT.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="Du-an-dau-tu-xay-dung.html" class="file-card">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-tools"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Lĩnh vực: Dự án Đầu tư Xây dựng</div>
+                    <div class="file-path">Du-an-dau-tu-xay-dung.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="Cong-trinh-du-an-tieu-bieu.html" class="file-card">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-star"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Danh sách Công trình tiêu biểu chung</div>
+                    <div class="file-path">Cong-trinh-du-an-tieu-bieu.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+    </div>
+
+    <div class="section-title"><i class="fas fa-file-invoice"></i> Chi Tiết Dự Án Cụ Thể</div>
+    <div class="file-list">
+
+        <a href="Chung-cu-35-Phan-Ke-Binh.html" class="file-card">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-city"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Chi tiết: Chung cư 35 Phan Kế Bính</div>
+                    <div class="file-path">Chung-cu-35-Phan-Ke-Binh.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="Khu-do-thi-Quang-Bi.html" class="file-card">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-map-marked-alt"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Chi tiết: Khu đô thị Quảng Bị</div>
+                    <div class="file-path">Khu-do-thi-Quang-Bi.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="Cum-Cong-nghiep-Dong-Son.html" class="file-card">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-warehouse"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Chi tiết: Cụm Công nghiệp Đông Sơn</div>
+                    <div class="file-path">Cum-Cong-nghiep-Dong-Son.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="Nha-may-o-to.html" class="file-card">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-car"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Chi tiết: Nhà máy Lắp ráp Ô tô</div>
+                    <div class="file-path">Nha-may-o-to.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="NOXH-Lien-Mac.html" class="file-card">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-shield-cat"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Chi tiết: Nhà ở xã hội Liên Mạc</div>
+                    <div class="file-path">NOXH-Lien-Mac.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="To-hop-van-phong-cho-thue.html" class="file-card">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-building-user"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Chi tiết: Tổ hợp Văn phòng cho thuê</div>
+                    <div class="file-path">To-hop-van-phong-cho-thue.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="Trung-tam-logistics.html" class="file-card">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-truck-ramp-box"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Chi tiết: Trung tâm Logistics & Kho bãi</div>
+                    <div class="file-path">Trung-tam-logistics.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="Tuyen-duong-huyet-mach.html" class="file-card">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-road"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Chi tiết: Tuyến đường huyết mạch Vành đai 3.5</div>
+                    <div class="file-path">Tuyen-duong-huyet-mach.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="He-thong-dien-va-tram-bien-ap.html" class="file-card">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-bolt"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Kỹ thuật: Điện & Trạm Biến Áp</div>
+                    <div class="file-path">He-thong-dien-va-tram-bien-ap.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="He-thong-ky-thuat-noi-khu.html" class="file-card">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-faucet-drip"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Kỹ thuật: Hệ thống Nội Khu Đồng Bộ</div>
+                    <div class="file-path">He-thong-ky-thuat-noi-khu.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+    </div>
+
+    <div class="section-title"><i class="fas fa-user-tie"></i> Tuyển Dụng & Nhân Sự</div>
+    <div class="file-list">
+
+        <a href="Tuyen_dung.html" class="file-card hr-job">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-id-card"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Trang tuyển dụng chính thức</div>
+                    <div class="file-path">Tuyen_dung.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="KHDT.html" class="file-card hr-job">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-briefcase"></i></div>
+                <div class="file-text">
+                    <div class="file-name">JD: Chuyên viên Kế hoạch Đầu tư BĐS</div>
+                    <div class="file-path">KHDT.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+    </div>
+
+    <div class="section-title"><i class="fas fa-cubes"></i> Khối Giao Diện Độc Lập</div>
+    <div class="file-list">
+
+        <a href="Header.html" class="file-card component">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-window-maximize"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Khối Thanh Điều Hướng Toàn Trang</div>
+                    <div class="file-path">Header.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+        <a href="Footer.html" class="file-card component">
+            <div class="file-info">
+                <div class="file-icon"><i class="fas fa-window-minimize"></i></div>
+                <div class="file-text">
+                    <div class="file-name">Khối Chân Trang Toàn Trang</div>
+                    <div class="file-path">Footer.html</div>
+                </div>
+            </div>
+            <div class="arrow-right"><i class="fas fa-chevron-right"></i></div>
+        </a>
+
+    </div>
+
+    <a href="tel:0349301248" class="sticky-phone-bar">
+        <i class="fas fa-phone-alt"></i> Gọi Hotline HCS: 0349 301 248
+    </a>
+
+    <script>
+        function filterFiles() {
+            let input = document.getElementById('searchInput');
+            let filter = input.value.toUpperCase();
+            let cards = document.getElementsByClassName('file-card');
+            
+            for (let i = 0; i < cards.length; i++) {
+                let name = cards[i].querySelector('.file-name').textContent;
+                let path = cards[i].querySelector('.file-path').textContent;
+                
+                if (name.toUpperCase().indexOf(filter) > -1 || path.toUpperCase().indexOf(filter) > -1) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

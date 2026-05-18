@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhà máy Sản xuất & Lắp ráp Ô tô | Hoa Lư Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .project-detail-header { padding: 80px 0; }
+        .detail-container { max-width: 1000px; margin: 0 auto; }
+        
+        .main-info h1 { font-size: 36px; color: var(--primary-red); margin-bottom: 20px; text-transform: uppercase; text-align: center; }
+        .location-tag { color: #666; margin-bottom: 30px; font-size: 18px; text-align: center; }
+        
+        .spec-table { width: 100%; border-collapse: collapse; margin-top: 30px; background: #fff; border: 1px solid #eee; }
+        .spec-table td { padding: 18px; border-bottom: 1px solid #eee; }
+        .spec-table tr:nth-child(even) { background: #fcfcfc; }
+        .spec-table td:first-child { font-weight: bold; width: 35%; color: var(--primary-red); }
+
+        .project-description { margin: 40px 0; line-height: 1.8; text-align: justify; }
+        
+        /* Box nhấn mạnh công nghệ */
+        .tech-highlight { 
+            background: #222; 
+            color: #fff; 
+            padding: 30px; 
+            border-radius: 8px; 
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .tech-highlight i { font-size: 40px; color: var(--bright-red); }
+
+        .image-gallery { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 20px; 
+            margin-top: 30px; 
+        }
+        .image-gallery img { 
+            width: 100%; 
+            height: 300px; 
+            object-fit: cover; 
+            border-radius: 4px; 
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+        .image-gallery img:hover { transform: scale(1.03); filter: contrast(1.1); }
+        .full-width-img { width: 100%; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+        @media (max-width: 768px) {
+            .image-gallery { grid-template-columns: 1fr; }
+            .tech-highlight { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1565034946487-077786996e27?q=80&w=1920');">
+            <div class="banner-content">
+                <h1>SẢN XUẤT THÔNG MINH</h1>
+                <p>Nhà máy lắp ráp Ô tô hiện đại - Tiêu chuẩn chất lượng quốc tế</p>
+            </div>
+        </section>
+
+        <section class="project-detail-header">
+            <div class="container">
+                <div class="detail-container">
+                    
+                    <div class="main-info">
+                        <h1>Nhà máy Sản xuất & Lắp ráp Ô tô</h1>
+                        <p class="location-tag"><i class="fas fa-map-marker-alt"></i> Phân khu công nghiệp, TP. Tam Điệp, Ninh Bình</p>
+                        
+                        <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=1200" alt="Dây chuyền sản xuất ô tô" class="full-width-img">
+
+                        <div class="project-description">
+                            <h3>Tổng quan dự án</h3>
+                            <p>Dự án Nhà máy Sản xuất & Lắp ráp Ô tô do Công ty Cổ phần Hoàng Cát Sơn tư vấn phát triển hạ tầng là một tổ hợp công nghệ cao trọng điểm. Nhà máy được trang bị hệ thống robot hàn tự động, dây chuyền sơn tĩnh điện thế hệ mới và khu vực kiểm định chất lượng đạt chuẩn Euro 5.</p>
+                            
+                            <div class="tech-highlight">
+                                <i class="fas fa-microchip"></i>
+                                <div>
+                                    <h4 style="margin: 0 0 10px 0; color: var(--bright-red);">Tự động hóa 4.0</h4>
+                                    <p style="margin: 0; font-size: 15px; color: #ccc;">Ứng dụng hệ thống điều hành sản xuất MES giúp tối ưu hóa 95% quy trình lắp ráp, giảm thiểu sai sót và đảm bảo tiến độ cung ứng cho thị trường Đông Nam Á.</p>
+                                </div>
+                            </div>
+
+                            <div class="image-gallery">
+                                <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=800" alt="Cánh tay Robot">
+                                <img src="https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?q=80&w=800" alt="Dây chuyền lắp ráp">
+                                <img src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?q=80&w=800" alt="Kiểm tra kỹ thuật">
+                                <img src="https://images.unsplash.com/photo-1492144534655-68156d68442f?q=80&w=800" alt="Thành phẩm">
+                            </div>
+
+                            <p style="margin-top: 30px;">Bên cạnh mục tiêu sản xuất, dự án còn chú trọng đến việc đào tạo nguồn nhân lực chất lượng cao tại địa phương, góp phần đưa Ninh Bình trở thành một trong những trung tâm công nghiệp ô tô hàng đầu khu vực phía Bắc.</p>
+                        </div>
+
+                        <table class="spec-table">
+                            <tr><td>Chủ đầu tư</td><td>Công ty Cổ phần Hoàng Cát Sơn & Đối tác nước ngoài</td></tr>
+                            <tr><td>Vị trí</td><td>Khu công nghiệp trọng điểm, Ninh Bình</td></tr>
+                            <tr><td>Công suất thiết kế</td><td>30.000 xe/năm (Giai đoạn 1)</td></tr>
+                            <tr><td>Dòng sản phẩm</td><td>Xe du lịch & Xe tải nhẹ</td></tr>
+                            <tr><td>Hợp tác kỹ thuật</td><td>Chuyển giao công nghệ từ Nhật Bản/Hàn Quốc</td></tr>
+                            <tr><td>Tình trạng</td><td>Đang xin hồ sơ đầu tư</td></tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -2,96 +2,504 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Giới thiệu | Hoa Lư Land</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu | Công ty Cổ phần Hoàng Cát Sơn</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* ĐƯỜNG NHÚNG FONT GOOGLE - Đặt dòng này ở đầu file CSS của bạn để kích hoạt font chữ mới */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap');
+
+        /* CSS variables đồng bộ hệ thống (có thể tùy chỉnh lại trong style.css) */
+        :root {
+            --primary-color: #d32f2f; /* Màu đỏ thương hiệu */
+            --primary-dark: #b71c1c;
+            --dark-bg: #1a1a1a;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --transition-smooth: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif; /* Thay đổi toàn bộ font hệ thống sang Montserrat để tăng tính sang trọng */
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Banner section */
+        .about-banner {
+            /* Giữ nguyên ảnh nền nhưng tối ưu lớp phủ gradient (0.65) để tạo nền tối hoàn hảo cho chữ sáng */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Tạo hiệu ứng cuộn parallax nhẹ, cao cấp */
+            color: #ffffff; /* ĐỔI SANG MÀU TRẮNG: Giúp toàn bộ chữ trong banner nổi bần bật */
+            padding: 120px 0; /* Tăng nhẹ không gian để banner thoáng hơn */
+            text-align: center;
+        }
+        
+        /* Đổi style chữ cho tên công ty HOÀNG CÁT SƠN */
+        .about-banner h1 {
+            font-size: 42px; /* Tăng kích thước chữ lên một chút */
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 800; /* Độ đậm tối đa tạo khối vững chãi như đá tảng */
+            letter-spacing: 2px; /* Giãn chữ rộng hơn tạo sự bề thế, uy nghi */
+            color: #ffffff; /* Chữ trắng tuyệt đối tương phản với nền tối */
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Thêm đổ bóng mờ phía sau chữ để tách biệt hoàn toàn khỏi ảnh nền */
+        }
+        
+        /* Style chữ cho câu Slogan */
+        .about-banner p {
+            font-size: 18px;
+            font-style: italic;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #f5f5f5; /* Màu trắng xám nhẹ để làm nền tôn h1 lên */
+            opacity: 0.95;
+            margin-top: 0;
+        }
+
+        /* Overview section */
+        .overview-section {
+            padding: 80px 0;
+        }
+        .overview-grid {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+        .overview-col {
+            display: table-cell;
+            vertical-align: middle;
+            width: 50%;
+        }
+        .overview-text {
+            padding-right: 40px;
+        }
+        .overview-text h2 {
+            font-size: 28px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .overview-text p {
+            font-size: 15px;
+            color: #555;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+        .overview-img img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+/* ==================== VISION & MISSION PREMIUM LAYOUT ==================== */
+        .vision-mission-section {
+            background-color: var(--light-bg);
+            padding: 90px 0;
+        }
+
+        /* Sử dụng Flexbox để ép hai cột bắt buộc phải có chiều cao (height) bằng nhau */
+        .vm-grid {
+            display: flex;
+            gap: 30px;
+            align-items: stretch; /* Đảm bảo 2 card cao bằng chằn chặn */
+        }
+
+        .vm-col {
+            flex: 1; /* Chia đều hai cột 50% - 50% */
+            display: flex;
+        }
+
+        .vm-card {
+            background: #fff;
+            padding: 50px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            border-top: 5px solid var(--primary-color);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Căn giữa icon và tiêu đề chính */
+            box-sizing: border-box;
+            transition: var(--transition-smooth);
+        }
+
+        .vm-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-header-icon i {
+            font-size: 46px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .vm-card h3 {
+            font-size: 24px;
+            color: var(--dark-bg);
+            text-transform: uppercase;
+            margin: 0 0 35px 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        /* Đường gạch chân trang trí nhẹ dưới chữ Tầm nhìn / Sứ mệnh */
+        .vm-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        /* Khung chứa nội dung phía dưới tiêu đề */
+        .card-body-content {
+            width: 100%;
+            flex-grow: 1;
+            display: flex;
+            align-items: center; /* Căn giữa nội dung theo chiều dọc để cân bằng hai bên */
+        }
+
+        /* Định dạng text cho phần Tầm nhìn */
+        .vision-text {
+            color: #555;
+            font-size: 15px;
+            line-height: 2;
+            text-align: center; /* Tầm nhìn ngắn nên căn giữa nhìn sẽ rất thoáng */
+            margin: 0;
+            padding: 0 10px;
+        }
+
+        /* Định dạng cấu trúc danh sách Sứ mệnh mới */
+        .mission-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 22px; /* Khoảng cách giữa các dòng sứ mệnh */
+        }
+
+        .mission-row {
+            display: flex;
+            align-items: flex-start; /* Icon căn theo dòng đầu tiên của chữ */
+            gap: 15px;
+            text-align: left; /* Sứ mệnh dài bắt buộc căn trái để đọc không bị mỏi mắt */
+        }
+
+        .mission-icon i {
+            font-size: 16px;
+            color: var(--primary-color); /* Icon check nhỏ màu đỏ */
+            margin-top: 3px;
+        }
+
+        .mission-text-block h4 {
+            margin: 0 0 4px 0;
+            font-size: 15px;
+            color: var(--dark-bg);
+            font-weight: 700;
+        }
+
+        .mission-text-block p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Responsive di động */
+        @media (max-width: 992px) {
+            .vm-grid {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+
+        /* Core Values section */
+        .core-values-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+        .section-title {
+            font-size: 28px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .value-card {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 30px 20px;
+            border-radius: 8px;
+            transition: var(--transition-smooth);
+        }
+        .value-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .value-card .icon-box {
+            width: 60px;
+            height: 60px;
+            background: rgba(211, 47, 47, 0.05);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .value-card h4 {
+            font-size: 16px;
+            color: var(--dark-bg);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .value-card p {
+            font-size: 13px;
+            color: #666;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Table section */
+        .core-business-section {
+            background-color: var(--light-bg);
+            padding: 80px 0;
+        }
+        .business-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .business-table th, .business-table td {
+            padding: 18px 25px;
+            text-align: left;
+        }
+        .business-table th {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .business-table td {
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+            color: #444;
+        }
+        .business-table tr:last-child td {
+            border-bottom: none;
+        }
+        .business-table tr:nth-child(even) {
+            background-color: #fbfbfb;
+        }
+        .business-table td:first-child {
+            font-weight: 700;
+            color: var(--dark-bg);
+            width: 30%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .overview-col, .vm-col {
+                display: block;
+                width: 100%;
+                padding: 0;
+            }
+            .overview-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+            .vm-col {
+                margin-bottom: 25px;
+            }
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-banner h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <div id="header-placeholder"></div>
 
-    <main class="about-page">
+    <main>
         <section class="about-banner">
-    <div class="banner-overlay"></div>
-    
-    <div class="banner-content">
-        <span class="sub-tag">SINCE 2008</span>
-        <h1>HÀNH TRÌNH KIẾN TẠO</h1>
-        <p>Công ty Hoa Lư - Tầm nhìn chiến lược cho một tương lai bền vững</p>
-        <div class="scroll-indicator">
-            <div class="mouse"></div>
-        </div>
-    </div>
-</section>
-
-        <section class="president-message">
-    <div class="container-detail">
-        <div class="message-wrapper">
-            <div class="president-img">
-                <img src="images/Tran_Nam_Trung_1.png" alt="Chủ tịch Công ty Cổ phân Xuất nhập khẩu Hoa Lư">
-                <div class="name-tag">
-                    <h4>Trần Nam Trung</h4>
-                    <p>Chủ tịch Hội đồng quản trị</p>
-                </div>
+            <div class="container">
+                <h1>CÔNG TY CỔ PHẦN HOÀNG CÁT SƠN</h1>
+                <p>“Kiến tạo nền tảng – Khẳng định tầm vóc”</p>
             </div>
+        </section>
 
-            <div class="message-content">
-                <i class="fas fa-quote-left quote-icon"></i>
-                <h2 class="message-title">Thông Điệp Từ Chủ Tịch</h2>
-                <div class="red-divider"></div>
-                <p class="quote-text">
-                    "Tại Hoa Lư Company, chúng tôi không chỉ xây dựng những công trình hay phát triển những dự án nông nghiệp. Chúng tôi xây dựng <strong>niềm tin</strong> và kiến tạo <strong>giá trị bền vững</strong> cho thế hệ mai sau. Mỗi bước đi của chúng tôi đều mang theo khát vọng đưa thương hiệu Việt vươn tầm thế giới bằng sự tử tế và trách nhiệm cao nhất với cộng đồng."
-                </p>
-                <div class="signature">
-                    <p>Trân trọng,</p>
-                    <p>Trần Nam Trung</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-        <section class="about-story container-detail">
-            <div class="content-split">
-                <div class="intro-text-column">
-                    <h2 class="section-title border-green">HOA LƯ</h2>
-                    <p class="desc-text">
-                        Được thành lập với sứ mệnh kết nối tinh hoa đất Việt, Công ty Cổ phần Xuất nhập khẩu Hoa Lư đã và đang khẳng định vị thế dẫn đầu trong lĩnh vực Nông nghiệp công nghệ cao và Xuất khẩu nông sản. 
-                    </p>
-                    <p class="desc-text">
-                        Chúng tôi không chỉ bán hạt gạo, chúng tôi mang đến giải pháp canh tác bền vững, hỗ trợ trực tiếp cho hơn hàng ngàn hộ nông dân và đảm bảo nguồn thực phẩm sạch, an toàn cho người tiêu dùng toàn cầu. Với hệ thống nhà máy hiện đại đạt chuẩn quốc tế, Hoa Lư tự hào là cầu nối đưa "Hạt Ngọc Việt" đến những thị trường khó tính nhất.
-                    </p>
-                </div>
-                <div class="projects-column">
-                    <div class="about-image-box">
-                        <img src="images/Lua.jpg" alt="Vùng nguyên liệu Hoa Lư">
-                        <div class="experience-badge">
-                            <span class="years">15+</span>
-                            <span class="txt">Năm kinh nghiệm</span>
+        <section class="overview-section">
+            <div class="container">
+                <div class="overview-grid">
+                    <div class="overview-col">
+                        <div class="overview-text">
+                            <h2>Tổng quan về chúng tôi</h2>
+                            <p>Công ty Cổ phần Hoàng Cát Sơn là đơn vị uy tín trong lĩnh vực <strong>Đầu tư Xây dựng, Thi công Hạ tầng Kỹ thuật và Phát triển Dự án</strong>. Với khát vọng kiến tạo nên những công trình bền vững cùng thời gian, Hoàng Cát Sơn không ngừng nỗ lực tối ưu hóa các giải pháp xây dựng, áp dụng công nghệ hiện đại và quy chuẩn quản lý nghiêm ngặt nhằm mang lại giá trị gia tăng vượt trội cho chủ đầu tư, đối tác và cộng đồng.</p>
+                            <p>Sở hữu đội ngũ chuyên gia, kỹ sư giàu kinh nghiệm cùng hệ thống trang thiết bị kỹ thuật tiên tiến, chúng tôi tự tin đảm nhận các dự án từ quy mô hạ tầng giao thông, khu công nghiệp cho đến các tổ hợp đô thị và văn phòng thương mại cao cấp.</p>
+                        </div>
+                    </div>
+                    <div class="overview-col">
+                        <div class="overview-img">
+                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800" alt="Công trường xây dựng Hoàng Cát Sơn">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="about-values">
+        <section class="vision-mission-section">
             <div class="container">
-                <h2 class="section-title center border-bottom">GIÁ TRỊ CỐT LÕI</h2>
+                <div class="vm-grid">
+            
+                    <div class="vm-col">
+                        <div class="vm-card">
+                            <div class="card-header-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <h3>Tầm nhìn</h3>
+                            <div class="card-body-content">
+                                <p class="vision-text">Trở thành một trong những doanh nghiệp hàng đầu trong lĩnh vực đầu tư xây dựng và phát triển hạ tầng kỹ thuật, là đối tác chiến lược được lựa chọn đầu tiên của các dự án trọng điểm quy mô lớn.</p>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="vm-col">
+                        <div class="vm-card">
+                            <div class="card-header-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h3>Sứ mệnh</h3>
+                            <div class="card-body-content">
+                                <div class="mission-container">
+                            
+                                    <div class="mission-row">
+                                        <div class="mission-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div class="mission-text-block">
+                                            <h4>Đối với dự án</h4>
+                                            <p>Thi công an toàn, đảm bảo chất lượng kỹ thuật – mỹ thuật vượt trội và đúng tiến độ cam kết.</p>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="mission-row">
+                                        <div class="mission-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div class="mission-text-block">
+                                            <h4>Đối với đối tác</h4>
+                                            <p>Đồng hành dựa trên sự minh bạch, uy tín và cùng nhau kiến tạo các chuỗi giá trị bền vững.</p>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="mission-row">
+                                        <div class="mission-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div class="mission-text-block">
+                                            <h4>Đối với xã hội</h4>
+                                            <p>Góp phần thay đổi diện mạo hạ tầng đô thị, nâng cao chất lượng cuộc sống và thúc đẩy giao thương phát triển.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="core-business-section">
+            <div class="container">
+                <div style="text-align: center;">
+                    <h2 class="section-title">Lĩnh vực hoạt động cốt lõi</h2>
+                </div>
+                <table class="business-table">
+                    <thead>
+                        <tr>
+                            <th>Lĩnh vực</th>
+                            <th>Mô tả chi tiết giải pháp & năng lực</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Đầu tư & Thi công Hạ tầng</td>
+                            <td>Xây dựng các trục giao thông huyết mạch, hệ thống cầu đường, ngầm hóa mạng lưới kỹ thuật (điện, trạm biến áp, cấp thoát nước và viễn thông).</td>
+                        </tr>
+                        <tr>
+                            <td>Xây dựng Công nghiệp & Logistics</td>
+                            <td>Thiết kế và thi công lắp dựng hệ thống nhà xưởng tiền chế, tổng kho thông minh, kho lạnh và các tổ hợp bến bãi container đạt tiêu chuẩn quốc tế.</td>
+                        </tr>
+                        <tr>
+                            <td>Phát triển Dự án Dân dụng</td>
+                            <td>Đầu tư xây dựng các khu đô thị kiểu mẫu, khu căn hộ cao cấp và các dự án nhà ở an cư xã hội có tính đồng bộ cao.</td>
+                        </tr>
+                        <tr>
+                            <td>Văn phòng & Hạ tầng Thương mại</td>
+                            <td>Kiến tạo không gian làm việc đẳng cấp, hiện đại và vận hành thông minh cho các doanh nghiệp và tập đoàn lớn.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="core-values-section">
+            <div class="container">
+                <h2 class="section-title">Giá trị cốt lõi</h2>
                 <div class="values-grid">
-                    <div class="value-item">
-                        <i class="fas fa-leaf"></i>
-                        <h3>Tận Tâm</h3>
-                        <p>Luôn đặt lợi ích của người nông dân và khách hàng lên hàng đầu.</p>
+                    <div class="value-card">
+                        <div class="icon-box"><i class="fas fa-award"></i></div>
+                        <h4>Chất lượng</h4>
+                        <p>Là thước đo danh dự và là nền tảng sống còn của mỗi công trình chúng tôi tạo ra.</p>
                     </div>
-                    <div class="value-item">
-                        <i class="fas fa-microscope"></i>
-                        <h3>Công Nghệ</h3>
-                        <p>Ứng dụng khoa học kỹ thuật tiên tiến nhất vào quy trình sản xuất.</p>
+                    <div class="value-card">
+                        <div class="icon-box"><i class="fas fa-bolt"></i></div>
+                        <h4>Tiến độ</h4>
+                        <p>Cam kết tối ưu hóa quy trình thi công, đảm bảo bàn giao đúng hoặc vượt tiến độ.</p>
                     </div>
-                    <div class="value-item">
-                        <i class="fas fa-handshake"></i>
-                        <h3>Uy Tín</h3>
-                        <p>Cam kết chất lượng trong từng hạt gạo xuất khẩu ra thế giới.</p>
+                    <div class="value-card">
+                        <div class="icon-box"><i class="fas fa-heart"></i></div>
+                        <h4>Tận tâm</h4>
+                        <p>Luôn lắng nghe, thấu hiểu để đưa ra các giải pháp tối ưu và tiết kiệm nhất.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="icon-box"><i class="fas fa-shield"></i></div>
+                        <h4>An toàn</h4>
+                        <p>Đặt an toàn lao động và bảo vệ môi trường lên vị trí hàng đầu khi triển khai.</p>
                     </div>
                 </div>
             </div>
@@ -101,5 +509,6 @@
     <div id="footer-placeholder"></div>
 
     <script src="script.js"></script>
+
 </body>
 </html>

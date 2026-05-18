@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hạ tầng & Kỹ thuật Đồng bộ | Hoa Lư Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* CSS đồng bộ với các trang danh mục trước */
+        .infra-category-section { padding: 60px 0 100px; background-color: #f8f9fa; }
+        
+        .category-header { text-align: center; margin-bottom: 50px; }
+        .category-header h2 { font-size: 32px; color: var(--primary-red); text-transform: uppercase; margin-bottom: 15px; }
+        .category-header p { color: #666; max-width: 750px; margin: 0 auto; font-size: 17px; line-height: 1.6; }
+
+        /* Grid hệ thống hạ tầng */
+        .project-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 30px; 
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+            border-color: var(--primary-red);
+        }
+
+        .project-thumb {
+            width: 100%;
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .project-card:hover .project-thumb img { transform: scale(1.08); }
+
+        .project-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-red);
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .project-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-content h3 { font-size: 19px; margin-bottom: 12px; color: var(--dark-bg); font-weight: 700; }
+        .project-content p { color: #666; font-size: 14px; margin-bottom: 20px; line-height: 1.6; text-align: justify; }
+        
+        .project-meta {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-location { font-size: 13px; color: #777; }
+        .project-location i { color: var(--primary-red); margin-right: 5px; }
+
+        .btn-view {
+            color: var(--primary-red);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition-smooth);
+        }
+        .btn-view:hover { letter-spacing: 0.5px; color: var(--bright-red); }
+
+        @media (max-width: 992px) {
+            .project-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .project-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=1920');">
+            <div class="banner-content">
+                <h1>HẠ TẦNG - KỸ THUẬT NỔI BẬT</h1>
+                <p>Nền tảng kết nối vững bền cho mọi công trình và dự án bứt phá</p>
+            </div>
+        </section>
+
+        <section class="infra-category-section">
+            <div class="container">
+                <div class="category-header">
+                    <h2>Hệ thống quản lý kỹ thuật đồng bộ</h2>
+                    <p>Hoàng Cát Sơn Land đầu tư và tư vấn phát triển những giải pháp hạ tầng hiện đại nhất, đảm bảo tính liên kết chặt chẽ giữa các trục giao thông huyết mạch và mạng lưới tiện ích ngầm kỹ thuật số.</p>
+                </div>
+
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-status">Trục giao thông chính</span>
+                            <img src="https://images.unsplash.com/photo-1590487988256-9ed24133863e?q=80&w=800" alt="Đoạn Vành đai 3.5 qua Xuân Mai">
+                        </div>
+                        <div class="project-content">
+                            <h3>Tuyến Vành Đai 3.5 (Xuân Mai)</h3>
+                            <p>Tuyến đường xương sống mang tính chiến lược, thúc đẩy thông thương logistics kết nối cửa ngõ phía Tây Nam Thủ đô Hà Nội.</p>
+                            <div class="project-meta">
+                                <span class="project-location"><i class="fas fa-map-marker-alt"></i> Xuân Mai, Chương Mỹ</span>
+                                <a href="Tuyen-duong-huyet-mach.html" class="btn-view">Chi tiết <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-status">Năng lượng 24/7</span>
+                            <img src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?q=80&w=800" alt="Hệ thống điện trạm biến áp">
+                        </div>
+                        <div class="project-content">
+                            <h3>Hệ thống Điện & Trạm Biến Áp</h3>
+                            <p>Mạng lưới cấp điện công suất lớn đạt tiêu chuẩn quốc tế ABB/Schneider, cam kết vận hành an toàn, ngầm hóa mỹ quan 100%.</p>
+                            <div class="project-meta">
+                                <span class="project-location"><i class="fas fa-bolt"></i> Toàn khu dự án</span>
+                                <a href="He-thong-dien-va-tram-bien-ap.html" class="btn-view">Chi tiết <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-status">Hạ tầng tiện ích</span>
+                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800" alt="Hệ thống kỹ thuật nội khu">
+                        </div>
+                        <div class="project-content">
+                            <h3>Hệ Thống Kỹ Thuật Nội Khu</h3>
+                            <p>Tổng hợp giải pháp xử lý nước thải đạt cột A, hệ thống PCCC tự động thông minh và mạng lưới viễn thông cáp quang tốc độ cao.</p>
+                            <div class="project-meta">
+                                <span class="project-location"><i class="fas fa-tools"></i> Môi trường & An ninh</span>
+                                <a href="He-thong-ky-thuat-noi-khu.html" class="btn-view">Chi tiết <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhà ở xã hội Liên Mạc | Hoa Lư Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .project-detail-header { padding: 80px 0; }
+        .detail-container { max-width: 1000px; margin: 0 auto; }
+        
+        .main-info h1 { font-size: 36px; color: var(--primary-red); margin-bottom: 20px; text-transform: uppercase; text-align: center; }
+        .location-tag { color: #666; margin-bottom: 30px; font-size: 18px; text-align: center; }
+        
+        .spec-table { width: 100%; border-collapse: collapse; margin-top: 30px; background: #fff; border: 1px solid #eee; }
+        .spec-table td { padding: 18px; border-bottom: 1px solid #eee; }
+        .spec-table tr:nth-child(even) { background: #fdfdfd; }
+        .spec-table td:first-child { font-weight: bold; width: 35%; color: var(--primary-red); }
+
+        .project-description { margin: 40px 0; line-height: 1.8; text-align: justify; }
+        
+        /* Box thông điệp an cư */
+        .settlement-box { 
+            background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
+            border: 1px solid #ffcccc;
+            padding: 30px; 
+            border-radius: 12px; 
+            margin: 30px 0;
+            text-align: center;
+        }
+        .settlement-box h4 { color: var(--primary-red); margin-bottom: 10px; font-size: 20px; }
+
+        .image-gallery { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 20px; 
+            margin-top: 30px; 
+        }
+        .image-gallery img { 
+            width: 100%; 
+            height: 300px; 
+            object-fit: cover; 
+            border-radius: 8px; 
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+        .image-gallery img:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .full-width-img { width: 100%; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+
+        @media (max-width: 768px) {
+            .image-gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1448630360428-6e2165137ffb?q=80&w=1920');">
+            <div class="banner-content">
+                <h1>AN CƯ LẠC NGHIỆP</h1>
+                <p>Nhà ở xã hội Liên Mạc - Hiện thực hóa giấc mơ tổ ấm giữa lòng Hà Nội</p>
+            </div>
+        </section>
+
+        <section class="project-detail-header">
+            <div class="container">
+                <div class="detail-container">
+                    
+                    <div class="main-info">
+                        <h1>Nhà ở xã hội Liên Mạc</h1>
+                        <p class="location-tag"><i class="fas fa-map-marker-alt"></i> phường Thượng Cát, thành phố Hà Nội</p>
+                        
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1200" alt="Phối cảnh dự án Nhà ở xã hội" class="full-width-img">
+
+                        <div class="project-description">
+                            <h3>Về dự án</h3>
+                            <p>Dự án Nhà ở xã hội Liên Mạc tại khu vực phường Thượng Cát là một trong những dự án trọng điểm hướng tới mục tiêu cung cấp quỹ nhà ở giá rẻ nhưng chất lượng cao cho cán bộ, công nhân viên và người dân có thu nhập thấp tại khu vực phía Tây Bắc Thủ đô. Dự án được quy hoạch đồng bộ với đầy đủ tiện ích cơ bản, mang lại môi trường sống văn minh và an lành.</p>
+                            
+                            <div class="settlement-box">
+                                <h4>Tâm điểm kết nối - Giá trị bền vững</h4>
+                                <p style="margin: 0; width: 100%; color: #555;">Tọa lạc tại khu vực đang phát triển mạnh mẽ của quận Bắc Từ Liêm, dự án thừa hưởng hạ tầng giao thông kết nối trực tiếp với trục đường Tây Thăng Long và đường Vành đai 3.5, giúp cư dân dễ dàng di chuyển vào trung tâm thành phố và các KCN lân cận.</p>
+                            </div>
+
+                            <div class="image-gallery">
+                                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=800" alt="Khuôn viên xanh">
+                                <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?q=80&w=800" alt="Thiết kế căn hộ mẫu">
+                                <img src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?q=80&w=800" alt="Sân chơi trẻ em">
+                                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800" alt="Quy hoạch tổng thể">
+                            </div>
+
+                            <p style="margin-top: 30px;">Hoàng Cát Sơn Land tự hào là đơn vị đồng hành trong quá trình phát triển và tư vấn dự án, đảm bảo mọi tiêu chuẩn về xây dựng, phòng cháy chữa cháy và pháp lý minh bạch. Chúng tôi cam kết mang lại một không gian sống không chỉ là "nơi để về" mà còn là nơi kiến tạo tương lai cho mọi gia đình.</p>
+                        </div>
+
+                        <table class="spec-table">
+                            <tr><td>Chủ đầu tư</td><td>Công ty Cổ phần Hoàng Cát Sơn & Đối tác</td></tr>
+                            <tr><td>Vị trí</td><td>Phường Thượng Cát, Bắc Từ Liêm, Hà Nội</td></tr>
+                            <tr><td>Quy mô căn hộ</td><td>Đang cập nhật số lượng căn</td></tr>
+                            <tr><td>Diện tích căn hộ</td><td>Linh hoạt từ 45m² - 70m²</td></tr>
+                            <tr><td>Tiện ích nội khu</td><td>Nhà trẻ, Khu thể thao, Công viên nhỏ, Siêu thị tiện lợi</td></tr>
+                            <tr><td>Trạng thái pháp lý</td><td>Đang triển khai quy hoạch chi tiết</td></tr>
+                            <tr><td>Thời gian triển khai</td><td>Dự kiến năm 2026</td></tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

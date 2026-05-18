@@ -2,92 +2,178 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Bất động sản Công nghiệp | Hoa Lư Land</title>
-    <!-- Nhúng file CSS riêng -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bất động sản & Hạ tầng Công nghiệp | Hoa Lư Land</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="industrial-style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* CSS riêng cho trang danh mục Công nghiệp */
+        .industrial-category-section { padding: 60px 0 100px; background-color: #f4f6f8; }
+        
+        .category-header { text-align: center; margin-bottom: 50px; }
+        .category-header h2 { font-size: 32px; color: var(--primary-red); text-transform: uppercase; margin-bottom: 15px; }
+        .category-header p { color: #555; max-width: 750px; margin: 0 auto; font-size: 17px; line-height: 1.6; }
+
+        /* Grid dự án công nghiệp */
+        .project-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 30px; 
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+            border-color: #ddd;
+        }
+
+        .project-thumb {
+            width: 100%;
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+            background: #222;
+        }
+
+        .project-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+            opacity: 0.9;
+        }
+
+        .project-card:hover .project-thumb img { transform: scale(1.08); opacity: 1; }
+
+        .project-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #222;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 3px solid var(--primary-red);
+        }
+
+        .project-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-content h3 { font-size: 19px; margin-bottom: 12px; color: var(--dark-bg); font-weight: 700; }
+        .project-content p { color: #666; font-size: 14px; margin-bottom: 20px; line-height: 1.6; text-align: justify; }
+        
+        .project-meta {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-location { font-size: 13px; color: #777; font-weight: 500; }
+        .project-location i { color: var(--primary-red); margin-right: 6px; }
+
+        .btn-view {
+            color: var(--primary-red);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .btn-view:hover { gap: 8px; color: var(--bright-red); }
+
+        @media (max-width: 992px) {
+            .project-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .project-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
     <div id="header-placeholder"></div>
 
     <main>
-        <!-- Banner chuyên mục -->
-        <section class="industrial-banner">
+        <section class="service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1920');">
             <div class="banner-content">
-                <h1>CÔNG NGHIỆP & HẠ TẦNG</h1>
-                <p>Phát triển hệ sinh thái công nghiệp hiện đại và bền vững</p>
+                <h1>HẠ TẦNG & BẤT ĐỘNG SẢN CÔNG NGHIỆP</h1>
+                <p>Nền tảng hạ tầng hiện đại - Động lực phát triển kinh tế bền vững</p>
             </div>
         </section>
 
-        <!-- Phần nội dung chính chia cột -->
-        <div class="container-detail">
-            
-            <!-- Hàng tiêu đề -->
-            <div class="header-split">
-                <div class="col-title-left">
-                    <h2 class="section-title border-red">TẦM NHÌN PHÁT TRIỂN</h2>
-                </div>
-                <div class="col-title-right">
-                    <h2 class="section-title border-red">LĨNH VỰC HOẠT ĐỘNG CHÍNH</h2>
-                </div>
-            </div>
-
-            <!-- Hàng nội dung -->
-            <div class="content-split">
-                
-                <!-- Cột trái: Giới thiệu -->
-                <div class="intro-text-column">
-                    <p class="desc-text">
-                        Hoa Lư Land tiên phong trong việc phát triển các khu công nghiệp xanh, tổ hợp kho bãi và nhà xưởng xây sẵn đạt tiêu chuẩn quốc tế. Chúng tôi không chỉ cung cấp mặt bằng sản xuất mà còn mang đến giải pháp hạ tầng đồng bộ, hỗ trợ tối đa cho các nhà đầu tư.
-                    </p>
-                    <div class="benefit-box">
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Vị trí chiến lược</li>
-                            <li><i class="fas fa-check-circle"></i> Hạ tầng hiện đại</li>
-                            <li><i class="fas fa-check-circle"></i> Thủ tục nhanh gọn</li>
-                        </ul>
-                    </div>
+        <section class="industrial-category-section">
+            <div class="container">
+                <div class="category-header">
+                    <h2>Danh mục hạ tầng trọng điểm</h2>
+                    <p>Hoàng Cát Sơn Land tiên phong trong việc quy hoạch, phát triển hạ tầng cụm công nghiệp bứt phá và cung cấp các giải pháp nhà xưởng, năng lượng thông minh, đáp ứng toàn diện tiêu chuẩn khắt khe của các nhà đầu tư quốc tế.</p>
                 </div>
 
-                <!-- Cột phải: Các dịch vụ công nghiệp -->
-                <div class="projects-column">
-                    <div class="industrial-grid">
-                        
-                        <!-- Thẻ dịch vụ 1 -->
-                        <div class="industrial-card">
-                            <div class="icon-box"><i class="fas fa-industry"></i></div>
-                            <h3>Khoáng sản</h3>
-                            <p>Với nguồn khoáng sản, chúng tôi cung cấp những loại khoáng sản đẹp mắt nhất.</p>
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-status">Quy hoạch mở rộng</span>
+                            <img src="https://images.unsplash.com/photo-1541913080-214465856311?q=80&w=800" alt="Cụm Công nghiệp Đông Sơn">
                         </div>
-
-                        <!-- Thẻ dịch vụ 2 -->
-                        <div class="industrial-card">
-                            <div class="icon-box"><i class="fas fa-warehouse"></i></div>
-                            <h3>Logistics & Kho bãi</h3>
-                            <p>Cung cấp hệ thống kho thông minh, nhà xưởng cho thuê linh hoạt mọi quy mô.</p>
+                        <div class="project-content">
+                            <h3>Cụm Công nghiệp Đông Sơn</h3>
+                            <p>Điểm đến chiến lược cho các doanh nghiệp công nghiệp sạch, công nghệ cao với hạ tầng kỹ thuật đồng bộ và vị trí kết nối giao thương thuận lợi.</p>
+                            <div class="project-meta">
+                                <span class="project-location"><i class="fas fa-map-marker-alt"></i> Tam Điệp, Ninh Bình</span>
+                                <a href="Cum-Cong-Nghiep-Dong-Son.html" class="btn-view">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
+                            </div>
                         </div>
-
                     </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Section con số -->
-        <section class="stat-section">
-            <div class="stat-container">
-                <div class="stat-item">
-                    <h4>500+</h4>
-                    <p>Hecta quỹ đất</p>
-                </div>
-                <div class="stat-item">
-                    <h4>20+</h4>
-                    <p>Đối tác chiến lược</p>
-                </div>
-                <div class="stat-item">
-                    <h4>100%</h4>
-                    <p>Chuẩn môi trường</p>
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-status">Công nghệ 4.0</span>
+                            <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=800" alt="Nhà máy lắp ráp ô tô">
+                        </div>
+                        <div class="project-content">
+                            <h3>Nhà máy Sản xuất Ô tô</h3>
+                            <p>Tổ hợp nhà xưởng thông minh ứng dụng robot tự động hóa cao, hạt nhân thúc đẩy ngành công nghiệp phụ trợ khu vực phía Bắc.</p>
+                            <div class="project-meta">
+                                <span class="project-location"><i class="fas fa-map-marker-alt"></i> Phân khu CN, Ninh Bình</span>
+                                <a href="Nha-may-O-to.html" class="btn-view">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-status">Đã hoàn thiện</span>
+                            <img src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?q=80&w=800" alt="Hệ thống điện trạm biến áp">
+                        </div>
+                        <div class="project-content">
+                            <h3>Hệ thống Điện & Trạm biến áp</h3>
+                            <p>Hạ tầng năng lượng tiêu chuẩn quốc tế đạt công suất lớn, cam kết cung ứng nguồn điện ổn định, an toàn xuyên suốt 24/7 cho khu sản xuất.</p>
+                            <div class="project-meta">
+                                <span class="project-location"><i class="fas fa-bolt"></i> Toàn khu hạ tầng</span>
+                                <a href="He-thong-dien-va-tram-bien-ap.html" class="btn-view">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </section>

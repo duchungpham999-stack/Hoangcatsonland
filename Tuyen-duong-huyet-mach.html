@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vành đai 3.5 - Tuyến đường huyết mạch Xuân Mai | Hoàng Cát Sơn Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .project-detail-header { padding: 80px 0; }
+        .detail-container { max-width: 1000px; margin: 0 auto; }
+        
+        .main-info h1 { font-size: 32px; color: var(--primary-red); margin-bottom: 20px; text-transform: uppercase; text-align: center; line-height: 1.4; }
+        .location-tag { color: #666; margin-bottom: 30px; font-size: 18px; text-align: center; }
+        
+        .spec-table { width: 100%; border-collapse: collapse; margin-top: 30px; background: #fff; border: 1px solid #eee; }
+        .spec-table td { padding: 18px; border-bottom: 1px solid #eee; }
+        .spec-table tr:nth-child(even) { background: #f8f9fa; }
+        .spec-table td:first-child { font-weight: bold; width: 35%; color: var(--primary-red); }
+
+        .project-description { margin: 40px 0; line-height: 1.8; text-align: justify; }
+        
+        /* Box thông tin quy hoạch */
+        .planning-box { 
+            background: #fff8f8; 
+            border: 1px dashed var(--primary-red); 
+            padding: 25px; 
+            border-radius: 8px; 
+            margin: 30px 0;
+        }
+        .planning-box h4 { color: var(--primary-red); margin-top: 0; display: flex; align-items: center; gap: 10px; }
+
+        .image-gallery { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 20px; 
+            margin-top: 30px; 
+        }
+        .image-gallery img { 
+            width: 100%; 
+            height: 300px; 
+            object-fit: cover; 
+            border-radius: 8px; 
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+        .image-gallery img:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.15); }
+        
+        .full-width-img { width: 100%; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+
+        @media (max-width: 768px) {
+            .image-gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1545143877-4e7723af43af?q=80&w=1920');">
+            <div class="banner-content">
+                <h1>HẠ TẦNG GIAO THÔNG</h1>
+                <p>Vành đai 3.5 - Trục xương sống phát triển đô thị vệ tinh Xuân Mai</p>
+            </div>
+        </section>
+
+        <section class="project-detail-header">
+            <div class="container">
+                <div class="detail-container">
+                    
+                    <div class="main-info">
+                        <h1>Tuyến đường huyết mạch nội khu<br>Vành đai 3.5 (Đoạn qua Xuân Mai)</h1>
+                        <p class="location-tag"><i class="fas fa-map-marker-alt"></i> Thị xã Xuân Mai, TP. Hà Nội</p>
+                        
+                        <img src="https://images.unsplash.com/photo-1590487988256-9ed24133863e?q=80&w=1200" alt="Quy hoạch Vành đai 3.5" class="full-width-img">
+
+                        <div class="project-description">
+                            <h3>Tầm quan trọng chiến lược</h3>
+                            <p>Tuyến đường Vành đai 3.5 đoạn đi qua thị xã Xuân Mai là dự án hạ tầng mang tính đột phá, kết nối trực tiếp khu vực phía Tây với trung tâm Thủ đô và các tỉnh lân cận. Đây không chỉ là tuyến giao thông đối ngoại quan trọng mà còn là trục cảnh quan chính, thúc đẩy hình thành các khu đô thị thông minh và cụm công nghiệp hiện đại quanh khu vực.</p>
+                            
+                            <div class="planning-box">
+                                <h4><i class="fas fa-drafting-compass"></i> Vai trò kết nối đa điểm</h4>
+                                <p style="margin: 0;">Tuyến đường giúp rút ngắn thời gian di chuyển từ Xuân Mai về Hà Đông và quận Thanh Xuân xuống còn 20 phút. Đặc biệt, nó tạo nên thế "kiềng ba chân" giao thương giữa <strong>Quốc lộ 6 - Đường Hồ Chí Minh - Vành đai 3.5</strong>, biến Xuân Mai thành cửa ngõ logistics thực thụ phía Tây Nam.</p>
+                            </div>
+
+                            <div class="image-gallery">
+                                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800" alt="Phối cảnh đường nội khu">
+                                <img src="https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?q=80&w=800" alt="Hạ tầng kỹ thuật">
+                                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800" alt="Quy hoạch đô thị">
+                                <img src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?q=80&w=800" alt="Kết nối giao thương">
+                            </div>
+
+                            <p style="margin-top: 30px;">Hoàng Cát Sơn Land tích cực phối hợp cùng các đơn vị chức năng trong việc tư vấn quy hoạch các khu phụ trợ dọc tuyến đường. Chúng tôi tin rằng, khi Vành đai 3.5 hoàn thiện, giá trị bất động sản nội khu và các vùng lân cận sẽ tăng trưởng vượt bậc, mở ra vận hội mới cho các nhà đầu tư.</p>
+                        </div>
+
+                        <table class="spec-table">
+                            <tr><td>Tên dự án</td><td>Vành đai 3.5 (Phân đoạn Xuân Mai)</td></tr>
+                            <tr><td>Cấp đường</td><td>Đường trục chính đô thị</td></tr>
+                            <tr><td>Mặt cắt ngang</td><td>60m - 80m (tùy phân đoạn)</td></tr>
+                            <tr><td>Quy mô làn xe</td><td>6 làn xe cơ giới + 2 làn hỗn hợp</td></tr>
+                            <tr><td>Hệ thống kỹ thuật</td><td>Hào kỹ thuật ngầm, đèn LED thông minh, cây xanh cảnh quan</td></tr>
+                            <tr><td>Trạng thái</td><td>Đang trong lộ trình triển khai & giải phóng mặt bằng</td></tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

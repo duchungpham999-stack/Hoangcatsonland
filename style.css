@@ -256,7 +256,7 @@ section {
 
 /* Chỉnh chữ trong Footer thon gọn hơn giống Geleximco */
 .footer .col h3 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     letter-spacing: 1.5px; /* Làm chữ thon và thoáng hơn */
     margin-bottom: 25px;

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự án Đầu tư Xây dựng | Hoàng Cát Sơn Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* CSS đồng bộ với cấu trúc các trang danh mục trước */
+        .investment-project-section { padding: 60px 0 100px; background-color: #f8f9fa; }
+        
+        .category-header { text-align: center; margin-bottom: 50px; }
+        .category-header h2 { font-size: 32px; color: var(--primary-red); text-transform: uppercase; margin-bottom: 15px; }
+        .category-header p { color: #555; max-width: 750px; margin: 0 auto; font-size: 17px; line-height: 1.6; }
+
+        /* Lưới hiển thị danh sách dự án */
+        .project-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 30px; 
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+            border-color: var(--primary-red);
+        }
+
+        .project-thumb {
+            width: 100%;
+            height: 240px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .project-card:hover .project-thumb img { transform: scale(1.08); }
+
+        .project-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-red);
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .project-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-content h3 { font-size: 20px; margin-bottom: 12px; color: var(--dark-bg); font-weight: 700; }
+        .project-content p { color: #666; font-size: 14px; margin-bottom: 20px; line-height: 1.6; text-align: justify; }
+        
+        .project-meta {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-location { font-size: 13px; color: #777; }
+        .project-location i { color: var(--primary-red); margin-right: 5px; }
+
+        .btn-view {
+            color: var(--primary-red);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition-smooth);
+        }
+        .btn-view:hover { letter-spacing: 0.5px; color: var(--bright-red); }
+
+        @media (max-width: 992px) {
+            .project-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .project-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1920');">
+            <div class="banner-content">
+                <h1>DỰ ÁN ĐẦU TƯ XÂY DỰNG</h1>
+                <p>Kiến tạo công trình tầm cỡ - Khẳng định giá trị đầu tư bền vững</p>
+            </div>
+        </section>
+
+        <section class="investment-project-section">
+            <div class="container">
+                <div class="category-header">
+                    <h2>Danh mục dự án chiến lược</h2>
+                    <p>Hoàng Cát Sơn Land tự hào dẫn dắt các dự án đầu tư xây dựng đa dạng từ phân khúc nhà ở an cư xã hội đến tổ hợp văn phòng thương mại cao cấp, đáp ứng trọn vẹn tiêu chuẩn chất lượng và tiến độ cam kết.</p>
+                </div>
+
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-status">Sắp mở bán</span>
+                            <img src="https://images.unsplash.com/photo-1448630360428-6e2165137ffb?q=80&w=800" alt="Nhà ở xã hội Liên Mạc">
+                        </div>
+                        <div class="project-content">
+                            <h3>Nhà ở xã hội Liên Mạc</h3>
+                            <p>Giải pháp an cư toàn diện cho người dân thu nhập thấp tại quận Bắc Từ Liêm với quy hoạch đồng bộ, tiện ích nội khu thiết thực và không gian xanh mát.</p>
+                            <div class="project-meta">
+                                <span class="project-location"><i class="fas fa-map-marker-alt"></i> Thượng Cát, Hà Nội</span>
+                                <a href="NOXH-Lien-Mac.html" class="btn-view">Chi tiết <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-status">Cho thuê</span>
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800" alt="Tổ hợp văn phòng hạng A">
+                        </div>
+                        <div class="project-content">
+                            <h3>Tổ hợp Văn phòng Hạng A</h3>
+                            <p>Không gian làm việc đẳng cấp quốc tế, kiến trúc hiện đại tối ưu năng lượng và trang bị công nghệ vận hành thông minh cho các doanh nghiệp lớn.</p>
+                            <div class="project-meta">
+                                <span class="project-location"><i class="fas fa-map-marker-alt"></i> TP. Tam Điệp, Ninh Bình</span>
+                                <a href="To-hop-van-phong-cho-thue.html" class="btn-view">Chi tiết <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-status">Đang thi công</span>
+                            <img src="https://images.unsplash.com/photo-1586528116311-ad8ed716d40a?q=80&w=800" alt="Thi công xây dựng Trung tâm Logistics">
+                        </div>
+                        <div class="project-content">
+                            <h3>Trung tâm Logistics & Kho bãi</h3>
+                            <p>Công trình đầu tư xây dựng trọng điểm bao gồm hệ thống nhà kho thông minh, bến bãi container, bãi tập kết nông sản và khu điều hành, đáp ứng nhu cầu giao thương xuất nhập khẩu quy mô lớn.</p>
+                            <div class="project-meta">
+                                <span class="project-location"><i class="fas fa-hard-hat"></i> TP. Tam Điệp, Ninh Bình</span>
+                                <a href="Trung-tam-Logistics.html" class="btn-view">Chi tiết <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

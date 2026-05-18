@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cụm Công nghiệp Đông Sơn | Hoàng Cát Sơn Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .project-detail-header { padding: 80px 0; }
+        .detail-container { max-width: 1000px; margin: 0 auto; }
+        
+        .main-info h1 { font-size: 36px; color: var(--primary-red); margin-bottom: 20px; text-transform: uppercase; text-align: center; }
+        .location-tag { color: #666; margin-bottom: 30px; font-size: 18px; text-align: center; }
+        
+        /* Table thông số kỹ thuật công nghiệp */
+        .spec-table { width: 100%; border-collapse: collapse; margin-top: 30px; background: #fff; border: 1px solid #eee; }
+        .spec-table td { padding: 18px; border-bottom: 1px solid #eee; }
+        .spec-table tr:nth-child(even) { background: #fcfcfc; }
+        .spec-table td:first-child { font-weight: bold; width: 35%; color: var(--primary-red); }
+
+        .project-description { margin: 40px 0; line-height: 1.8; text-align: justify; }
+        .highlight-box { background: #fef1f1; border-left: 4px solid var(--primary-red); padding: 20px; margin: 25px 0; }
+
+        /* Gallery ảnh công nghiệp */
+        .image-gallery { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 20px; 
+            margin-top: 30px; 
+        }
+        .image-gallery img { 
+            width: 100%; 
+            height: 300px; 
+            object-fit: cover; 
+            border-radius: 4px; 
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+        .image-gallery img:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+        .full-width-img { width: 100%; border-radius: 8px; margin-bottom: 20px; filter: brightness(0.9); }
+
+        @media (max-width: 768px) {
+            .image-gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1920');">
+            <div class="banner-content">
+                <h1>HẠ TẦNG CÔNG NGHIỆP</h1>
+                <p>Cụm công nghiệp Đông Sơn (Mở rộng) - Động lực phát triển kinh tế vùng</p>
+            </div>
+        </section>
+
+        <section class="project-detail-header">
+            <div class="container">
+                <div class="detail-container">
+                    
+                    <div class="main-info">
+                        <h1>Cụm Công nghiệp Đông Sơn</h1>
+                        <p class="location-tag"><i class="fas fa-map-marker-alt"></i> TP. Tam Điệp, Tỉnh Ninh Bình</p>
+                        
+                        <img src="https://images.unsplash.com/photo-1541913080-214465856311?q=80&w=1200" alt="Hạ tầng Cụm công nghiệp" class="full-width-img">
+
+                        <div class="project-description">
+                            <h3>Tầm nhìn và Quy mô</h3>
+                            <p>Dự án mở rộng Cụm công nghiệp Đông Sơn là bước đi chiến lược nhằm cụ thể hóa mục tiêu chuyển dịch cơ cấu kinh tế của địa phương. Với lợi thế tiếp giáp các trục giao thông trọng điểm và nguồn lao động dồi dào, dự án tập trung thu hút các doanh nghiệp công nghiệp sạch, công nghệ cao và công nghiệp hỗ trợ.</p>
+                            
+                            <div class="highlight-box">
+                                <strong>Giá trị cốt lõi:</strong> Dự án không chỉ tập trung vào hạ tầng kỹ thuật mà còn đặc biệt chú trọng đến hệ thống xử lý nước thải tập trung và dải cây xanh cách ly, đảm bảo tiêu chuẩn môi trường khắt khe nhất của Bộ Tài nguyên và Môi trường.
+                            </div>
+
+                            <div class="image-gallery">
+                                <img src="https://images.unsplash.com/photo-1565034946487-077786996e27?q=80&w=800" alt="Nhà xưởng hiện đại">
+                                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800" alt="Hệ thống logistics">
+                                <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800" alt="Công nghệ sản xuất">
+                                <img src="https://images.unsplash.com/photo-1495314740607-5c2451ecb10d?q=80&w=800" alt="Xử lý môi trường">
+                            </div>
+
+                            <p style="margin-top: 30px;">Hoàng Cát Sơn Land đóng vai trò chủ đạo trong việc lập quy hoạch chi tiết, tư vấn pháp lý và kết nối đầu tư. Chúng tôi cam kết tạo ra một hệ sinh thái sản xuất tối ưu, giúp doanh nghiệp rút ngắn thời gian triển khai nhà máy và đi vào hoạt động ổn định.</p>
+                        </div>
+
+                        <table class="spec-table">
+                            <tr><td>Đơn vị phát triển</td><td>Công ty Cổ phần Hoàng Cát Sơn</td></tr>
+                            <tr><td>Vị trí chiến lược</td><td>TP. Tam Điệp, Ninh Bình (Gần cao tốc Bắc - Nam)</td></tr>
+                            <tr><td>Tổng diện tích mở rộng</td><td>Đang cập nhật theo quy hoạch mới</td></tr>
+                            <tr><td>Ngành nghề ưu tiên</td><td>Công nghiệp nhẹ, Điện tử, Cơ khí chính xác</td></tr>
+                            <tr><td>Hệ thống điện</td><td>Trạm biến áp công suất lớn, lưới điện 35kV</td></tr>
+                            <tr><td>Pháp lý dự án</td><td>Đã hoàn thiện hồ sơ điều chỉnh quy hoạch</td></tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khu đô thị Quảng Bị | Hoa Lư Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .project-detail-header { padding: 80px 0; }
+        .detail-container { max-width: 1000px; margin: 0 auto; }
+        
+        .main-info h1 { font-size: 36px; color: var(--primary-red); margin-bottom: 20px; text-transform: uppercase; text-align: center; }
+        .location-tag { color: #666; margin-bottom: 30px; font-size: 18px; text-align: center; }
+        
+        .spec-table { width: 100%; border-collapse: collapse; margin-top: 30px; background: #f9f9f9; }
+        .spec-table td { padding: 15px; border-bottom: 1px solid #ddd; }
+        .spec-table td:first-child { font-weight: bold; width: 30%; color: #444; }
+
+        .project-description { margin: 40px 0; line-height: 1.8; text-align: justify; }
+
+        /* Gallery ảnh */
+        .image-gallery { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 20px; 
+            margin-top: 30px; 
+        }
+        .image-gallery img { 
+            width: 100%; 
+            height: 300px; 
+            object-fit: cover; 
+            border-radius: 8px; 
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+        .image-gallery img:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .full-width-img { width: 100%; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+
+        @media (max-width: 768px) {
+            .image-gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1572120339554-d336a9cf216e?q=80&w=1920');">
+            <div class="banner-content">
+                <h1>DỰ ÁN TRỌNG ĐIỂM</h1>
+                <p>Khu đô thị mới Quảng Bị - Kiến tạo chuẩn sống xanh phía Tây thủ đô</p>
+            </div>
+        </section>
+
+        <section class="project-detail-header">
+            <div class="container">
+                <div class="detail-container">
+                    
+                    <div class="main-info">
+                        <h1>Khu đô thị Quảng Bị</h1>
+                        <p class="location-tag"><i class="fas fa-map-marker-alt"></i> Xã Quảng Bị, Huyện Chương Mỹ, TP. Hà Nội</p>
+                        
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200" alt="Phối cảnh Khu đô thị Quảng Bị" class="full-width-img">
+
+                        <div class="project-description">
+                            <h3>Giới thiệu dự án</h3>
+                            <p>Khu đô thị Quảng Bị là một trong những dự án chiến lược của Hoa Lư Land tại khu vực huyện Chương Mỹ. Dự án được quy hoạch bài bản với mục tiêu trở thành một khu đô thị kiểu mẫu, kết hợp hài hòa giữa không gian sống hiện đại và cảnh quan thiên nhiên trù phú của vùng ngoại ô Hà Nội.</p>
+                            
+                            <p>Với hạ tầng giao thông đang ngày càng hoàn thiện, kết nối trực tiếp với các trục đường huyết mạch, Khu đô thị Quảng Bị không chỉ là nơi an cư lý tưởng mà còn mang lại cơ hội đầu tư bền vững cho khách hàng và các đối tác.</p>
+                            
+                            <div class="image-gallery">
+                                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800" alt="Quy hoạch hạ tầng">
+                                <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=800" alt="Công viên trung tâm">
+                                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=800" alt="Dịch vụ tiện ích">
+                                <img src="https://images.unsplash.com/photo-1449156003053-c3020056bb6b?q=80&w=800" alt="Mẫu nhà phố">
+                            </div>
+
+                            <p style="margin-top: 30px;">Dự án chú trọng vào hệ thống tiện ích nội khu đa dạng bao gồm: trung tâm thương mại, trường học, công viên cây xanh và khu thể thao ngoài trời. Mọi chi tiết thiết kế đều hướng tới việc tối ưu hóa trải nghiệm sống xanh, an lành cho cộng đồng cư dân tương lai.</p>
+                        </div>
+
+                        <table class="spec-table">
+                            <tr><td>Chủ đầu tư</td><td>Công ty Cổ phần Hoàng Cát Sơn</td></tr>
+                            <tr><td>Vị trí</td><td>Quảng Bị, Hà Nội</td></tr>
+                            <tr><td>Quy mô dự án</td><td>Đang cập nhật diện tích</td></tr>
+                            <tr><td>Loại hình</td><td>Đất nền biệt thự, Nhà liền kề, Shophouse</td></tr>
+                            <tr><td>Trạng thái</td><td>Đang triển khai hạ tầng & Pháp lý</td></tr>
+                            <tr><td>Thời gian khởi công</td><td>Năm 2026</td></tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+
+
+</body>
+</html>

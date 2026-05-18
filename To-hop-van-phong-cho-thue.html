@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổ hợp Văn phòng cho thuê | Hoa Lư Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .project-detail-header { padding: 80px 0; }
+        .detail-container { max-width: 1000px; margin: 0 auto; }
+        
+        .main-info h1 { font-size: 36px; color: var(--primary-red); margin-bottom: 20px; text-transform: uppercase; text-align: center; }
+        .location-tag { color: #666; margin-bottom: 30px; font-size: 18px; text-align: center; }
+        
+        .spec-table { width: 100%; border-collapse: collapse; margin-top: 30px; background: #fff; border: 1px solid #eee; }
+        .spec-table td { padding: 18px; border-bottom: 1px solid #eee; }
+        .spec-table tr:nth-child(even) { background: #f9f9f9; }
+        .spec-table td:first-child { font-weight: bold; width: 35%; color: var(--primary-red); }
+
+        .project-description { margin: 40px 0; line-height: 1.8; text-align: justify; }
+        
+        /* Office Features Grid */
+        .office-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            transition: var(--transition-smooth);
+        }
+        .feature-item:hover { border-color: var(--primary-red); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .feature-item i { font-size: 24px; color: var(--primary-red); }
+
+        .image-gallery { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 20px; 
+            margin-top: 30px; 
+        }
+        .image-gallery img { 
+            width: 100%; 
+            height: 300px; 
+            object-fit: cover; 
+            border-radius: 8px; 
+            transition: var(--transition-smooth);
+        }
+        .image-gallery img:hover { transform: translateY(-5px); }
+        .full-width-img { width: 100%; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+        @media (max-width: 768px) {
+            .image-gallery, .office-features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1920');">
+            <div class="banner-content">
+                <h1>BẤT ĐỘNG SẢN THƯƠNG MẠI</h1>
+                <p>Tổ hợp văn phòng hạng A - Không gian làm việc sáng tạo và đẳng cấp</p>
+            </div>
+        </section>
+
+        <section class="project-detail-header">
+            <div class="container">
+                <div class="detail-container">
+                    
+                    <div class="main-info">
+                        <h1>Tổ hợp Văn phòng cho thuê</h1>
+                        <p class="location-tag"><i class="fas fa-city"></i> Vị trí đắc địa tại các trung tâm kinh tế mới</p>
+                        
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200" alt="Tòa nhà văn phòng hiện đại" class="full-width-img">
+
+                        <div class="project-description">
+                            <h3>Giải pháp không gian làm việc chuyên nghiệp</h3>
+                            <p>Hoang Cát Sơn Land cung cấp hệ thống văn phòng cho thuê với tiêu chuẩn quốc tế, tọa lạc tại những vị trí chiến lược, thuận tiện kết nối giao thông và các khu vực dịch vụ. Chúng tôi thấu hiểu rằng một môi trường làm việc lý tưởng là nền tảng cho sự phát triển bền vững của mỗi doanh nghiệp.</p>
+                            
+                            <div class="office-features">
+                                <div class="feature-item">
+                                    <i class="fas fa-expand-arrows-alt"></i>
+                                    <div><strong>Diện tích linh hoạt:</strong> Từ 50m² đến 2000m² phù hợp mọi quy mô doanh nghiệp.</div>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <div><strong>An ninh 24/7:</strong> Hệ thống camera giám sát và đội ngũ bảo vệ chuyên nghiệp.</div>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-parking"></i>
+                                    <div><strong>Hầm đỗ xe rộng:</strong> Sức chứa lớn cho cả ô tô và xe máy của nhân viên, khách hàng.</div>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-wind"></i>
+                                    <div><strong>Hệ thống HVAC:</strong> Điều hòa trung tâm hiện đại, đảm bảo không khí tươi mới.</div>
+                                </div>
+                            </div>
+
+                            <div class="image-gallery">
+                                <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800" alt="Sảnh đón khách">
+                                <img src="https://images.unsplash.com/photo-1431540015161-0bf868a2d407?q=80&w=800" alt="Không gian làm việc chung">
+                                <img src="https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?q=80&w=800" alt="Phòng họp tiêu chuẩn">
+                                <img src="https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?q=80&w=800" alt="Tiện ích pantry">
+                            </div>
+
+                            <p style="margin-top: 30px;">Toàn bộ tòa nhà được quản lý bởi quy trình vận hành thông minh, giúp tối ưu hóa chi phí dịch vụ cho khách thuê mà vẫn đảm bảo trải nghiệm cao cấp nhất. Hoang Cát Sơn Land cam kết đồng hành cùng các start-up và tập đoàn lớn bằng các chính sách thuê linh hoạt và hỗ trợ pháp lý tận tâm.</p>
+                        </div>
+
+                        <table class="spec-table">
+                            <tr><td>Chủ đầu tư</td><td>Công ty Cổ phần Hoàng Cát Sơn</td></tr>
+                            <tr><td>Xếp hạng văn phòng</td><td>Hạng A / Hạng B+</td></tr>
+                            <tr><td>Chiều cao tầng</td><td>2.7m - 3.2m</td></tr>
+                            <tr><td>Số thang máy</td><td>Hệ thống thang tốc độ cao Mitsubishi / Otis</td></tr>
+                            <tr><td>Tiêu chuẩn PCCC</td><td>Đã nghiệm thu hệ thống tự động đạt chuẩn quốc tế</td></tr>
+                            <tr><td>Trạng thái</td><td>Đang chuẩn bị hồ sơ pháp lý đầu tư</td></tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

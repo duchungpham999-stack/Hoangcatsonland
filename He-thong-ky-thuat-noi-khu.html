@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống Kỹ thuật Nội khu | Hoàng Cát Sơn Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .project-detail-header { padding: 80px 0; }
+        .detail-container { max-width: 1000px; margin: 0 auto; }
+        
+        .main-info h1 { font-size: 36px; color: var(--primary-red); margin-bottom: 20px; text-transform: uppercase; text-align: center; }
+        .location-tag { color: #666; margin-bottom: 30px; font-size: 18px; text-align: center; }
+        
+        .spec-table { width: 100%; border-collapse: collapse; margin-top: 30px; background: #fff; border: 1px solid #eee; }
+        .spec-table td { padding: 18px; border-bottom: 1px solid #eee; }
+        .spec-table tr:nth-child(even) { background: #fbfbfb; }
+        .spec-table td:first-child { font-weight: bold; width: 35%; color: var(--primary-red); }
+
+        .project-description { margin: 40px 0; line-height: 1.8; text-align: justify; }
+        
+        /* Grid cấu trúc tính năng hệ thống ngầm */
+        .tech-system-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+        .tech-system-card {
+            background: #fff;
+            border: 1px solid #eef0f2;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            transition: var(--transition-smooth);
+        }
+        .tech-system-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-red);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .tech-system-card i { font-size: 32px; color: var(--primary-red); margin-bottom: 15px; }
+        .tech-system-card h4 { font-size: 18px; margin-bottom: 10px; color: var(--dark-bg); text-transform: uppercase; }
+        .tech-system-card p { font-size: 14px; color: #666; margin: 0; line-height: 1.6; }
+
+        .image-gallery { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 20px; 
+            margin-top: 30px; 
+        }
+        .image-gallery img { 
+            width: 100%; 
+            height: 300px; 
+            object-fit: cover; 
+            border-radius: 8px; 
+            transition: var(--transition-smooth);
+        }
+        .image-gallery img:hover { filter: brightness(1.05); }
+        .full-width-img { width: 100%; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+
+        @media (max-width: 768px) {
+            .tech-system-grid, .image-gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=1920');">
+            <div class="banner-content">
+                <h1>HẠ TẦNG KỸ THUẬT ĐỒNG BỘ</h1>
+                <p>Tiêu chuẩn vận hành thông minh - Kiến tạo nền tảng phát triển bền vững</p>
+            </div>
+        </section>
+
+        <section class="project-detail-header">
+            <div class="container">
+                <div class="detail-container">
+                    
+                    <div class="main-info">
+                        <h1>Hệ thống Kỹ thuật Nội khu</h1>
+                        <p class="location-tag"><i class="fas fa-tools"></i> Mạng lưới tiện ích ngầm tiêu chuẩn cao tại các phân khu dự án</p>
+                        
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200" alt="Hạ tầng kỹ thuật tổng thể" class="full-width-img">
+
+                        <div class="project-description">
+                            <h3>Tối ưu hóa công năng vận hành ngầm</h3>
+                            <p>Tại các tổ hợp đô thị và cụm công nghiệp do Hoàng Cát Sơn Land tư vấn, phát triển, hệ thống hạ tầng kỹ thuật luôn được ưu tiên quy hoạch đồng bộ ngay từ giai đoạn sơ khởi. Việc áp dụng các giải pháp công nghệ mới giúp loại bỏ hoàn toàn các xung đột hạ tầng, nâng cao tính an toàn và đảm bảo cảnh quan nội khu xanh - sạch - văn minh.</p>
+                            
+                            <div class="tech-system-grid">
+                                
+                                <div class="tech-system-card">
+                                    <i class="fas fa-water"></i>
+                                    <h4>Cấp nước sạch liên tục</h4>
+                                    <p>Sử dụng mạng lưới đường ống tuần hoàn khép kín chất liệu HDPE cao cấp, đảm bảo áp lực nước luôn ổn định, cung cấp đầy đủ lưu lượng cho các hộ dân cư cũng như hoạt động sản xuất.</p>
+                                </div>
+
+                                <div class="tech-system-card">
+                                    <i class="fas fa-seedling"></i>
+                                    <h4>Thoát nước & Xử lý nước thải</h4>
+                                    <p>Hệ thống gom nước mưa và nước thải sinh hoạt/công nghiệp tách biệt hoàn toàn. Nước thải được xử lý qua trạm tập trung đạt tiêu chuẩn Cột A (QCVN) trước khi điều tiết ra ngoài.</p>
+                                </div>
+
+                                <div class="tech-system-card">
+                                    <i class="fas fa-wifi"></i>
+                                    <h4>Hạ tầng viễn thông cáp quang</h4>
+                                    <p>Toàn bộ đường truyền internet, cáp thông tin được ngầm hóa trong hệ thống tuynel kỹ thuật, sẵn sàng cung cấp băng thông rộng tốc độ cao từ các nhà mạng lớn như Viettel, VNPT.</p>
+                                </div>
+
+                                <div class="tech-system-card">
+                                    <i class="fas fa-fire-extinguisher"></i>
+                                    <h4>Phòng cháy chữa cháy tự động</h4>
+                                    <p>Mạng lưới họng tiếp nước cứu hỏa bố trí dọc theo các tuyến đường nội khu với bán kính phủ đạt tiêu chuẩn nghiêm ngặt, liên kết chặt chẽ với trung tâm báo cháy khẩn cấp.</p>
+                                </div>
+
+                            </div>
+
+                            <div class="image-gallery">
+                                <img src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?q=80&w=800" alt="Trạm điều tiết nước">
+                                <img src="https://images.unsplash.com/photo-1542060748-10c28b629f6f?q=80&w=800" alt="Hệ thống cáp ngầm viễn thông">
+                                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800" alt="Trung tâm giám sát kỹ thuật">
+                                <img src="https://images.unsplash.com/photo-1599740831464-5eac1552b711?q=80&w=800" alt="Trụ nước cứu hỏa nội khu">
+                            </div>
+
+                            <p style="margin-top: 30px;">Hệ thống kỹ thuật nội khu hoàn chỉnh chính là "bộ khung xương chìm" tạo nên giá trị gia tăng bền vững cho các sản phẩm bất động sản của Hoàng Cát Sơn Land. Chúng tôi cam kết duy trì công tác bảo trì, vận hành định kỳ chuyên nghiệp để bảo vệ tối đa trải nghiệm của khách hàng.</p>
+                        </div>
+
+                        <table class="spec-table">
+                            <tr><td>Tiêu chuẩn đường ống cấp nước</td><td>HDPE tiêu chuẩn PN10 - PN16, chống rò rỉ</td></tr>
+                            <tr><td>Công nghệ xử lý nước thải</td><td>Xử lý sinh học hiếu khí kết hợp màng lọc tự động</td></tr>
+                            <tr><td>Hệ thống hộp kỹ thuật</td><td>Bê tông cốt thép đúc sẵn chịu lực cao đặt ngầm</td></tr>
+                            <tr><td>Mạng lưới cáp truyền dẫn</td><td>Cáp quang FTTH lõi đôi tối ưu dung lượng</td></tr>
+                            <tr><td>Quy chuẩn an toàn PCCC</td><td>Đạt nghiệm thu theo TCVN 3890 mới nhất</td></tr>
+                            <tr><td>Đơn vị quản lý vận hành</td><td>Ban Quản lý Hạ tầng Kỹ thuật Hoàng Cát Sơn Land</td></tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

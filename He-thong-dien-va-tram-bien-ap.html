@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống điện & Trạm biến áp | Hoa Lư Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .project-detail-header { padding: 80px 0; }
+        .detail-container { max-width: 1000px; margin: 0 auto; }
+        
+        .main-info h1 { font-size: 36px; color: var(--primary-red); margin-bottom: 20px; text-transform: uppercase; text-align: center; }
+        .location-tag { color: #666; margin-bottom: 30px; font-size: 18px; text-align: center; }
+        
+        .spec-table { width: 100%; border-collapse: collapse; margin-top: 30px; background: #fff; border: 1px solid #eee; }
+        .spec-table td { padding: 18px; border-bottom: 1px solid #eee; }
+        .spec-table tr:nth-child(even) { background: #f9fafb; }
+        .spec-table td:first-child { font-weight: bold; width: 35%; color: var(--primary-red); }
+
+        .project-description { margin: 40px 0; line-height: 1.8; text-align: justify; }
+        
+        /* Box tính năng kỹ thuật */
+        .tech-feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .tech-feature-item {
+            background: #f4f4f4;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            border-bottom: 3px solid var(--primary-red);
+        }
+        .tech-feature-item i { font-size: 30px; color: var(--primary-red); margin-bottom: 15px; }
+        .tech-feature-item h4 { margin-bottom: 10px; font-size: 16px; }
+
+        .image-gallery { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 20px; 
+            margin-top: 30px; 
+        }
+        .image-gallery img { 
+            width: 100%; 
+            height: 300px; 
+            object-fit: cover; 
+            border-radius: 8px; 
+            transition: var(--transition-smooth);
+        }
+        .image-gallery img:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+        .full-width-img { width: 100%; border-radius: 12px; margin-bottom: 20px; }
+
+        @media (max-width: 768px) {
+            .image-gallery, .tech-feature-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=1920');">
+            <div class="banner-content">
+                <h1>HẠ TẦNG NĂNG LƯỢNG</h1>
+                <p>Hệ thống cung cấp điện ổn định - Huyết mạch của mọi hoạt động sản xuất</p>
+            </div>
+        </section>
+
+        <section class="project-detail-header">
+            <div class="container">
+                <div class="detail-container">
+                    
+                    <div class="main-info">
+                        <h1>Hệ thống điện & Trạm biến áp</h1>
+                        <p class="location-tag"><i class="fas fa-bolt"></i> Giải pháp năng lượng tiêu chuẩn quốc tế</p>
+                        
+                        <img src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?q=80&w=1200" alt="Hệ thống trạm biến áp" class="full-width-img">
+
+                        <div class="project-description">
+                            <h3>Năng lực hạ tầng năng lượng</h3>
+                            <p>Hoa Lư Land chú trọng đầu tư hệ thống điện trung thế và hạ thế đồng bộ cho các dự án Cụm công nghiệp và Khu đô thị. Với mục tiêu đảm bảo điện năng xuyên suốt 24/7, chúng tôi sử dụng các thiết bị tiên tiến nhất từ những thương hiệu hàng đầu thế giới (ABB, Schneider, LS), kết hợp với hệ thống điều khiển thông minh để giám sát tải lượng và phòng ngừa sự cố từ xa.</p>
+                            
+                            <div class="tech-feature-grid">
+                                <div class="tech-feature-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <h4>An toàn tuyệt đối</h4>
+                                    <p style="font-size: 14px; color: #666;">Hệ thống rơ-le bảo vệ và chống sét đạt chuẩn IEC.</p>
+                                </div>
+                                <div class="tech-feature-item">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    <h4>Công suất lớn</h4>
+                                    <p style="font-size: 14px; color: #666;">Đáp ứng nhu cầu điện sản xuất nặng và dân dụng.</p>
+                                </div>
+                                <div class="tech-feature-item">
+                                    <i class="fas fa-sync"></i>
+                                    <h4>Dự phòng n+1</h4>
+                                    <p style="font-size: 14px; color: #666;">Sẵn sàng chuyển mạch nguồn dự phòng khi có sự cố.</p>
+                                </div>
+                            </div>
+
+                            <div class="image-gallery">
+                                <img src="https://images.unsplash.com/photo-1541913080-214465856311?q=80&w=800" alt="Máy biến áp">
+                                <img src="https://images.unsplash.com/photo-1558444479-c84851830620?q=80&w=800" alt="Tủ điện điều khiển">
+                                <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?q=80&w=800" alt="Lưới điện">
+                                <img src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?q=80&w=800" alt="Trung tâm điều hành">
+                            </div>
+
+                            <p style="margin-top: 30px;">Toàn bộ hệ thống đường dây trong các khu đô thị mới của Hoàng Cát Sơn Land đều được thực hiện ngầm hóa 100%, không chỉ đảm bảo mỹ quan mà còn nâng cao độ bền của thiết bị trước các tác động từ thời tiết khắc nghiệt.</p>
+                        </div>
+
+                        <table class="spec-table">
+                            <tr><td>Điện áp nguồn</td><td>110kV / 35kV / 22kV</td></tr>
+                            <tr><td>Tổng công suất trạm</td><td>Theo quy hoạch từng phân khu (25MVA - 63MVA)</td></tr>
+                            <tr><td>Thiết bị chính</td><td>Biến áp ABB/Schneider, Tủ điện trung thế RMU</td></tr>
+                            <tr><td>Hệ thống giám sát</td><td>SCADA/DMS điều khiển kỹ thuật số</td></tr>
+                            <tr><td>Lưới điện nội khu</td><td>Cáp ngầm chống thấm chuyên dụng</td></tr>
+                            <tr><td>Tiêu chuẩn vận hành</td><td>TCVN 7994/IEC 61439</td></tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

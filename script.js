@@ -68,6 +68,33 @@ function initMenuLogic() {
             link.classList.remove('active');
         }
     });
+    /* --- ĐOẠN CODE MỚI XỬ LÝ MENU 3 GẠCH --- */
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.header .menu');
+
+    if (menuToggle && menu) {
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation(); // Tránh lỗi nổi bọt sự kiện
+            menu.classList.toggle('active');
+            
+            // Thay đổi biểu tượng từ 3 gạch (bars) thành dấu X (times) khi mở
+            const icon = menuToggle.querySelector('i');
+            if (menu.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
+        });
+
+        // Bấm ra ngoài vùng menu thì tự động đóng menu lại
+        document.addEventListener('click', function(e) {
+            if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
+                menu.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                if (icon) icon.className = 'fas fa-bars';
+            }
+        });
+    }
 }
 
 /**

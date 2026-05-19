@@ -2954,7 +2954,7 @@ html {
     [class*="stat"] h4,
     [class*="milestone"] h4,
     [class*="number"] {
-        font-size: 28px !important; /* Hạ kích thước số xuống 28px để không bị vỡ */
+        font-size: 20px !important; /* Hạ kích thước số xuống 28px để không bị vỡ */
         line-height: 1.2 !important;
         margin-bottom: 5px !important;
     }
@@ -2962,7 +2962,7 @@ html {
     .stat-box-clean p,
     .hl-milestones p,
     [class*="stat"] p {
-        font-size: 13px !important;
+        font-size: 10px !important;
         line-height: 1.4 !important;
     }
 

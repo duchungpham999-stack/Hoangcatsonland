@@ -2859,3 +2859,148 @@ html {
         gap: 10px !important;
     }
 }
+
+/* ==========================================================================
+   BẢN FIX TRIỆT ĐỂ: CỐ ĐỊNH TRANG WEB VÀ MENU 3 GẠCH TRÊN ĐIỆN THOẠI (DƯỚI 768PX)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    
+    /* 1. CHỐNG DỊCH CHUYỂN TRANG WEB (Khóa tràn màn hình ngang tuyệt đối) */
+    html, body {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+        position: relative;
+        box-sizing: border-box;
+    }
+
+    /* Ép tất cả phần tử tuân thủ kích thước màn hình bao gồm cả padding */
+    *, *:before, *:after {
+        box-sizing: border-box !important;
+    }
+
+    /* 2. SỬA TIÊU ĐỀ LỚN VÀ CÁC BANNER BỊ TO (Tự động thu nhỏ và xuống dòng) */
+    h1,
+    .hero h1,
+    .main-info h1, 
+    .banner-premium h1,
+    .field-banner-xnk h1, 
+    .contact-banner h1, 
+    .recruitment-hero h1 {
+        font-size: 24px !important; /* Chọn mức 24px để an toàn nhất cho mọi màn hình điện thoại nhỏ */
+        line-height: 1.3 !important;
+        word-wrap: break-word !important; /* Ép tự động xuống dòng khi từ quá dài */
+        overflow-wrap: break-word !important;
+        padding: 0 10px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .banner-content-premium, .overlay {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 15px !important;
+    }
+    
+    .banner-desc {
+        font-size: 14px !important;
+        max-width: 100% !important;
+    }
+
+    /* 3. SỬA CỐ ĐỊNH HEADER & LOGO */
+    .header {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: visible !important; /* Quan trọng: Cho phép menu dọc xổ ra ngoài thanh header */
+    }
+
+    .header-container {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 15px !important;
+    }
+
+    /* Khống chế kích thước Logo trên điện thoại không làm lệch thanh menu */
+    .logo-box img, .logo-header {
+        max-height: 45px !important;
+        width: auto !important;
+    }
+
+    /* 4. MENU 3 GẠCH TRÊN MOBILE - ÉP DỌC VÀ HIỂN THỊ CHUẨN */
+    .header .menu {
+        display: none; /* Mặc định ẩn, chỉ hiện khi bấm nút 3 gạch */
+        flex-direction: column !important;
+        position: absolute !important;
+        top: 80px !important; /* Xuất hiện chuẩn ngay dưới chân thanh header height 80px */
+        left: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        background: #ffffff !important;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
+        padding: 10px 0 !important;
+        margin: 0 !important;
+        z-index: 99999 !important;
+    }
+
+    /* Khi kích hoạt mở menu (Thêm class .active bằng Javascript) */
+    .header .menu.active {
+        display: flex !important;
+    }
+
+    /* Định dạng lại chữ trong menu dọc trên mobile */
+    .header .menu a {
+        font-size: 14px !important; 
+        font-weight: 600 !important;
+        color: #222222 !important;
+        padding: 12px 20px !important;
+        border-bottom: 1px solid #f0f0f0 !important;
+        display: block !important;
+        width: 100% !important;
+        text-align: left !important;
+    }
+
+    /* Xử lý phần LĨNH VỰC HOẠT ĐỘNG (Dropdown) trên Mobile */
+    .header .menu .dropdown {
+        list-style: none !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Menu con (Dropdown-content) xổ thẳng trực tiếp */
+    .header .menu .dropdown-content {
+        position: relative !important;
+        top: 0 !important;
+        display: block !important; /* Hiện sẵn dạng danh mục thả dọc trên điện thoại */
+        box-shadow: none !important;
+        background: #f8f9fa !important; /* Đổi màu nền xám nhẹ để phân biệt với menu cha */
+        padding-left: 15px !important;
+        width: 100% !important;
+    }
+
+    .header .menu .dropdown-content a {
+        font-size: 13px !important; /* Chữ menu con nhỏ hơn một chút */
+        color: #555555 !important;
+        padding: 10px 20px !important;
+        border-bottom: 1px solid #e9ecef !important;
+    }
+
+    /* Thu gọn cụm ngôn ngữ và tìm kiếm bên phải */
+    .header-right {
+        gap: 8px !important;
+    }
+    
+    .lang-selector {
+        font-size: 12px !important;
+    }
+
+    /* 5. ÉP LƯỚI DỰ ÁN VỀ 1 CỘT (Tránh vỡ hàng, lệch ảnh) */
+    .project-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        padding: 0 15px !important;
+        width: 100% !important;
+    }
+}

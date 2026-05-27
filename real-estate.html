@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Real Estate | Hoang Cat Son Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* Specific CSS for project category page */
+        .project-category-section { padding: 60px 0 100px; background-color: #f8f9fa; }
+        
+        .category-header { text-align: center; margin-bottom: 50px; }
+        .category-header h2 { font-size: 32px; color: var(--primary-red); text-transform: uppercase; margin-bottom: 15px; }
+        .category-header p { color: #666; max-width: 700px; margin: 0 auto; font-size: 17px; }
+
+        /* Project Grid */
+        .project-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 30px; 
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .project-thumb {
+            width: 100%;
+            height: 240px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .project-card:hover .project-thumb img { transform: scale(1.1); }
+
+        .project-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-red);
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .project-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-content h3 { font-size: 20px; margin-bottom: 10px; color: var(--dark-bg); }
+        .project-content p { color: #777; font-size: 14px; margin-bottom: 20px; line-height: 1.5; }
+        
+        .project-meta {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-location { font-size: 13px; color: #888; }
+        .project-location i { color: var(--primary-red); margin-right: 5px; }
+
+        .btn-view {
+            color: var(--primary-red);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .btn-view:hover { letter-spacing: 1px; }
+
+        @media (max-width: 992px) {
+            .project-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .project-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920');">
+            <div class="banner-content">
+                <h1>REAL ESTATE</h1>
+                <p>Elevating luxury living standards in prime locations</p>
+            </div>
+        </section>
+
+        <section class="project-category-section">
+            <div class="container">
+                <div class="category-header">
+                    <h2>Featured Projects</h2>
+                    <p>Hoang Cat Son Land takes pride in developing civilized and sustainable urban areas, where strategic planning, architecture, and premium lifestyle amenities seamlessly converge.</p>
+                </div>
+
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-status">In Progress</span>
+                            <img src="https://images.unsplash.com/photo-1572120339554-d336a9cf216e?q=80&w=800" alt="Quang Bi Urban Area">
+                        </div>
+                        <div class="project-content">
+                            <h3>Quang Bi Urban Area</h3>
+                            <p>A model township in Western Hanoi, featuring sustainable green master planning and seamless infrastructure connectivity.</p>
+                            <div class="project-meta">
+                                <span class="project-location"><i class="fas fa-map-marker-alt"></i> Chuong My, Hanoi</span>
+                                <a href="quang-bi-urban-area-en.html" class="btn-view">Details <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-status">Completed</span>
+                            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800" alt="35 Phan Ke Binh">
+                        </div>
+                        <div class="project-content">
+                            <h3>35 Phan Ke Binh Project</h3>
+                            <p>A premium residential and commercial office complex in the heart of Ngoc Ha, defining the prestigious status of its owners.</p>
+                            <div class="project-meta">
+                                <span class="project-location"><i class="fas fa-map-marker-alt"></i> Ngoc Ha, Hanoi</span>
+                                <a href="apartment-35-phan-ke-binh-en.html" class="btn-view">Details <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

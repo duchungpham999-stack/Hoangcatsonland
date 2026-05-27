@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade & Import-Export | Hoang Cat Son Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Synchronized CSS layout matching previous category pages */
+        .trade-export-section { 
+            padding: 60px 0 100px; 
+            background-color: #f8f9fa; 
+        }
+        
+        .category-header { text-align: center; margin-bottom: 50px; }
+        .category-header h2 { font-size: 32px; color: var(--primary-red); text-transform: uppercase; margin-bottom: 15px; }
+        .category-header p { color: #555; max-width: 750px; margin: 0 auto; font-size: 17px; line-height: 1.6; }
+
+        /* Grid displaying trade product categories */
+        .project-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 30px; 
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+            border-color: var(--primary-red);
+        }
+
+        .project-thumb {
+            width: 100%;
+            height: 240px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .project-card:hover .project-thumb img { transform: scale(1.08); }
+
+        .project-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #2e7d32; /* Green color representing agricultural products and sustainable trade */
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .project-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-content h3 { font-size: 20px; margin-bottom: 12px; color: var(--dark-bg); font-weight: 700; }
+        .project-content p { color: #666; font-size: 14px; margin-bottom: 20px; line-height: 1.6; text-align: justify; }
+        
+        .project-meta {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-location { font-size: 13px; color: #777; }
+        .project-location i { color: var(--primary-red); margin-right: 5px; }
+
+        .btn-view {
+            color: var(--primary-red);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition-smooth);
+        }
+        .btn-view:hover { letter-spacing: 0.5px; color: var(--bright-red); }
+
+        /* ==========================================================================
+           ULTIMATE MOBILE OPTIMIZATION (UNDER 768PX) - ANTI-OVERFLOW & TEXT SCALING
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .project-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 768px) {
+            .trade-export-section {
+                padding: 30px 0 60px !important;
+            }
+
+            .category-header {
+                margin-bottom: 25px !important;
+                padding: 0 15px !important;
+            }
+
+            .category-header h2 {
+                font-size: 22px !important; /* Scale down main title on mobile */
+            }
+
+            .category-header p {
+                font-size: 14px !important; /* Compact description text */
+                line-height: 1.5 !important;
+            }
+
+            .project-grid { 
+                grid-template-columns: 1fr !important; /* Perfect single-column layout */
+                gap: 20px !important;
+                padding: 0 15px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .project-card {
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .project-thumb {
+                height: 200px !important; /* Scale down thumb height on phones */
+            }
+
+            .project-content {
+                padding: 15px !important; /* Tighten internal card padding */
+            }
+
+            .project-content h3 {
+                font-size: 17px !important; /* Compact card title */
+                margin-bottom: 8px !important;
+            }
+
+            .project-content p {
+                font-size: 13px !important; /* Streamlined description content */
+                margin-bottom: 15px !important;
+            }
+            
+            .project-meta {
+                padding-top: 10px !important;
+            }
+
+            .project-location, .btn-view {
+                font-size: 12px !important; /* Proportionate font sizes */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=1920');">
+            <div class="banner-content">
+                <h1>TRADE & IMPORT-EXPORT</h1>
+                <p>Connecting Global Trade - Elevating Vietnamese Agricultural Products & Commodities</p>
+            </div>
+        </section>
+
+        <section class="trade-export-section">
+            <div class="container">
+                <div class="category-header">
+                    <h2>Strategic Commodities</h2>
+                    <p>Hoang Cat Son Land constantly expands its business ecosystem, establishing a solid position in international trade and import-export through a highly professional, closed-loop supply chain and exceptional product quality.</p>
+                </div>
+
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-status" style="background: #1565c0;">Core Export</span>
+                            <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=800" alt="Hoa Lu Rice Export">
+                        </div>
+                        <div class="project-content">
+                            <h3>High-Quality Rice Export</h3>
+                            <p>Supplying premium long-grain fragrant rice and soft textured rice varieties that meet rigorous international inspection standards. Key export target markets encompass Southeast Asian nations such as Malaysia, the Philippines, Indonesia, and the African region.</p>
+                            <div class="project-meta">
+                                <span class="project-location"><i class="fas fa-globe-asia"></i> International / Hoang Cat Son JSC</span>
+                                <a href="rice-en.html" class="btn-view">Details <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-status">Active Supply</span>
+                            <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=800" alt="Ninh Binh Agricultural Products Trade">
+                        </div>
+                        <div class="project-content">
+                            <h3>Agricultural Produce & Dried Fruits</h3>
+                            <p>Sourcing from certified clean raw material areas and utilizing advanced drying technologies to fully preserve natural flavors. Distributing wholesale and retail agricultural products compliant with VietGAP standards for domestic consumption and international joint venture partners.</p>
+                            <div class="project-meta">
+                                <span class="project-location"><i class="fas fa-map-marker-alt"></i> Ninh Binh - Hanoi</span>
+                                <a href="agricultural-produce-en.html" class="btn-view">Details <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-status" style="background: #e65100;">Strategic Partner</span>
+                            <img src="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=800" alt="Building Materials Trade">
+                        </div>
+                        <div class="project-content">
+                            <h3>Building Materials & Equipment</h3>
+                            <p>Providing a comprehensive supply of construction materials, premium paving stones, clinker, and technical infrastructure equipment, directly optimizing input resource procurement for major construction mega-projects and key industrial clusters.</p>
+                            <div class="project-meta">
+                                <span class="project-location"><i class="fas fa-building"></i> Nationwide</span>
+                                <a href="building-materials-en.html" class="btn-view">Details <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

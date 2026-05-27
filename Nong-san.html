@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nông sản & Trái cây sấy | Hoàng Cát Sơn Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* BỐ CỤC TRANG CHI TIẾT SẢN PHẨM NÔNG SẢN */
+        .produce-detail-section {
+            padding: 60px 0 100px;
+            background-color: #fdfdfd;
+        }
+
+        .produce-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 50px;
+        }
+
+        /* 1. KHỐI HÌNH ẢNH & THÀNH PHẦN (BÊN TRÁI) */
+        .produce-media-block {
+            flex: 0 0 450px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .produce-main-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            object-fit: cover;
+            height: 320px;
+        }
+
+        /* Bảng giá trị dinh dưỡng tiêu chuẩn */
+        .nutrition-box {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .nutrition-box h3 {
+            font-size: 18px;
+            color: var(--dark-bg);
+            margin-bottom: 15px;
+            border-bottom: 2px solid #2e7d32; /* Màu xanh lá đặc trưng cho nông sản sạch */
+            padding-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .nutrition-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .nutrition-table td {
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .nutrition-table td:last-child {
+            text-align: right;
+            font-weight: 600;
+            color: #111;
+        }
+
+        /* 2. KHỐI THUYẾT MINH NỘI DUNG (BÊN PHẢI) */
+        .produce-content-block {
+            flex: 1;
+        }
+
+        .produce-tag {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .produce-name {
+            font-size: 32px;
+            color: var(--primary-red);
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .produce-description-lead {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .essay-paragraph {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .essay-sub-title {
+            font-size: 18px;
+            color: var(--dark-bg);
+            font-weight: 700;
+            margin: 30px 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .essay-sub-title i {
+            color: #2e7d32;
+            font-size: 16px;
+        }
+
+        /* ==========================================================================
+           BẢN FIX TỐI ƯU TRÊN ĐIỆN THOẠI (DƯỚI 768PX) - CHỐNG TRÀN VÀ CO GỌN CHỮ
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .produce-container { flex-direction: column; gap: 30px; }
+            .produce-media-block { flex: none; width: 100%; }
+        }
+
+        @media (max-width: 768px) {
+            .produce-detail-section {
+                padding: 30px 0 60px !important;
+            }
+
+            .produce-container {
+                padding: 0 15px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .produce-main-img {
+                height: 220px !important; /* Hạ độ cao ảnh vừa màn hình dọc di động */
+            }
+
+            .nutrition-box {
+                padding: 15px !important;
+            }
+
+            .nutrition-box h3 {
+                font-size: 16px !important;
+            }
+
+            .nutrition-table td {
+                font-size: 13px !important;
+                padding: 8px 0 !important;
+            }
+
+            .produce-name {
+                font-size: 22px !important; /* Hạ kích thước tên sản phẩm tránh vỡ dòng */
+                margin-bottom: 12px !important;
+            }
+
+            .produce-description-lead {
+                font-size: 14px !important;
+                margin-bottom: 15px !important;
+            }
+
+            .essay-sub-title {
+                font-size: 15px !important;
+                margin: 20px 0 10px !important;
+            }
+
+            .essay-paragraph {
+                font-size: 13px !important; /* Thuyết minh chữ nhỏ gọn vừa khít mắt nhìn */
+                line-height: 1.6 !important;
+                margin-bottom: 15px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=1920');">
+            <div class="banner-content">
+                <h1>NÔNG SẢN SẠCH - GIÁ TRỊ XANH BỀN VỮNG</h1>
+                <p>Hương vị tự nhiên nguyên bản từ vùng nguyên liệu chuẩn VietGAP</p>
+            </div>
+        </section>
+
+        <section class="produce-detail-section">
+            <div class="produce-container">
+                
+                <div class="produce-media-block">
+                    <img src="https://images.unsplash.com/photo-1595855759920-86582396756a?q=80&w=800" alt="Trái cây sấy khô Hoàng Cát Sơn" class="produce-main-img">
+                    
+                    <div class="nutrition-box">
+                        <h3><i class="fas fa-leaf"></i> CHỈ TIÊU CHẤT LƯỢNG CHÍNH (Trong 100g)</h3>
+                        <table class="nutrition-table">
+                            <tr>
+                                <td>Năng lượng (Energy)</td>
+                                <td>330 kcal</td>
+                            </tr>
+                            <tr>
+                                <td>Đường tự nhiên (Total Sugars)</td>
+                                <td>58.2 g</td>
+                            </tr>
+                            <tr>
+                                <td>Chất xơ tự nhiên (Dietary Fiber)</td>
+                                <td>7.4 g</td>
+                            </tr>
+                            <tr>
+                                <td>Kali (Potassium)</td>
+                                <td>680 mg</td>
+                            </tr>
+                            <tr>
+                                <td>Vitamin C</td>
+                                <td>14.5 mg</td>
+                            </tr>
+                            <tr>
+                                <td>Độ ẩm (Moisture)</td>
+                                <td>&le; 12.0 %</td>
+                            </tr>
+                            <tr>
+                                <td>Chất bảo quản (Preservatives)</td>
+                                <td>0 % (Không có)</td>
+                            </tr>
+                            <tr>
+                                <td>Chứng nhận (Certification)</td>
+                                <td>VietGAP / ISO 22000</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="produce-content-block">
+                    <span class="produce-tag">Nông sản xuất khẩu</span>
+                    <h2 class="produce-name">NÔNG SẢN & TRÁI CÂY SẤY THƯỢNG HẠNG HOÀNG CÁT SƠN</h2>
+                    
+                    <p class="produce-description-lead">
+                        Sản phẩm là niềm tự hào của chuỗi liên kết nông nghiệp bền vững, áp dụng công nghệ sấy lạnh đối lưu tiên tiến giúp lưu giữ trọn vẹn màu sắc tự nhiên, vitamin, và hương vị ngọt lành tinh túy của nguồn trái cây nhiệt đới Việt Nam.
+                    </p>
+
+                    <h3 class="essay-sub-title"><i class="fas fa-seedling"></i> Khởi nguồn từ vùng nguyên liệu đạt chuẩn</h3>
+                    <p class="essay-paragraph">
+                        Chất lượng hảo hạng của Trái cây sấy Hoàng Cát Sơn được định hình ngay từ bước chọn đất, chọn giống tại các vùng trồng liên kết chiến lược tại Ninh Bình và các khu vực lân cận. Tất cả các sản phẩm nông sản, từ mít, chuối, xoài đến thanh long, đều được canh tác theo định hướng hữu cơ nghiêm ngặt, tuân thủ chặt chẽ tiêu chuẩn VietGAP. Chúng tôi đồng hành cùng người nông dân kiểm soát không hóa chất độc hại, thu hoạch thủ công vào đúng độ chín lý tưởng nhất để đảm bảo hàm lượng đường tự nhiên đạt độ thanh ngọt hoàn hảo.
+                    </p>
+
+                    <h3 class="essay-sub-title"><i class="fas fa-snowflake"></i> Công nghệ sấy đối lưu giữ trọn dưỡng chất</h3>
+                    <p class="essay-paragraph">
+                        Điểm cốt lõi làm nên sự khác biệt của dòng nông sản sấy của chúng tôi là việc áp dụng hệ thống nhà máy sấy lạnh và sấy chân không hiện đại khép kín. Thay vì sấy nhiệt cao thông thường làm biến chất và xỉn màu sản phẩm, công nghệ tách ẩm ở nhiệt độ thấp giúp kết cấu miếng trái cây giòn tan hoặc dẻo mềm tự nhiên, giữ lại tới hơn 95% giá trị dinh dưỡng, vitamin cũng như khoáng chất ban đầu. Đặc biệt, sản phẩm cam kết 3 KHÔNG: Không thêm đường hóa học, không chất bảo quản, và không phẩm màu công nghiệp.
+                    </p>
+
+                    <h3 class="essay-sub-title"><i class="fas fa-boxes"></i> Chuỗi cung ứng toàn diện phục vụ thị trường</h3>
+                    <p class="essay-paragraph">
+                        Nằm trong hệ sinh thái phát triển thương mại và dịch vụ logistics hiện đại, ngành hàng Nông sản & Trái cây sấy của chúng tôi sở hữu năng lực cung ứng sản lượng lớn, đóng gói bao bì màng nhôm phức hợp cao cấp chống oxy hóa đạt chuẩn quốc tế. Không chỉ phục vụ người tiêu dùng nội địa tại các chuỗi siêu thị văn phòng lớn ở Hà Nội, sản phẩm hiện là mặt hàng có tiềm năng tăng trưởng vượt trội trong chiến lược tiếp cận và xuất khẩu trực tiếp sang các thị trường liên kết giàu tiềm năng trong khu vực Đông Nam Á.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

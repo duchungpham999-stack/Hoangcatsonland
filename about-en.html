@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>Giới thiệu | Công ty Cổ phần Hoàng Cát Sơn</title>
+    <title>About Us | Hoang Cat Son Joint Stock Company</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        /* ĐƯỜNG NHÚNG FONT GOOGLE */
+        /* GOOGLE FONTS IMPORT */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap');
 
-        /* CSS variables đồng bộ hệ thống */
+        /* System CSS Variables */
         :root {
-            --primary-color: #d32f2f; /* Màu đỏ thương hiệu */
+            --primary-color: #d32f2f; /* Brand Red */
             --primary-dark: #b71c1c;
             --dark-bg: #1a1a1a;
             --text-color: #333;
@@ -47,13 +47,14 @@
         }
         
         .about-banner h1 {
-            font-size: 42px;
+            font-size: 34px; /* Reduced from 42px to make the long English name look elegant and compact */
             margin-bottom: 20px;
             text-transform: uppercase;
             font-weight: 800;
-            letter-spacing: 2px;
+            letter-spacing: 1px; /* Slightly adjusted tracking for better readability */
             color: #ffffff;
             text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.3;
         }
         
         .about-banner p {
@@ -102,7 +103,7 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
 
-        /* ==================== VISION & MISSION PREMIUM LAYOUT ==================== */
+        /* VISION & MISSION PREMIUM LAYOUT */
         .vision-mission-section {
             background-color: var(--light-bg);
             padding: 90px 0;
@@ -111,7 +112,7 @@
         .vm-grid {
             display: flex;
             gap: 30px;
-            align-items: stretch; /* Đảm bảo 2 card cao bằng chằn chặn */
+            align-items: stretch;
         }
 
         .vm-col {
@@ -172,24 +173,23 @@
             align-items: flex-start;
         }
 
-        /* Định dạng cấu trúc danh sách dùng chung cho cả Tầm nhìn & Sứ mệnh */
         .vm-list-container {
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 22px; /* Khoảng cách giữa các dòng */
+            gap: 22px;
         }
 
         .vm-list-row {
             display: flex;
-            align-items: flex-start; /* Icon căn theo dòng đầu tiên của chữ */
+            align-items: flex-start;
             gap: 15px;
-            text-align: justify; /* Ép chữ căn đều hai bên tuyệt đối */
+            text-align: justify;
         }
 
         .vm-list-icon i {
             font-size: 16px;
-            color: var(--primary-color); /* Icon check nhỏ màu đỏ */
+            color: var(--primary-color);
             margin-top: 3px;
         }
 
@@ -207,7 +207,7 @@
             line-height: 1.6;
         }
 
-        /* Responsive di động */
+        /* Responsive Mobile Layout */
         @media (max-width: 992px) {
             .vm-grid {
                 flex-direction: column;
@@ -268,7 +268,7 @@
             color: #666;
             margin: 0;
             line-height: 1.5;
-            text-align: justify; /* Căn đều chữ phần Giá trị cốt lõi */
+            text-align: justify;
         }
 
         /* Table section */
@@ -299,7 +299,7 @@
             border-bottom: 1px solid #eee;
             font-size: 14px;
             color: #444;
-            text-align: justify; /* Căn đều nội dung bên trong bảng */
+            text-align: justify;
         }
         .business-table tr:last-child td {
             border-bottom: none;
@@ -311,10 +311,10 @@
             font-weight: 700;
             color: var(--dark-bg);
             width: 30%;
-            text-align: left; /* Cột tiêu đề bảng giữ căn trái */
+            text-align: left;
         }
 
-        /* Responsive */
+        /* Responsive Breakpoints */
         @media (max-width: 768px) {
             .overview-col, .vm-col {
                 display: block;
@@ -337,7 +337,7 @@
                 grid-template-columns: 1fr;
             }
             .about-banner h1 {
-                font-size: 28px;
+                font-size: 24px; /* Scales down perfectly for small mobile viewports */
             }
         }
     </style>
@@ -349,8 +349,8 @@
     <main>
         <section class="about-banner">
             <div class="container">
-                <h1>CÔNG TY CỔ PHẦN HOÀNG CÁT SƠN</h1>
-                <p>“Kiến tạo nền tảng – Khẳng định tầm vóc”</p>
+                <h1>HOANG CAT SON JOINT STOCK COMPANY</h1>
+                <p>“Building Foundations – Elevating Stature”</p>
             </div>
         </section>
 
@@ -359,14 +359,14 @@
                 <div class="overview-grid">
                     <div class="overview-col">
                         <div class="overview-text">
-                            <h2>Tổng quan về chúng tôi</h2>
-                            <p>Công ty Cổ phần Hoàng Cát Sơn là đơn vị uy tín trong lĩnh vực <strong>Đầu tư Xây dựng, Thi công Hạ tầng Kỹ thuật và Phát triển Dự án</strong>. Với khát vọng kiến tạo nên những công trình bền vững cùng thời gian, Hoàng Cát Sơn không ngừng nỗ lực tối ưu hóa các giải pháp xây dựng, áp dụng công nghệ hiện đại và quy chuẩn quản lý nghiêm ngặt nhằm mang lại giá trị gia tăng vượt trội cho chủ đầu tư, đối tác và cộng đồng.</p>
-                            <p>Sở hữu đội ngũ chuyên gia, kỹ sư giàu kinh nghiệm cùng hệ thống trang thiết bị kỹ thuật tiên tiến, chúng tôi tự tin đảm nhận các dự án từ quy mô hạ tầng giao thông, khu công nghiệp cho đến các tổ hợp đô thị và văn phòng thương mại cao cấp.</p>
+                            <h2>Corporate Overview</h2>
+                            <p>Hoang Cat Son Joint Stock Company is a highly prestigious enterprise specializing in <strong>Construction Investment, Technical Infrastructure Execution, and Project Development</strong>. Driven by the aspiration to create timeless, sustainable landmarks, Hoang Cat Son continuously thrives to optimize construction methodologies, integrate state-of-the-art technologies, and implement rigorous management standards to deliver outstanding value-added benefits to our investors, partners, and the community.</p>
+                            <p>Possessing a robust team of highly experienced experts and engineers, complemented by advanced technical equipment systems, we confidently undertake large-scale projects ranging from transport infrastructure and industrial zones to sophisticated urban complexes and premium commercial offices.</p>
                         </div>
                     </div>
                     <div class="overview-col">
                         <div class="overview-img">
-                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800" alt="Công trường xây dựng Hoàng Cát Sơn">
+                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800" alt="Hoang Cat Son Construction Site">
                         </div>
                     </div>
                 </div>
@@ -382,31 +382,31 @@
                             <div class="card-header-icon">
                                 <i class="fas fa-eye"></i>
                             </div>
-                            <h3>Tầm nhìn</h3>
+                            <h3>Our Vision</h3>
                             <div class="card-body-content">
                                 <div class="vm-list-container">
                                     
                                     <div class="vm-list-row">
                                         <div class="vm-list-icon"><i class="fas fa-check-circle"></i></div>
                                         <div class="vm-list-text-block">
-                                            <h4>Vị thế dẫn đầu</h4>
-                                            <p>Trở thành một trong những doanh nghiệp hàng đầu trong lĩnh vực đầu tư xây dựng, đấu thầu thi công hạ tầng kỹ thuật và phát triển công nghiệp toàn diện.</p>
+                                            <h4>Leading Stature</h4>
+                                            <p>To become a top-tier enterprise in construction investment, general contracting for technical infrastructure, and comprehensive industrial cluster development.</p>
                                         </div>
                                     </div>
 
                                     <div class="vm-list-row">
                                         <div class="vm-list-icon"><i class="fas fa-check-circle"></i></div>
                                         <div class="vm-list-text-block">
-                                            <h4>Đối tác chiến lược</h4>
-                                            <p>Khẳng định vị thế là sự lựa chọn ưu tiên hàng đầu của các tập đoàn, chủ đầu tư trong và ngoài nước khi triển khai các siêu dự án hạ tầng trọng điểm quy mô lớn.</p>
+                                            <h4>Strategic Partnership</h4>
+                                            <p>To solidify our position as the preferred choice for leading corporations and institutional investors when deploying large-scale, key infrastructure mega-projects.</p>
                                         </div>
                                     </div>
 
                                     <div class="vm-list-row">
                                         <div class="vm-list-icon"><i class="fas fa-check-circle"></i></div>
                                         <div class="vm-list-text-block">
-                                            <h4>Phát triển bền vững</h4>
-                                            <p>Định hướng ứng dụng sâu rộng các giải pháp công nghệ xanh, vật liệu thông minh và mô hình quản lý tiên tiến vào chuỗi giá trị xây dựng lâu dài.</p>
+                                            <h4>Sustainable Growth</h4>
+                                            <p>To intentionally incorporate green construction solutions, eco-friendly materials, and smart management models into our long-term corporate value chain.</p>
                                         </div>
                                     </div>
 
@@ -420,31 +420,31 @@
                             <div class="card-header-icon">
                                 <i class="fas fa-bullseye"></i>
                             </div>
-                            <h3>Sứ mệnh</h3>
+                            <h3>Our Mission</h3>
                             <div class="card-body-content">
                                 <div class="vm-list-container">
                             
                                     <div class="vm-list-row">
                                         <div class="vm-list-icon"><i class="fas fa-check-circle"></i></div>
                                         <div class="vm-list-text-block">
-                                            <h4>Lan tỏa niềm tin</h4>
-                                            <p>Vào những sản phẩm chất lượng, quy trình kỹ thuật chuẩn mực, gia tăng tối đa giá trị lợi ích kinh tế theo thời gian cho các đối tác.</p>
+                                            <h4>Cultivating Trust</h4>
+                                            <p>To instill absolute confidence through impeccable quality and standardized technical practices, maximizing long-term economic returns for our valued partners.</p>
                                         </div>
                                     </div>
                             
                                     <div class="vm-list-row">
                                         <div class="vm-list-icon"><i class="fas fa-check-circle"></i></div>
                                         <div class="vm-list-text-block">
-                                            <h4>Đồng hành cùng khách hàng</h4>
-                                            <p>Trên những hành trình xây dựng không gian sống và làm việc thực sự bền vững cho mỗi người, mỗi gia đình, giúp xã hội phát triển hạnh phúc hơn.</p>
+                                            <h4>Customer Companion</h4>
+                                            <p>To walk hand-in-hand with clients in shaping highly durable living and working spaces, contributing to a prosperous and blissful society.</p>
                                         </div>
                                     </div>
                             
                                     <div class="vm-list-row">
                                         <div class="vm-list-icon"><i class="fas fa-check-circle"></i></div>
                                         <div class="vm-list-text-block">
-                                            <h4>Đồng kiến tạo hệ sinh thái</h4>
-                                            <p>Xây dựng môi trường làm việc an toàn, tin cậy, chân thành và cởi mở để mỗi CBNV, mỗi đối tác đều gặt hái thành tựu vượt trội và đóng góp cho xã hội.</p>
+                                            <h4>Ecosystem Co-creation</h4>
+                                            <p>To foster a safe, reliable, transparent, and inspiring workplace where every individual and partner can unlock extraordinary achievements and actively give back to society.</p>
                                         </div>
                                     </div>
 
@@ -460,59 +460,60 @@
         <section class="core-business-section">
             <div class="container">
                 <div style="text-align: center;">
-                    <h2 class="section-title">Lĩnh vực hoạt động cốt lõi</h2>
+                    <h2 class="section-title">Core Sectors of Activity</h2>
                 </div>
                 <table class="business-table">
                     <thead>
                         <tr>
-                            <th>Lĩnh vực</th>
-                            <th>Mô tả chi tiết giải pháp & năng lực</th>
+                            <th>Sector</th>
+                            <th>Detailed Solutions & Capabilities</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Bất động sản</td>
-                            <td>Đầu tư, phát triển và kinh doanh các phân khúc bất động sản dân dụng, tổ hợp nhà ở thương mại cao cấp, khu đô thị sinh thái đồng bộ và các dự án nhà ở xã hội an cư, mang lại giải pháp không gian sống văn minh, gia tăng giá trị bền vững theo thời gian.</td>
+                            <td>Real Estate Development</td>
+                            <td>Investing, developing, and operating residential properties, high-end commercial complexes, integrated eco-urban areas, and affordable social housing projects that offer civilized spaces and long-term asset value enhancement.</td>
                         </tr>
                         <tr>
-                            <td>Hạ tầng Công nghiệp</td>
-                            <td>Đầu tư quy hoạch, xây dựng và quản lý vận hành các cụm công nghiệp, khu công nghiệp xanh; cung ứng hệ thống nhà xưởng tiền chế hiện đại, nhà kho thông minh đạt tiêu chuẩn quốc tế và các tổ hợp dịch vụ logistics chuyên sâu phục vụ doanh nghiệp.</td>
+                            <td>Industrial Infrastructure</td>
+                            <td>Planning, developing, and managing green industrial parks and clusters; providing advanced pre-engineered factories, smart warehouses meeting international benchmarks, and specialized logistic hubs for modern businesses.</td>
                         </tr>
                         <tr>
-                            <td>Hạ tầng kỹ thuật - Giao thông</td>
-                            <td>Tổng thầu thi công các công trình giao thông trọng điểm, trục lộ huyết mạch, hệ thống cầu đường, ngầm hóa và đồng bộ hóa mạng lưới kỹ thuật hạ tầng (bao gồm hệ thống cấp thoát nước, trạm biến áp, mạng lưới điện và viễn thông).</td>
+                            <td>Technical & Transport Infrastructure</td>
+                            <td>Serving as a General Contractor for key transportation networks, highways, bridge and road networks, underground systems, and fully synchronized technical utilities (including water distribution, power substations, grids, and telecom networks).</td>
                         </tr>
                         <tr>
-                            <td>Thương mại - Xuất nhập khẩu</td>
-                            <td>Khai thác dịch vụ cung ứng vật tư, xuất nhập khẩu ủy thác và giao thương quốc tế các mặt hàng thế mạnh; tối ưu hóa chuỗi cung ứng toàn cầu, đảm bảo dòng luân chuyển hàng hóa an toàn, minh bạch và hiệu quả cao cho các đối tác kinh doanh.</td>
+                            <td>Trading & Global Logistics</td>
+                            <td>Operating material supply chains, providing trusted import-export brokerage services, and expanding global trading activities; optimizing supply chains to ensure secure, transparent, and seamless cargo flow for business partners.</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </section>
+
         <section class="core-values-section">
             <div class="container">
-                <h2 class="section-title">Giá trị cốt lõi</h2>
+                <h2 class="section-title">Core Values</h2>
                 <div class="values-grid">
                     <div class="value-card">
                         <div class="icon-box"><i class="fas fa-award"></i></div>
-                        <h4>Chất lượng</h4>
-                        <p>Là thước đo danh dự và là nền tảng sống còn của mỗi công trình chúng tôi tạo ra.</p>
+                        <h4>Quality</h4>
+                        <p>The ultimate benchmark of our honor and the vital baseline of every single structure we deliver.</p>
                     </div>
                     <div class="value-card">
                         <div class="icon-box"><i class="fas fa-bolt"></i></div>
-                        <h4>Tiến độ</h4>
-                        <p>Cam kết tối ưu hóa quy trình thi công, đảm bảo bàn giao đúng hoặc vượt tiến độ.</p>
+                        <h4>Timeline</h4>
+                        <p>Strict commitment to optimizing construction workflows, ensuring projects are handed over on or ahead of schedule.</p>
                     </div>
                     <div class="value-card">
                         <div class="icon-box"><i class="fas fa-heart"></i></div>
-                        <h4>Tận tâm</h4>
-                        <p>Luôn lắng nghe, thấu hiểu để đưa ra các giải pháp tối ưu và tiết kiệm nhất.</p>
+                        <h4>Dedication</h4>
+                        <p>Always actively listening and thoroughly understanding clients to formulate the most optimal, cost-efficient solutions.</p>
                     </div>
                     <div class="value-card">
                         <div class="icon-box"><i class="fas fa-shield"></i></div>
-                        <h4>An toàn</h4>
-                        <p>Đặt an toàn lao động và bảo vệ môi trường lên vị trí hàng đầu khi triển khai.</p>
+                        <h4>Safety</h4>
+                        <p>Prioritizing occupational health and comprehensive environmental protection over everything else during project execution.</p>
                     </div>
                 </div>
             </div>

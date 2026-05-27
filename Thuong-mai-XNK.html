@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thương mại - Xuất nhập khẩu | Hoàng Cát Sơn Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS đồng bộ với cấu trúc các trang danh mục trước */
+        .trade-export-section { 
+            padding: 60px 0 100px; 
+            background-color: #f8f9fa; 
+        }
+        
+        .category-header { text-align: center; margin-bottom: 50px; }
+        .category-header h2 { font-size: 32px; color: var(--primary-red); text-transform: uppercase; margin-bottom: 15px; }
+        .category-header p { color: #555; max-width: 750px; margin: 0 auto; font-size: 17px; line-height: 1.6; }
+
+        /* Lưới hiển thị danh sách ngành hàng thương mại */
+        .project-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 30px; 
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+            border-color: var(--primary-red);
+        }
+
+        .project-thumb {
+            width: 100%;
+            height: 240px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .project-card:hover .project-thumb img { transform: scale(1.08); }
+
+        .project-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #2e7d32; /* Màu xanh lá đại diện cho nông sản và thương mại bền vững */
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .project-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-content h3 { font-size: 20px; margin-bottom: 12px; color: var(--dark-bg); font-weight: 700; }
+        .project-content p { color: #666; font-size: 14px; margin-bottom: 20px; line-height: 1.6; text-align: justify; }
+        
+        .project-meta {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-location { font-size: 13px; color: #777; }
+        .project-location i { color: var(--primary-red); margin-right: 5px; }
+
+        .btn-view {
+            color: var(--primary-red);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition-smooth);
+        }
+        .btn-view:hover { letter-spacing: 0.5px; color: var(--bright-red); }
+
+        /* ==========================================================================
+           BẢN FIX TRIỆT ĐỂ CHO ĐIỆN THOẠI (DƯỚI 768PX) - CHỐNG TRÀN VÀ THU NHỎ CHỮ
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .project-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 768px) {
+            .trade-export-section {
+                padding: 30px 0 60px !important;
+            }
+
+            .category-header {
+                margin-bottom: 25px !important;
+                padding: 0 15px !important;
+            }
+
+            .category-header h2 {
+                font-size: 22px !important; /* Hạ nhỏ tiêu đề trên mobile */
+            }
+
+            .category-header p {
+                font-size: 14px !important; /* Chữ mô tả nhỏ gọn */
+                line-height: 1.5 !important;
+            }
+
+            .project-grid { 
+                grid-template-columns: 1fr !important; /* Xếp dọc 1 cột hoàn hảo */
+                gap: 20px !important;
+                padding: 0 15px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .project-card {
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .project-thumb {
+                height: 200px !important; /* Thu nhỏ chiều cao ảnh trên phone */
+            }
+
+            .project-content {
+                padding: 15px !important; /* Thu hẹp lề trong card */
+            }
+
+            .project-content h3 {
+                font-size: 17px !important; /* Tiêu đề card nhỏ gọn */
+                margin-bottom: 8px !important;
+            }
+
+            .project-content p {
+                font-size: 13px !important; /* Nội dung mô tả ngắn gọn */
+                margin-bottom: 15px !important;
+            }
+            
+            .project-meta {
+                padding-top: 10px !important;
+            }
+
+            .project-location, .btn-view {
+                font-size: 12px !important; /* Chữ và số nhỏ vừa vặn */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=1920');">
+            <div class="banner-content">
+                <h1>THƯƠNG MẠI - XUẤT NHẬP KHẨU</h1>
+                <p>Kết nối giao thương toàn cầu - Nâng tầm nông sản và hàng hóa Việt Nam</p>
+            </div>
+        </section>
+
+        <section class="trade-export-section">
+            <div class="container">
+                <div class="category-header">
+                    <h2>Ngành hàng chiến lược</h2>
+                    <p>Hoàng Cát Sơn Land không ngừng mở rộng hệ sinh thái kinh doanh, khẳng định vị thế vững chắc trong lĩnh vực Thương mại và Xuất nhập khẩu quốc tế với chuỗi cung ứng khép kín chuyên nghiệp và chất lượng sản phẩm vượt trội.</p>
+                </div>
+
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-status" style="background: #1565c0;">Xuất khẩu chủ lực</span>
+                            <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=800" alt="Xuất khẩu gạo Hoa Lư">
+                        </div>
+                        <div class="project-content">
+                            <h3>Xuất khẩu Gạo chất lượng cao</h3>
+                            <p>Cung ứng các dòng gạo thơm đặc sản hạt dài, gạo dẻo đạt tiêu chuẩn kiểm định quốc tế khắt khe. Thị trường xuất khẩu trọng điểm bao gồm các quốc gia Đông Nam Á như Malaysia, Philippines, Indonesia và khu vực châu Phi.</p>
+                            <div class="project-meta">
+                                <span class="project-location"><i class="fas fa-globe-asia"></i> Quốc tế / Hoang Cat Son JSC</span>
+                                <a href="Gao.html" class="btn-view">Chi tiết <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-status">Đang cung ứng</span>
+                            <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=800" alt="Thương mại nông sản Ninh Bình">
+                        </div>
+                        <div class="project-content">
+                            <h3>Nông sản & Trái cây sấy</h3>
+                            <p>Khai thác các vùng nguyên liệu sạch, áp dụng công nghệ sấy khô tiên tiến giữ trọn hương vị tự nhiên. Phân phối sỉ và lẻ nông sản tiêu chuẩn VIETGAP phục vụ thị trường tiêu dùng nội địa và đối tác liên doanh quốc tế.</p>
+                            <div class="project-meta">
+                                <span class="project-location"><i class="fas fa-map-marker-alt"></i> Ninh Bình - Hà Nội</span>
+                                <a href="Nong-san.html" class="btn-view">Chi tiết <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-status" style="background: #e65100;">Đối tác chiến lược</span>
+                            <img src="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=800" alt="Thương mại vật liệu xây dựng">
+                        </div>
+                        <div class="project-content">
+                            <h3>Vật liệu xây dựng & Thiết bị</h3>
+                            <p>Cung ứng toàn diện các loại vật liệu xây dựng, đá ốp lát cao cấp, clinker và thiết bị hạ tầng kỹ thuật, trực tiếp tối ưu hóa nguồn vật tư đầu vào cho các đại dự án xây dựng và cụm công nghiệp trọng điểm.</p>
+                            <div class="project-meta">
+                                <span class="project-location"><i class="fas fa-building"></i> Toàn quốc</span>
+                                <a href="Vat-lieu-xay-dung.html" class="btn-view">Chi tiết <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

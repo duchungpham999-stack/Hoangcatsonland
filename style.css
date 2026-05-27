@@ -360,7 +360,7 @@ section {
 /* Form đăng ký */
 .footer input[type="email"] {
     width: 100%;
-    max-width: 320px;
+    max-width: 240px;
     padding: 14px 25px;
     border-radius: 50px;
     border: none;
@@ -657,6 +657,81 @@ section {
     .g-recaptcha {
         transform: scale(0.85);
         transform-origin: 0 0;
+    }
+}
+
+/* ==========================================================================
+   BẢN FIX: CỐ ĐỊNH PHẦN TUYỂN DỤNG VÀ KHTH GỌN GÀNG TRÊN ĐIỆN THOẠI
+   ========================================================================== */
+@media (max-width: 768px) {
+    
+    /* 1. Sửa bộ lọc (Vị trí / Địa điểm): Chuyển thành hàng dọc, co vừa màn hình */
+    .filter-container {
+        flex-direction: column !important; /* Xếp dọc 2 ô chọn trên điện thoại */
+        gap: 15px !important;              /* Khoảng cách vừa phải giữa các ô */
+        padding: 0 15px !important;        /* Cách lề 2 bên màn hình */
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    .filter-item {
+        min-width: 100% !important;        /* Phủ full chiều ngang màn hình điện thoại */
+        width: 100% !important;
+        padding: 10px 15px !important;     /* Thu nhỏ khoảng đệm bên trong */
+        box-sizing: border-box;
+    }
+
+    /* Thu nhỏ tiêu đề "CƠ HỘI NGHỀ NGHIỆP" để không bị gãy dòng chữ */
+    .job-opportunity .section-title {
+        font-size: 24px !important;
+        margin: 30px 0 20px 0 !important;
+    }
+
+    /* 2. Cố định bảng Tuyển dụng/KHTH: Chống tràn màn hình và thu nhỏ chữ số */
+    .job-list-section {
+        padding: 10px 15px !important;
+        width: 100% !important;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    /* Bắt buộc phải tạo khung cuộn ngang cho bảng để điện thoại không bị đẩy mất lề */
+    .recruitment-table-wrapper {
+        width: 100% !important;
+        overflow-x: auto !important; /* Cho phép vuốt ngang để xem hết các cột dữ liệu số */
+        -webkit-overflow-scrolling: touch;
+        border: 1px solid #eeeeee;
+        border-radius: 6px;
+        margin-top: 10px;
+    }
+
+    .recruitment-table {
+        min-width: 600px; /* Ép bảng giữ độ rộng tối thiểu để thông tin số liệu không bị dính chặt vào nhau */
+    }
+
+    /* Thu nhỏ chữ và số ở tiêu đề bảng */
+    .recruitment-table th {
+        padding: 10px 8px !important;
+        font-size: 12px !important; /* Hạ font chữ để gọn gàng */
+    }
+
+    /* Thu nhỏ chữ và số ở các hàng nội dung tuyển dụng */
+    .recruitment-table td {
+        padding: 10px 8px !important;
+        font-size: 12px !important; /* Chữ và số hiển thị nhỏ gọn trên màn hình dọc */
+    }
+
+    .recruitment-table td.job-title {
+        font-size: 13px !important;
+        font-weight: 600;
+    }
+
+    /* Thu nhỏ nút bấm "Ứng tuyển" */
+    .recruitment-table button, 
+    .recruitment-table .btn-apply {
+        padding: 6px 10px !important;
+        font-size: 11px !important;
+        white-space: nowrap; /* Không cho chữ trong nút bị rớt dòng */
     }
 }
 
@@ -2861,117 +2936,151 @@ html {
 }
 
 /* ==========================================================================
-   BẢN FIX TRIỆT ĐỂ: CỐ ĐỊNH TRANG WEB VÀ MENU 3 GẠCH TRÊN ĐIỆN THOẠI (DƯỚI 768PX)
+   BẢN FIX: HIỂN THỊ ĐẦY ĐỦ MENU VÀ CĂN LỀ TRÁI CHO ĐIỆN THOẠI
    ========================================================================== */
 @media (max-width: 768px) {
-    /* 1. Đảm bảo cố định Header và bù đắp khoảng trống cho trang */
-    .header {
-        position: fixed !important;
-        top: 0; left: 0; width: 100% !important;
-        height: 80px !important;
-        background: #ffffff !important;
-        z-index: 1000 !important;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
-    }
-
-    body, main, .hero, .hero-padding, .project-detail-header {
-        padding-top: 80px !important; /* Fix lỗi trang bị cố định che mất nội dung */
-    }
-
-    /* 2. SỬA LỖI MENU ẨN: Hiển thị đầy đủ tất cả các thanh */
+    /* 1. Xóa giới hạn chiều cao 80px từ máy tính, cho phép menu tự động dài ra hiển thị đủ các mục */
     .header .menu {
-        display: none !important; /* Mặc định ẩn đi khi chưa bấm */
-        flex-direction: column !important; /* Xếp dọc toàn bộ các mục menu */
-        position: fixed !important;
-        top: 80px !important; /* Ngay sát mép dưới header */
-        left: 0;
+        height: auto !important;
+        max-height: calc(100vh - 80px); /* Cho phép cuộn nếu menu quá dài so với màn hình */
+        overflow-y: auto !important;
+        align-items: flex-start !important; /* Ép toàn bộ khối menu dồn về bên trái */
+    }
+
+    /* 2. Xóa chiều cao 100% của thẻ li bị lỗi từ máy tính */
+    .header .menu li {
+        height: auto !important;
         width: 100% !important;
-        background: #ffffff !important;
-        box-shadow: 0 10px 15px rgba(0,0,0,0.1) !important;
-        padding: 10px 0 !important;
-        z-index: 999 !important;
-        margin: 0 !important;
-        list-style: none !important;
-    }
-
-    /* Khi có class .active (khi bấm 3 gạch) -> Hiện menu lên */
-    .header .menu.active {
-        display: flex !important;
-    }
-
-    /* Định dạng chung cho TẤT CẢ các mục menu cấp 1 (cả thẻ a trực tiếp và thẻ li) */
-    .header .menu > a, 
-    .header .menu > li {
         display: block !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
     }
 
-    /* Chỉnh chữ cho toàn bộ thanh menu cấp 1 */
+    /* 3. Chuyển thẻ a thành block và ép căn lề trái tuyệt đối */
     .header .menu a, 
     .header .menu .dropdown .dropbtn {
+        height: auto !important;
         display: block !important;
+        text-align: left !important; /* Lệnh quan trọng nhất để chữ dạt sang trái */
+        padding: 15px 25px !important;
         width: 100% !important;
-        padding: 14px 25px !important;
-        color: #333333 !important;
-        font-weight: 600 !important;
-        font-size: 15px !important;
-        border-bottom: 1px solid #f2f2f2 !important;
+        box-sizing: border-box !important;
+        justify-content: flex-start !important;
+    }
+}
+
+@media (max-width: 768px) {
+    /* --- HOÁN ĐỔI VỊ TRÍ TRÊN HEADER --- */
+    .header .container-custom {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+
+    /* Đưa nút bấm mở Sidebar (Hamburger) sang bên phải */
+    .menu-toggle {
+        order: 3 !important; /* Đẩy ra sau cùng bên phải */
+        margin-left: auto !important; /* Đảm bảo bám sát lề phải */
+        margin-right: 0 !important;
+    }
+
+    /* Đưa khối tìm kiếm và ngôn ngữ sang bên trái */
+    .header-right {
+        order: 1 !important; /* Đưa lên đầu tiên bên trái */
+        margin-right: auto !important; /* Đẩy các phần tử khác ra xa */
+        margin-left: 0 !important;
+        flex-direction: row !important; /* Giữ các icon nằm ngang */
+        gap: 15px !important; /* Khoảng cách giữa nút tìm kiếm và ngôn ngữ */
+    }
+
+    /* Đảm bảo Logo luôn nằm ở giữa trung tâm Header */
+    .header .logo {
+        order: 2 !important; /* Nằm cố định ở giữa */
+        position: absolute !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    /* --- ĐIỀU CHỈNH SIDEBAR TRƯỢT TỪ BÊN PHẢI VÀO --- */
+    .header .menu {
+        position: fixed !important;
+        top: 80px !important; /* Bằng chiều cao header */
+        bottom: 0 !important;
+        left: auto !important; /* Xóa neo bên trái */
+        right: 0 !important; /* Ép neo vào lề phải */
+        width: 70% !important; /* Chiều rộng sidebar chiếm 70% màn hình */
+        max-width: 300px !important;
+        height: calc(100vh - 80px) !important;
+        background: #ffffff !important;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1) !important;
+        
+        /* Hiệu ứng trượt ẩn/hiện từ bên phải */
+        transform: translateX(100%) !important; 
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important; /* Chữ căn lề trái */
+        padding: 20px 0 !important;
+        z-index: 999 !important;
+    }
+
+    /* Khi Sidebar được kích hoạt class mở (active/open) từ JavaScript */
+    .header .menu.active,
+    .header .menu.open {
+        transform: translateX(0) !important;
+    }
+
+    /* Định dạng lại các mục liên kết bên trong Sidebar */
+    .header .menu li {
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+    }
+
+    .header .menu a {
+        display: block !important;
         text-align: left !important;
-        box-sizing: border-box !important;
-        text-decoration: none;
-    }
-
-    /* 3. XỬ LÝ DROPDOWN LĨNH VỰC TRÊN MOBILE */
-    .header .menu .dropdown {
-        position: relative;
-    }
-
-    /* Hiện sẵn menu con trên mobile theo dạng danh mục phân bậc */
-    .header .menu .dropdown-content {
-        position: relative !important;
-        top: 0 !important;
-        display: block !important; /* Hiện mặc định hoặc bạn có thể toggle tùy ý */
-        background: #f9fafb !important; /* Nền xám nhạt để phân biệt menu con */
-        box-shadow: none !important;
+        padding: 15px 25px !important;
         width: 100% !important;
-        padding: 0 0 0 15px !important; /* Đẩy lùi vào trong một chút */
         box-sizing: border-box !important;
-        list-style: none !important;
+    }
+}
+
+/* ==========================================================================
+   MÃ FIX GIAO DIỆN FOOTER TRÊN ĐIỆN THOẠI (MOBILE)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* 1. Ép tên công ty nằm trọn vẹn trên 1 dòng duy nhất, hạ nhẹ size chữ để vừa khít màn hình */
+    .footer .col h3 {
+        white-space: nowrap !important; /* Ngăn ngắt dòng, ép chữ Sơn lên cùng hàng */
+        font-size: 19px !important;    /* Hạ size chữ vừa vặn màn hình điện thoại nhỏ */
+        letter-spacing: -0.3px !important; /* Thu hẹp nhẹ khoảng cách chữ */
+        text-align: left !important;
+        margin-bottom: 15px !important;
     }
 
-    .header .menu .dropdown-content a {
+    /* 2. Căn đều hai bên (justify) cho phần mô tả text ngắn */
+    .footer .col p {
+        text-align: justify !important;
+        text-justify: inter-word !important; /* Tối ưu khoảng cách giữa các từ */
         font-size: 13.5px !important;
-        color: #555555 !important;
-        padding: 10px 20px !important;
-        border-bottom: 1px solid #eef0f2 !important;
+        line-height: 1.6 !important;
     }
 
-    /* --- 4. CỐ ĐỊNH KÍCH THƯỚC SỐ QUÁ TO TRÊN MOBILE --- */
-    .stat-box-clean h4, 
-    .hl-milestones h4,
-    .counter-number,
-    [class*="stat"] h4,
-    [class*="milestone"] h4,
-    [class*="number"] {
-        font-size: 20px !important; /* Hạ kích thước số xuống 28px để không bị vỡ */
-        line-height: 1.2 !important;
-        margin-bottom: 5px !important;
+    /* 3. Căn đều hai bên cho toàn bộ khối thông tin liên hệ (Địa chỉ, Trụ sở, VPĐD) */
+    .footer .col .info {
+        display: block !important;
+        text-align: justify !important;
+        text-justify: inter-word !important;
+        margin-bottom: 12px !important;
     }
 
-    .stat-box-clean p,
-    .hl-milestones p,
-    [class*="stat"] p {
-        font-size: 10px !important;
-        line-height: 1.4 !important;
+    /* 4. Đảm bảo phần nội dung text chi tiết bên trong thẻ value cũng dãn đều đẹp mắt */
+    .footer .col .info .value {
+        display: inline !important; /* Giữ luồng chữ chảy tự nhiên để justify có tác dụng */
+        text-align: justify !important;
     }
-
-    /* Chia lưới hiển thị số thành 2 cột cho cân đối trên mobile */
-    .stats-grid, 
-    .milestones-grid, 
-    [class*="grid"] {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 15px !important;
-        padding: 0 15px !important;
+    
+    .footer .col .info .label {
+        font-weight: 600 !important;
     }
 }

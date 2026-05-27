@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Industrial Structures | Hoang cat Son Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* Specific CSS for Industrial Category Page */
+        .industrial-category-section { padding: 60px 0 100px; background-color: #f4f6f8; }
+        
+        .category-header { text-align: center; margin-bottom: 50px; }
+        .category-header h2 { font-size: 32px; color: var(--primary-red); text-transform: uppercase; margin-bottom: 15px; }
+        .category-header p { color: #555; max-width: 750px; margin: 0 auto; font-size: 17px; line-height: 1.6; }
+
+        /* Industrial Project Grid */
+        .project-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 30px; 
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+            border-color: #ddd;
+        }
+
+        .project-thumb {
+            width: 100%;
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+            background: #222;
+        }
+
+        .project-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+            opacity: 0.9;
+        }
+
+        .project-card:hover .project-thumb img { transform: scale(1.08); opacity: 1; }
+
+        .project-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #222;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 3px solid var(--primary-red);
+        }
+
+        .project-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-content h3 { font-size: 19px; margin-bottom: 12px; color: var(--dark-bg); font-weight: 700; }
+        .project-content p { color: #666; font-size: 14px; margin-bottom: 20px; line-height: 1.6; text-align: justify; }
+        
+        .project-meta {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-location { font-size: 13px; color: #777; font-weight: 500; }
+        .project-location i { color: var(--primary-red); margin-right: 6px; }
+
+        .btn-view {
+            color: var(--primary-red);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .btn-view:hover { gap: 8px; color: var(--bright-red); }
+
+        @media (max-width: 992px) {
+            .project-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .project-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1920');">
+            <div class="banner-content">
+                <h1>INDUSTRIAL STRUCTURES</h1>
+                <p>Modern Infrastructure Foundation - Driving Sustainable Economic Growth</p>
+            </div>
+        </section>
+
+        <section class="industrial-category-section">
+            <div class="container">
+                <div class="category-header">
+                    <h2>Key Infrastructure Portfolio</h2>
+                    <p>Hoang Cat Son Land is a pioneer in planning and developing breakthrough industrial cluster infrastructure while providing smart manufacturing facilities and energy solutions that comprehensively meet the stringent standards of international investors.</p>
+                </div>
+
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-status">Expansion Planning</span>
+                            <img src="https://images.unsplash.com/photo-1541913080-214465856311?q=80&w=800" alt="Dong Son Industrial Cluster">
+                        </div>
+                        <div class="project-content">
+                            <h3>Dong Son Industrial Cluster</h3>
+                            <p>A strategic hub for clean and high-tech industrial enterprises, featuring fully synchronized technical infrastructure and exceptional logistics connectivity.</p>
+                            <div class="project-meta">
+                                <span class="project-location"><i class="fas fa-map-marker-alt"></i> Tam Diep, Ninh Binh</span>
+                                <a href="dong-son-industrial-cluster-en.html" class="btn-view">View Details <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-status">Industry 4.0</span>
+                            <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=800" alt="Automobile Manufacturing Plant">
+                        </div>
+                        <div class="project-content">
+                            <h3>Automobile Manufacturing Plant</h3>
+                            <p>An intelligent facility complex utilizing high-level robotic automation, serving as a core catalyst to drive the supporting industry sector in Northern Vietnam.</p>
+                            <div class="project-meta">
+                                <span class="project-location"><i class="fas fa-map-marker-alt"></i> Industrial Zone, Ninh Binh</span>
+                                <a href="automobile-factory-en.html" class="btn-view">View Details <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-status">Completed</span>
+                            <img src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?q=80&w=800" alt="Substation & Power Grid System">
+                        </div>
+                        <div class="project-content">
+                            <h3>Power Grid & Substation System</h3>
+                            <p>International standard high-capacity power infrastructure, guaranteeing highly stable and secure 24/7 energy supply throughout the manufacturing zone.</p>
+                            <div class="project-meta">
+                                <span class="project-location"><i class="fas fa-bolt"></i> Entire Infrastructure Zone</span>
+                                <a href="power-grid-and-substation-system-en.html" class="btn-view">View Details <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

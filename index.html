@@ -3,7 +3,6 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ | Công ty Cổ phần Hoàng Cát Sơn</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -162,11 +161,10 @@
         .story-section {
             padding: 140px 0;
             position: relative;
-            /* Đưa ảnh toàn cảnh của bạn làm nền chính cho toàn khu vực */
             background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('nền.png');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Tạo hiệu ứng cuộn Parallax nhẹ sang trọng */
+            background-attachment: fixed;
         }
 
         .story-layout {
@@ -192,7 +190,6 @@
             top: 40px;
         }
 
-        /* Khối chứa ảnh nổi bên trái dưới chữ Chúng tôi là ai */
         .story-left-images {
             display: flex;
             flex-direction: column;
@@ -247,7 +244,6 @@
             margin-bottom: 50px;
         }
 
-        /* Grid chứa các hình ảnh nhỏ bao quanh khối văn bản bên phải */
         .story-inline-images {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -279,7 +275,6 @@
             transform: scale(1.05);
         }
 
-        /* Cố định góc trên bên phải của văn bản (Ảnh họp hành/đối tác) */
         .img-floating-top-right {
             float: right;
             width: 240px;
@@ -295,7 +290,7 @@
             display: block;
         }
 
-        /* 3. Lĩnh vực hoạt động dạng Dòng chảy (Interactive Accordion Rows) */
+        /* 3. Lĩnh vực hoạt động dạng Dòng chảy */
         .sectors-showcase {
             background-color: var(--dark-bg);
             color: #ffffff;
@@ -382,9 +377,9 @@
             transform: translateX(-10px);
         }
 
-        /* 4. Thành tựu - Số liệu tối giản dạng lớn */
+        /* 4. Thành tựu - Số liệu tối giản dạng lớn (ĐÃ ĐIỀU CHỈNH GỌN GÀNG) */
         .stats-editorial {
-            padding: 120px 0;
+            padding: 80px 0; /* Giảm bớt padding từ 120px xuống 80px trên Desktop giúp bố cục chặt chẽ */
             background-color: #fcfcfc;
             border-bottom: 1px solid #eeeeee;
         }
@@ -392,7 +387,7 @@
         .stats-grid-flex {
             display: flex;
             justify-content: space-between;
-            gap: 40px;
+            gap: 30px; /* Thu hẹp khoảng cách gap giữa các khối */
             flex-wrap: wrap;
         }
 
@@ -402,21 +397,22 @@
         }
 
         .stat-box-clean h4 {
-            font-size: 64px;
+            font-size: 46px; /* Hạ kích thước số trên màn hình lớn từ 64px xuống 46px */
             font-weight: 800;
             color: #000000;
-            margin: 0 0 15px 0;
+            margin: 0 0 10px 0;
             line-height: 1;
-            letter-spacing: -2px;
+            letter-spacing: -1px;
         }
 
         .stat-box-clean p {
-            font-size: 13px;
+            font-size: 12px; /* Giảm nhẹ từ 13px xuống 12px cho thanh lịch */
             font-weight: 600;
             color: #666666;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             margin: 0;
+            line-height: 1.4;
         }
 
         /* 5. Khối đối tác */
@@ -509,11 +505,30 @@
                 gap: 15px;
                 padding: 40px 20px;
             }
+            
+            /* TỐI ƯU TOÀN DIỆN PHẦN THÀNH TỰU TRÊN MOBILE ĐỂ KHÔNG BỊ DÀI ĐỦ TRONG 1 KHUNG NHÌN */
+            .stats-editorial {
+                padding: 35px 0; /* Ép nhỏ padding trên dưới để giảm tối đa chiều cao thừa */
+            }
             .stats-grid-flex {
                 display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 40px;
+                grid-template-columns: repeat(2, 1fr); /* Giữ dạng lưới 2 cột x 2 hàng xinh xắn */
+                gap: 20px 15px; /* Giảm gap giữa các ô số liệu */
+                text-align: center;
             }
+            .stat-box-clean {
+                min-width: unset; /* Xoá bỏ giới hạn độ rộng để tự động co giãn */
+            }
+            .stat-box-clean h4 {
+                font-size: 32px; /* Giảm mạnh cỡ số từ 64px xuống 32px giúp chữ số nhỏ, thanh thoát */
+                margin: 0 0 5px 0;
+            }
+            .stat-box-clean p {
+                font-size: 10px; /* Giảm kích thước chữ mô tả xuống 10px để vừa vặn, không bị lỗi xuống dòng bừa bãi */
+                letter-spacing: 1px;
+                line-height: 1.3;
+            }
+
             .story-inline-images {
                 grid-template-columns: 1fr;
             }
@@ -533,7 +548,7 @@
                         <h1>CÔNG TY CỔ PHẦN<br>HOÀNG CÁT SƠN</h1>
                         <p class="hero-desc">Hệ sinh thái đa ngành định hình tương lai, thiết lập các chuẩn mực mới vững chắc trong dòng chảy kinh tế và cấu trúc hạ tầng đô thị.</p>
                         <div class="hero-action-group">
-                            <a href="Cong-trinh-du-an-tieu-bieu.html" class="hero-btn-solid">Mở rộng lĩnh vực</a>
+                            <a href="Linh-vuc-hoat-dong.html" class="hero-btn-solid">Mở rộng lĩnh vực</a>
                             <a href="Gioi_thieu.html" class="hero-btn-link">Đọc câu chuyện của chúng tôi</a>
                         </div>
                     </div>
@@ -586,38 +601,38 @@
         <section class="sectors-showcase">
             <div class="container-custom">
                 
-                <a href="Khu-chung-cu-do-thi.html" class="sector-row">
-                    <div class="sector-num">01 / APARTMENT COMPLEX</div>
+                <a href="Bat-dong-san.html" class="sector-row">
+                    <div class="sector-num">01 / Real Estate</div>
                     <div class="sector-main-title">
-                        <h3>Khu Chung Cư Đô Thị</h3>
+                        <h3>Bất Động Sản</h3>
                         <p>Đầu tư, xây dựng và phát triển các khu đô thị văn minh, hạ tầng kỹ thuật hiện đại.</p>
                     </div>
                     <div class="sector-arrow"><i class="fas fa-arrow-right"></i></div>
                 </a>
 
-                <a href="Cong_nghiep.html" class="sector-row">
-                    <div class="sector-num">02 / INDUSTRY</div>
+                <a href="Ha-tang-cong-nghiep.html" class="sector-row">
+                    <div class="sector-num">02 / Industrial Infrastructure</div>
                     <div class="sector-main-title">
-                        <h3>Công Nghiệp</h3>
+                        <h3>Hạ tầng Công nghiệp</h3>
                         <p>Quy hoạch cụm công nghiệp xanh, phát triển kho bãi và giải pháp logistics thông minh.</p>
                     </div>
                     <div class="sector-arrow"><i class="fas fa-arrow-right"></i></div>
                 </a>
 
-                <a href="HTKT.html" class="sector-row">
-                    <div class="sector-num">03 / TECHNICAL INFRASTRUCTURE</div>
+                <a href="HTKY-GT.html" class="sector-row">
+                    <div class="sector-num">03 / Technical Infrastructure - Transportation</div>
                     <div class="sector-main-title">
-                        <h3>Hạ tầng Kỹ thuật</h3>
+                        <h3>Hạ tầng Kỹ thuật - Giao thông</h3>
                         <p>Thiết kế và thi công các dự án hạ tầng kỹ thuật hiện đại, đáp ứng nhu cầu phát triển bền vững.</p>
                     </div>
                     <div class="sector-arrow"><i class="fas fa-arrow-right"></i></div>
                 </a>
 
-                <a href="Du-an-dau-tu-xay-dung.html" class="sector-row">
-                    <div class="sector-num">04 / INVESTMENT & CONSTRUCTION</div>
+                <a href="Thuong-mai-XNK.html" class="sector-row">
+                    <div class="sector-num">04 / Trade - Import-Export</div>
                     <div class="sector-main-title">
-                        <h3>Dự Án Đầu Tư Xây Dựng</h3>
-                        <p>Thực hiện các dự án đầu tư xây dựng quy mô lớn, đóng góp vào sự phát triển hạ tầng của đất nước.</p>
+                        <h3>Thương Mại - Xuất Nhập Khẩu</h3>
+                        <p>Phát triển các hoạt động thương mại và xuất nhập khẩu với chiến lược toàn cầu.</p>
                     </div>
                     <div class="sector-arrow"><i class="fas fa-arrow-right"></i></div>
                 </a>

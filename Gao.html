@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gạo Thơm Chất Lượng Cao | Hoàng Cát Sơn Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* BỐ CỤC TRANG CHI TIẾT SẢN PHẨM GẠO */
+        .rice-detail-section {
+            padding: 60px 0 100px;
+            background-color: #fdfdfd;
+        }
+
+        .rice-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 50px;
+        }
+
+        /* 1. KHỐI HÌNH ẢNH & THÀNH PHẦN (BÊN TRÁI) */
+        .rice-media-block {
+            flex: 0 0 450px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .rice-main-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            object-fit: cover;
+            height: 320px;
+        }
+
+        /* Bảng thành phần dinh dưỡng */
+        .nutrition-box {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .nutrition-box h3 {
+            font-size: 18px;
+            color: var(--dark-bg);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary-red);
+            padding-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .nutrition-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .nutrition-table td {
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .nutrition-table td:last-child {
+            text-align: right;
+            font-weight: 600;
+            color: #111;
+        }
+
+        /* 2. KHỐI THUYẾT MINH NỘI DUNG (BÊN PHẢI) */
+        .rice-content-block {
+            flex: 1;
+        }
+
+        .rice-tag {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .rice-name {
+            font-size: 32px;
+            color: var(--primary-red);
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .rice-description-lead {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .essay-paragraph {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .essay-sub-title {
+            font-size: 18px;
+            color: var(--dark-bg);
+            font-weight: 700;
+            margin: 30px 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .essay-sub-title i {
+            color: var(--primary-red);
+            font-size: 16px;
+        }
+
+        /* ==========================================================================
+           BẢN FIX TỐI ƯU TRÊN ĐIỆN THOẠI (DƯỚI 768PX) - CHỐNG TRÀN VÀ CO GỌN CHỮ
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .rice-container { flex-direction: column; gap: 30px; }
+            .rice-media-block { flex: none; width: 100%; }
+        }
+
+        @media (max-width: 768px) {
+            .rice-detail-section {
+                padding: 30px 0 60px !important;
+            }
+
+            .rice-container {
+                padding: 0 15px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .rice-main-img {
+                height: 220px !important; /* Hạ độ cao ảnh vừa màn hình dọc */
+            }
+
+            .nutrition-box {
+                padding: 15px !important;
+            }
+
+            .nutrition-box h3 {
+                font-size: 16px !important;
+            }
+
+            .nutrition-table td {
+                font-size: 13px !important;
+                padding: 8px 0 !important;
+            }
+
+            .rice-name {
+                font-size: 22px !important; /* Hạ size tên sản phẩm không bị rớt dòng xấu */
+                margin-bottom: 12px !important;
+            }
+
+            .rice-description-lead {
+                font-size: 14px !important;
+                margin-bottom: 15px !important;
+            }
+
+            .essay-sub-title {
+                font-size: 15px !important;
+                margin: 20px 0 10px !important;
+            }
+
+            .essay-paragraph {
+                font-size: 13px !important; /* Thuyết minh chữ nhỏ tinh tế vừa mắt điện thoại */
+                line-height: 1.6 !important;
+                margin-bottom: 15px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1920');">
+            <div class="banner-content">
+                <h1>HƯƠNG VỊ PHÙ SA - KHÁT VỌNG VƯƠN XA</h1>
+                <p>Nguồn ngọc thực tinh túy từ những rẻo cao ruộng bậc thang Việt Nam</p>
+            </div>
+        </section>
+
+        <section class="rice-detail-section">
+            <div class="rice-container">
+                
+                <div class="rice-media-block">
+                    <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=800" alt="Gạo tám thơm chất lượng cao" class="rice-main-img">
+                    
+                    <div class="nutrition-box">
+                        <h3><i class="fas fa-flask"></i> THÀNH PHẦN DINH DƯỠNG (Trong 100g)</h3>
+                        <table class="nutrition-table">
+                            <tr>
+                                <td>Năng lượng (Energy)</td>
+                                <td>365 kcal</td>
+                            </tr>
+                            <tr>
+                                <td>Cacbohydrat (Carbohydrate)</td>
+                                <td>80.1 g</td>
+                            </tr>
+                            <tr>
+                                <td>Chất đạm (Protein)</td>
+                                <td>6.5 g</td>
+                            </tr>
+                            <tr>
+                                <td>Chất béo (Lipid)</td>
+                                <td>0.6 g</td>
+                            </tr>
+                            <tr>
+                                <td>Chất xơ (Fiber)</td>
+                                <td>0.4 g</td>
+                            </tr>
+                            <tr>
+                                <td>Vitamin B1 / B3</td>
+                                <td>0.12 mg</td>
+                            </tr>
+                            <tr>
+                                <td>Độ ẩm (Moisture)</td>
+                                <td>&le; 14.0 %</td>
+                            </tr>
+                            <tr>
+                                <td>Tỷ lệ hạt nguyên (Head rice)</td>
+                                <td>&ge; 95 %</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="rice-content-block">
+                    <span class="rice-tag">Thương hiệu quốc gia</span>
+                    <h2 class="rice-name">GẠO THƠM THƯỢNG HẠNG (HOANG CAT SƠN JSC)</h2>
+                    
+                    <p class="rice-description-lead">
+                        Sản phẩm là kết tinh hoàn hảo giữa tinh hoa thổ nhưỡng vùng rẻo cao trù phú và quy trình chế biến khép kín công nghệ cao, tự hào đáp ứng trọn vẹn những tiêu chuẩn xuất khẩu khắt khe nhất tại các thị trường Malaysia, Philippines và Indonesia.
+                    </p>
+
+                    <h3 class="essay-sub-title"><i class="fas fa-mountain"></i> Tinh túy từ non ngàn ruộng bậc thang</h3>
+                    <p class="essay-paragraph">
+                        Không giống như những cánh đồng thẳng cánh cò bay nơi đồng bằng phù sa, hạt gạo thượng hạng của chúng tôi sinh trưởng trên những nấc thang vàng óng ả ôm trọn các sườn núi. Nơi đây, cây lúa được nuôi dưỡng bằng nguồn nước mạch ngầm tự nhiên trong vắt của núi rừng, hấp thụ trọn vẹn ánh nắng trong lành của bình minh và sự chênh lệch nhiệt độ ngày đêm lý tưởng của vùng cao, khiến chu kỳ tích lũy tinh bột diễn ra chậm hơn nhưng giữ được độ đậm đà đặc trưng mà không loại gạo nào có được.
+                    </p>
+
+                    <h3 class="essay-sub-title"><i class="fas fa-seedling"></i> Đặc trưng phẩm chất hảo hạng</h3>
+                    <p class="essay-paragraph">
+                        Hạt gạo thành phẩm mang sắc trắng trong đều đặn, thon dài và phảng phất hương thơm tự nhiên nhẹ nhàng như hoa cỏ ban mai. Khi nấu chín, cơm cho độ dẻo mềm nguyên bản tuyệt vời, các hạt cơm kết dính nhẹ nhưng không nát, vị ngọt hậu sâu lắng đọng lại nơi đầu lưỡi ngay cả khi cơm đã nguội, mang lại bữa cơm trọn vẹn dưỡng chất cho mọi gia đình.
+                    </p>
+
+                    <h3 class="essay-sub-title"><i class="fas fa-ship"></i> Khát vọng vươn tầm thế giới</h3>
+                    <p class="essay-paragraph">
+                        Đứng sau mỗi bao hạt ngọc thực xuất khẩu là sự đầu tư bài bản và kiểm soát nghiêm ngặt từ khâu lựa chọn giống thuần chủng, giám sát canh tác hữu cơ đến công nghệ xay xát ly tâm hiện đại của Hoang Cat Son JSC. Chúng tôi không chỉ xuất khẩu một mặt hàng thương mại, mà đang mang câu chuyện văn hóa canh tác lúa nước ngàn năm độc đáo và niềm tự hào nông sản Việt Bản sắc - Chất lượng - Bền vững vươn tầm ra thị trường quốc tế.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

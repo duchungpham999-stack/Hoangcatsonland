@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Featured Projects | Hoa Lu Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="linh-vuc-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .project-category-section { padding: 60px 0; }
+        .category-group { margin-bottom: 80px; }
+        
+        .category-header { 
+            border-left: 5px solid var(--primary-red); 
+            padding-left: 20px; 
+            margin-bottom: 40px; 
+        }
+        .category-header h2 { 
+            font-size: 32px; 
+            text-transform: uppercase; 
+            color: var(--dark-bg);
+            margin: 0;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .project-item-card {
+            background: #fff;
+            border: 1px solid #eee;
+            transition: var(--transition-smooth);
+            overflow: hidden;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-item-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .project-thumb {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .project-content { padding: 25px; }
+        .project-content h3 { 
+            font-size: 20px; 
+            margin-bottom: 15px; 
+            color: var(--primary-red);
+            text-align: left;
+        }
+        
+        .project-content p { 
+            font-size: 15px; 
+            color: #555; 
+            text-align: justify; /* Justify alignment */
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        .category-intro-text {
+            font-size: 17px;
+            color: #666;
+            margin-bottom: 30px;
+            text-align: justify;
+            max-width: 1000px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="category-banner" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920');">
+            <div class="banner-content">
+                <h1>FEATURED PROJECTS</h1>
+                <p>Creating sustainable living values through key developments</p>
+            </div>
+        </section>
+
+        <section class="project-category-section">
+            <div class="container">
+                
+                <div class="category-group">
+                    <div class="category-header">
+                        <h2>1. Real Estate</h2>
+                    </div>
+                    <p class="category-intro-text">Developing modern residential developments integrated with smart amenities and sustainable green landscapes for the community.</p>
+                    <div class="project-grid">
+                        <a href="apartment-35-phan-ke-binh-en.html" class="project-item-card">
+                            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800" class="project-thumb">
+                            <div class="project-content">
+                                <h3>35 Phan Ke Binh Apartment</h3>
+                                <p>A premium residential complex situated in a prime location, offering luxurious living spaces fully equipped with international standard amenities and services.</p>
+                            </div>
+                        </a>
+                        <a href="quang-bi-urban-area-en.html" class="project-item-card">
+                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800" class="project-thumb">
+                            <div class="project-content">
+                                <h3>Quang Bi Urban Area</h3>
+                                <p>An eco-friendly urban project focused on the balance between modern architecture and nature, cultivating a pristine and fresh living environment.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="category-group">
+                    <div class="category-header">
+                        <h2>2. Industrial Infrastructure</h2>
+                    </div>
+                    <p class="category-intro-text">Providing standard technical infrastructure, manufacturing plants, and logistics centers to maximize operational and production efficiency for enterprises.</p>
+                    <div class="project-grid">
+                        <a href="dong-son-industrial-cluster-en.html" class="project-item-card">
+                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800" class="project-thumb">
+                            <div class="project-content">
+                                <h3>Dong Son Industrial Cluster</h3>
+                                <p>Featuring synchronized technical infrastructure and advanced waste treatment systems, effectively attracting domestic and foreign investors.</p>
+                            </div>
+                        </a>
+                        <a href="automobile-factory-en.html" class="project-item-card">
+                            <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=800" class="project-thumb">
+                            <div class="project-content">
+                                <h3>Automobile Manufacturing & Assembly Plant</h3>
+                                <p>Invested with modern state-of-the-art technology, meeting strict international quality standards in automotive production and assembly.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="category-group">
+                    <div class="category-header">
+                        <h2>3. Technical & Transport Infrastructure</h2>
+                    </div>
+                    <p class="category-intro-text">Constructing core transportation networks and key engineering systems, driving regional trade and economic development.</p>
+                    <div class="project-grid">
+                        <a href="arterial-road-ring-road-3-5-en.html" class="project-item-card">
+                            <img src="https://images.unsplash.com/photo-1590487988256-9ed24133863e?q=80&w=800" class="project-thumb">
+                            <div class="project-content">
+                                <h3>Ring Road 3.5 Arterial Route (Xuan Mai Section)</h3>
+                                <p>Planning and constructing high-quality transit systems, effectively connecting vital regional functional zones.</p>
+                            </div>
+                        </a>
+                        <a href="power-grid-and-substation-system-en.html" class="project-item-card">
+                            <img src="https://images.unsplash.com/photo-1545143333-11bbbc200385?q=80&w=800" class="project-thumb">
+                            <div class="project-content">
+                                <h3>Substation & Power Grid System</h3>
+                                <p>Ensuring a stable and highly reliable energy supply for the entire project area using the most advanced technical equipment.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="category-group">
+                    <div class="category-header">
+                        <h2>4. Commercial - Import-Export</h2>
+                    </div>
+                    <p class="category-intro-text">Executing major key projects under rigorous management processes, ensuring outstanding construction progress and premium quality.</p>
+                    <div class="project-grid">
+                        <a href="lien-mac-social-housing-en.html" class="project-item-card">
+                            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800" class="project-thumb">
+                            <div class="project-content">
+                                <h3>Lien Mac Social Housing</h3>
+                                <p>An iconic development featuring unique architectural design, optimizing functional spaces and operational efficiency.</p>
+                            </div>
+                        </a>
+                        <a href="office-complex-for-lease-en.html" class="project-item-card">
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800" class="project-thumb">
+                            <div class="project-content">
+                                <h3>Office Complex for Lease</h3>
+                                <p>Architecting a professional and modern working environment to meet the diverse needs of enterprises in the new global era.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

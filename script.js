@@ -221,23 +221,59 @@ function initEmailFormLogic() {
 
 
 /**
- * 6. LOGIC CHUYỂN NGÔN NGỮ
+ * 6. LOGIC CHUYỂN NGÔN NGỮ (ĐÃ SỬA LỖI ĐỊNH TUYẾN)
  */
 function changeLang(lang) {
+    // Lấy tên file hiện tại (ví dụ: Gioi-thieu.html hoặc about-en.html)
     const currentPage = window.location.pathname.split("/").pop() || "index.html";
+    
+    // Bản đồ mapping giữa trang tiếng Việt và tiếng Anh
+    const pageMap = {
+        // "Trang_Tiếng_Việt.html": "Trang_Tiếng_Anh.html"
+        "index.html": "index-en.html",
+        "Gioi_thieu.html": "about-en.html",
+        "Linh-vuc-hoat-dong.html": "field-of-activities-en.html",
+        "Bat-dong-san.html": "real-estate.html",
+        "Ha-tang-cong-nghiep.html": "Industrial-structures.html",
+        "HTKY-GT.html": "Technical-Structures-Transportation.html",
+        "Thuong-mai-XNK.html": "Trade-Imports-Exports.html",
+        "Tin_tuc.html": "News.html",
+        "Lien_he.html": "Contacts.html",
+        "Header.html": "Header-en.html",
+    };
+
     let targetPage = "";
 
     if (lang === 'en') {
-        targetPage = currentPage.includes('-en.html') ? currentPage : currentPage.replace('.html', '-en.html');
-        if (currentPage === "index.html") targetPage = "index-en.html";
+        // Nếu đã ở trang tiếng Anh rồi thì giữ nguyên
+        if (currentPage.includes('-en.html') || Object.values(pageMap).includes(currentPage)) {
+            targetPage = currentPage;
+        } else {
+            // Tìm trong map, nếu có thì đi theo map, không có thì tự động replace đuôi mặc định
+            targetPage = pageMap[currentPage] || currentPage.replace('.html', '-en.html');
+        }
     } else {
-        targetPage = currentPage.replace('-en.html', '.html');
+        // Khôi phục về tiếng Việt: Tìm xem file hiện tại là giá trị tiếng Anh nào trong map
+        const viPage = Object.keys(pageMap).find(key => pageMap[key] === currentPage);
+        
+        if (viPage) {
+            targetPage = viPage;
+        } else {
+            // Nếu không nằm trong map thì tự động xóa đuôi '-en.html' đi
+            targetPage = currentPage.replace('-en.html', '.html');
+        }
     }
+
     window.location.href = targetPage;
 }
 
 function initLangLogic() {
-    const isEn = window.location.pathname.includes('-en.html');
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+    
+    // Kiểm tra xem trang hiện tại có phải là trang tiếng Anh không
+    // (Bao gồm đuôi -en.html HOẶC chính là file about-en.html)
+    const isEn = currentPage.includes('-en.html') || currentPage === 'about-en.html';
+    
     const viBtn = document.getElementById('lang-vi');
     const enBtn = document.getElementById('lang-en');
 

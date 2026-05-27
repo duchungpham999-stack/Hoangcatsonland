@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vật liệu xây dựng & Thiết bị | Hoàng Cát Sơn Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* BỐ CỤC TRANG CHI TIẾT VẬT LIỆU XÂY DỰNG */
+        .materials-detail-section {
+            padding: 60px 0 100px;
+            background-color: #fdfdfd;
+        }
+
+        .materials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 50px;
+        }
+
+        /* 1. KHỐI HÌNH ẢNH & THÔNG SỐ (BÊN TRÁI) */
+        .materials-media-block {
+            flex: 0 0 450px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .materials-main-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            object-fit: cover;
+            height: 320px;
+        }
+
+        /* Bảng thông số kỹ thuật sản phẩm cung ứng */
+        .specs-box {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .specs-box h3 {
+            font-size: 18px;
+            color: var(--dark-bg);
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e65100; /* Màu cam đại diện cho công nghiệp xây dựng */
+            padding-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .specs-table td {
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .specs-table td:last-child {
+            text-align: right;
+            font-weight: 600;
+            color: #111;
+        }
+
+        /* 2. KHỐI THUYẾT MINH NỘI DUNG (BÊN PHẢI) */
+        .materials-content-block {
+            flex: 1;
+        }
+
+        .materials-tag {
+            background: #fff3e0;
+            color: #e65100;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .materials-name {
+            font-size: 32px;
+            color: var(--primary-red);
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .materials-description-lead {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .essay-paragraph {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .essay-sub-title {
+            font-size: 18px;
+            color: var(--dark-bg);
+            font-weight: 700;
+            margin: 30px 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .essay-sub-title i {
+            color: #e65100;
+            font-size: 16px;
+        }
+
+        /* ==========================================================================
+           BẢN FIX TỐI ƯU TRÊN ĐIỆN THOẠI (DƯỚI 768PX) - CHỐNG TRÀN VÀ CO GỌN CHỮ
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .materials-container { flex-direction: column; gap: 30px; }
+            .materials-media-block { flex: none; width: 100%; }
+        }
+
+        @media (max-width: 768px) {
+            .materials-detail-section {
+                padding: 30px 0 60px !important;
+            }
+
+            .materials-container {
+                padding: 0 15px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .materials-main-img {
+                height: 220px !important; /* Thu gọn chiều cao ảnh trên màn hình di động */
+            }
+
+            .specs-box {
+                padding: 15px !important;
+            }
+
+            .specs-box h3 {
+                font-size: 16px !important;
+            }
+
+            .specs-table td {
+                font-size: 13px !important;
+                padding: 8px 0 !important;
+            }
+
+            .materials-name {
+                font-size: 22px !important; /* Hạ nhỏ tiêu đề tránh tràn viền gãy chữ */
+                margin-bottom: 12px !important;
+            }
+
+            .materials-description-lead {
+                font-size: 14px !important;
+                margin-bottom: 15px !important;
+            }
+
+            .essay-sub-title {
+                font-size: 15px !important;
+                margin: 20px 0 10px !important;
+            }
+
+            .essay-paragraph {
+                font-size: 13px !important; /* Thuyết minh chữ nhỏ gọn tinh tế vừa khít màn hình đứng */
+                line-height: 1.6 !important;
+                margin-bottom: 15px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="service-banner" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=1920');">
+            <div class="banner-content">
+                <h1>VẬT LIỆU BỀN VỮNG - KIẾN TẠO TƯƠNG LAI</h1>
+                <p>Nguồn cung ứng vật tư chiến lược, đạt chuẩn kiểm định kỹ thuật cao cấp</p>
+            </div>
+        </section>
+
+        <section class="materials-detail-section">
+            <div class="materials-container">
+                
+                <div class="materials-media-block">
+                    <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=800" alt="Vật liệu xây dựng Hoàng Cát Sơn" class="materials-main-img">
+                    
+                    <div class="specs-box">
+                        <h3><i class="fas fa-cubes"></i> DANH MỤC CUNG ỨNG CHỦ LỰC</h3>
+                        <table class="specs-table">
+                            <tr>
+                                <td>Clinker / Xi măng</td>
+                                <td>CPC50 / PCB40 Pooclăng</td>
+                            </tr>
+                            <tr>
+                                <td>Đá xây dựng / Cốt liệu</td>
+                                <td>Đá 1x2, Khối base, Đá hộc</td>
+                            </tr>
+                            <tr>
+                                <td>Thép kết cấu</td>
+                                <td>Thép thanh, Thép cuộn tiêu chuẩn</td>
+                            </tr>
+                            <tr>
+                                <td>Đá ốp lát cao cấp</td>
+                                <td>Granite & Marble tự nhiên</td>
+                            </tr>
+                            <tr>
+                                <td>Vật liệu hạ tầng kỹ thuật</td>
+                                <td>Ống cống, cấu kiện đúc sẵn</td>
+                            </tr>
+                            <tr>
+                                <td>Tiêu chuẩn kiểm định</td>
+                                <td>TCVN / ASTM (Hoa Kỳ)</td>
+                            </tr>
+                            <tr>
+                                <td>Năng lực cung ứng</td>
+                                <td>&gt; 500.000 tấn / năm</td>
+                            </tr>
+                            <tr>
+                                <td>Khu vực điều phối</td>
+                                <td>Toàn quốc / Xuất khẩu</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="materials-content-block">
+                    <span class="materials-tag">Hạ tầng & Vật tư</span>
+                    <h2 class="materials-name">VẬT LIỆU XÂY DỰNG & CẤU KIỆN HẠ TẦNG KỸ THUẬT</h2>
+                    
+                    <p class="materials-description-lead">
+                        Hoàng Cát Sơn Land khẳng định vai trò là nhà cung ứng vật tư chiến lược tin cậy, trực tiếp kết nối chuỗi phân phối hệ thống vật liệu cốt lõi chất lượng cao phục vụ các công trình dân dụng, tổ hợp văn phòng thương mại và hạ tầng các cụm công nghiệp trọng điểm.
+                    </p>
+
+                    <h3 class="essay-sub-title"><i class="fas fa-hammer"></i> Nền tảng vững chắc cho mọi công trình</h3>
+                    <p class="essay-paragraph">
+                        Trong bối cảnh ngành xây dựng đòi hỏi sự khắt khe ngày càng cao về tính an toàn và tuổi thọ công trình, chúng tôi tập trung lựa chọn phân phối những dòng sản phẩm xi măng, clinker và thép kết cấu có chứng nhận kiểm định chất lượng nghiêm ngặt nhất. Mỗi lô vật tư được đưa tới công trường đều phải trải qua quá trình thí nghiệm cơ lý, đảm bảo khả năng chịu lực, độ bền nén và tính thích ứng cao với điều kiện khí hậu nhiệt đới đặc thù tại Việt Nam, mang lại sự an tâm tuyệt đối cho các nhà thầu và đơn vị chủ đầu tư.
+                    </p>
+
+                    <h3 class="essay-sub-title"><i class="fas fa-industry"></i> Khai thác đá ốp lát và cốt liệu quy chuẩn</h3>
+                    <p class="essay-paragraph">
+                        Tận dụng lợi thế liên kết chiều sâu với các vùng nguyên liệu khoáng sản và đá tự nhiên trù phú tại Ninh Bình, Hoàng Cát Sơn Land chủ động cung cấp nguồn đá cốt liệu bê tông, đá base cấp phối và đặc biệt là các dòng đá Granite, Marble ốp lát thẩm mỹ cao cấp. Nhờ dây chuyền khai thác, cắt xẻ bằng công nghệ kim cương hiện đại, các sản phẩm đá tự nhiên luôn đạt độ chính xác tối đa về kích thước hình học, bề mặt bóng mượt hoàn hảo, vân đá sang trọng, phục vụ đắc lực cho phân khúc trang trí nội ngoại thất hạng sang của các tòa nhà văn phòng hiện đại.
+                    </p>
+
+                    <h3 class="essay-sub-title"><i class="fas fa-truck-loading"></i> Giải pháp cung ứng tối ưu, trọn gói</h3>
+                    <p class="essay-paragraph">
+                        Thấu hiểu rằng tiến độ vật tư là mạch máu của dự án, chúng tôi đã xây dựng giải pháp logistics khép kín toàn diện. Tận dụng mạng lưới bến bãi, hệ thống đối tác kho vận Logistics và trung tâm tập kết xe cơ giới tải trọng lớn, chúng tôi cam kết khả năng điều phối liên tục, cung ứng sản lượng lớn vật tư kỹ thuật và cấu kiện đúc sẵn đúng hẹn, đáp ứng hoàn hảo guồng quay thi công khẩn trương của các dự án mở rộng hạ tầng khu công nghiệp, đô thị phức hợp trên toàn quốc.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

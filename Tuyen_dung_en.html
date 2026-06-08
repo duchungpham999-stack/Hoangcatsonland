@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Careers | Hoang Cat Son Land</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="recruitment-hero">
+            <div class="hero-overlay">
+                <h1>CAREER OPPORTUNITIES</h1>
+                <div class="filter-container">
+                    <div class="filter-item">
+                        <span class="label">Position</span>
+                        <select id="position-filter">
+                            <option value="">Select a position</option>
+                            <option value="kinh-doanh">Investment Planning Specialist</option>
+                            <option value="XNK">Import-Export Specialist</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <span class="label">Location</span>
+                        <select id="location-filter">
+                            <option value="">Select work location</option>
+                            <option value="ha-noi">Hanoi</option>
+                            <option value="hcm">Ho Chi Minh City</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="job-opportunity">
+            <h2 class="section-title">CAREERS AT HOANG CAT SON JSC</h2>
+            <section class="job-list-section">
+                <table class="recruitment-table">
+                    <thead>
+                        <tr>
+                            <th>Position</th>
+                            <th>Salary</th>
+                            <th>Quantity</th>
+                            <th>Location</th>
+                            <th>Deadline</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-position="kinh-doanh" data-location="ha-noi">
+                            <td class="job-title">
+                                <a href="KHDT.html" class="job-link">Investment Planning Specialist - Real Estate Division</a>
+                            </td>
+                            <td>Negotiable</td>
+                            <td>02</td>
+                            <td>Hanoi</td>
+                            <td>--/--</td>
+                        </tr>
+                        <tr data-position="XNK" data-location="hcm">
+                            <td class="job-title">Import-Export Specialist</td>
+                            <td>Negotiable</td>
+                            <td>01</td>
+                            <td>Ho Chi Minh City</td>
+                            <td>--/--</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -91,6 +91,14 @@ body {
     height: 100%;
 }
 
+.menu .dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    list-style: none;
+}
+
 /* KHU VỰC BÊN PHẢI (Ngôn ngữ & Search) */
 .header-right {
     display: flex;

@@ -1,17 +1,42 @@
 /**
  * 1. HÀM NẠP LAYOUT DÙNG CHUNG (HEADER/FOOTER)
  */
+const pageLanguageMap = {
+    "index.html": "index-en.html",
+    "Gioi_thieu.html": "about-en.html",
+    "Linh-vuc-hoat-dong.html": "field-of-activities-en.html",
+    "Bat-dong-san.html": "real-estate.html",
+    "Ha-tang-cong-nghiep.html": "Industrial-structures.html",
+    "HTKY-GT.html": "Technical-Structures-Transportation.html",
+    "Thuong-mai-XNK.html": "Trade-Imports-Exports.html",
+    "Tuyen_dung.html": "Tuyen_dung_en.html",
+    "Tin_tuc.html": "News.html",
+    "Lien_he.html": "Contacts.html"
+};
+
+function getCurrentPageName() {
+    return window.location.pathname.split("/").pop() || "index.html";
+}
+
+function isEnglishPage(pageName = getCurrentPageName()) {
+    return pageName.includes("-en.html") || Object.values(pageLanguageMap).includes(pageName);
+}
+
 async function loadLayout() {
     try {
+        const isEn = isEnglishPage();
+        const headerFile = isEn ? 'Header-en.html' : 'Header.html';
+        const footerFile = isEn ? 'Footer-en.html' : 'Footer.html';
+
         // Nạp Header
-        const headerRes = await fetch('Header.html');
+        const headerRes = await fetch(headerFile);
         if (headerRes.ok) {
             const headerData = await headerRes.text();
             document.getElementById('header-placeholder').innerHTML = headerData;
         }
 
         // Nạp Footer
-        const footerRes = await fetch('Footer.html');
+        const footerRes = await fetch(footerFile);
         if (footerRes.ok) {
             const footerData = await footerRes.text();
             document.getElementById('footer-placeholder').innerHTML = footerData;
@@ -225,36 +250,21 @@ function initEmailFormLogic() {
  */
 function changeLang(lang) {
     // Lấy tên file hiện tại (ví dụ: Gioi-thieu.html hoặc about-en.html)
-    const currentPage = window.location.pathname.split("/").pop() || "index.html";
-    
-    // Bản đồ mapping giữa trang tiếng Việt và tiếng Anh
-    const pageMap = {
-        // "Trang_Tiếng_Việt.html": "Trang_Tiếng_Anh.html"
-        "index.html": "index-en.html",
-        "Gioi_thieu.html": "about-en.html",
-        "Linh-vuc-hoat-dong.html": "field-of-activities-en.html",
-        "Bat-dong-san.html": "real-estate.html",
-        "Ha-tang-cong-nghiep.html": "Industrial-structures.html",
-        "HTKY-GT.html": "Technical-Structures-Transportation.html",
-        "Thuong-mai-XNK.html": "Trade-Imports-Exports.html",
-        "Tin_tuc.html": "News.html",
-        "Lien_he.html": "Contacts.html",
-        "Header.html": "Header-en.html",
-    };
+    const currentPage = getCurrentPageName();
 
     let targetPage = "";
 
     if (lang === 'en') {
         // Nếu đã ở trang tiếng Anh rồi thì giữ nguyên
-        if (currentPage.includes('-en.html') || Object.values(pageMap).includes(currentPage)) {
+        if (isEnglishPage(currentPage)) {
             targetPage = currentPage;
         } else {
             // Tìm trong map, nếu có thì đi theo map, không có thì tự động replace đuôi mặc định
-            targetPage = pageMap[currentPage] || currentPage.replace('.html', '-en.html');
+            targetPage = pageLanguageMap[currentPage] || currentPage.replace('.html', '-en.html');
         }
     } else {
         // Khôi phục về tiếng Việt: Tìm xem file hiện tại là giá trị tiếng Anh nào trong map
-        const viPage = Object.keys(pageMap).find(key => pageMap[key] === currentPage);
+        const viPage = Object.keys(pageLanguageMap).find(key => pageLanguageMap[key] === currentPage);
         
         if (viPage) {
             targetPage = viPage;
@@ -268,11 +278,8 @@ function changeLang(lang) {
 }
 
 function initLangLogic() {
-    const currentPage = window.location.pathname.split("/").pop() || "index.html";
-    
-    // Kiểm tra xem trang hiện tại có phải là trang tiếng Anh không
-    // (Bao gồm đuôi -en.html HOẶC chính là file about-en.html)
-    const isEn = currentPage.includes('-en.html') || currentPage === 'about-en.html';
+    const currentPage = getCurrentPageName();
+    const isEn = isEnglishPage(currentPage);
     
     const viBtn = document.getElementById('lang-vi');
     const enBtn = document.getElementById('lang-en');

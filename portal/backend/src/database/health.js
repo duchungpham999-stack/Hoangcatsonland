@@ -1,5 +1,6 @@
 import { loadEnv } from '../config/env.js';
 import { closeDatabasePool, getDatabasePool } from './connection.js';
+import { fileURLToPath } from 'node:url';
 
 export async function checkDatabase(databaseConfig, dependencies = {}) {
   if (!databaseConfig?.enabled) {
@@ -14,7 +15,7 @@ export async function checkDatabase(databaseConfig, dependencies = {}) {
   return result?.rows?.[0]?.ready === 1 ? { status: 'ok' } : { status: 'failed' };
 }
 
-if (import.meta.url === `file://${process.argv[1]?.replace(/\\/g, '/')}`) {
+if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   try {
     const env = loadEnv();
     const result = await checkDatabase(env.database);

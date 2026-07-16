@@ -1,4 +1,4 @@
 export const loginSchema = {
-  username: { required: true },
+  email: { required: true },
   password: { required: true }
 };

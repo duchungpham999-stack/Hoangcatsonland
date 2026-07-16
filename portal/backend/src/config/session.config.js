@@ -1,7 +1,8 @@
 import { isStrongSecret } from './security.config.js';
 
 export function createSessionConfig(rawEnv, appConfig) {
-  const sessionCookieName = rawEnv.SESSION_COOKIE_NAME || '__Host-ids_session';
+  const defaultCookieName = appConfig.nodeEnv === 'production' ? '__Host-ids_session' : 'ids_session_dev';
+  const sessionCookieName = rawEnv.SESSION_COOKIE_NAME || defaultCookieName;
   const sessionSecret = rawEnv.SESSION_SECRET || '';
 
   if (appConfig.nodeEnv === 'production' && !isStrongSecret(sessionSecret)) {

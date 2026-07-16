@@ -17,6 +17,7 @@ export function createApp(env, dependencies = {}) {
   registerModuleRoutes(router);
 
   return createServer(exceptionHandler(async (req, res) => {
+    req.app = { env, dependencies };
     await requestAuditLogger(req);
     await rateLimit(req, env);
     await devicePolicy(req, env);

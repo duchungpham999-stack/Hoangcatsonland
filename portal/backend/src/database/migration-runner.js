@@ -75,7 +75,7 @@ async function sha256(value) {
   return Array.from(new Uint8Array(digest)).map(byte => byte.toString(16).padStart(2, '0')).join('');
 }
 
-if (import.meta.url === `file://${process.argv[1]?.replace(/\\/g, '/')}`) {
+if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const command = process.argv[2] || 'status';
 
   try {

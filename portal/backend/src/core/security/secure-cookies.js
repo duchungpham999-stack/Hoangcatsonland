@@ -11,3 +11,16 @@ export function serializeSecureCookie(name, value, options = {}) {
 
   return parts.join('; ');
 }
+
+export function serializeExpiredCookie(name, options = {}) {
+  const parts = [
+    `${name}=`,
+    'Path=/',
+    'HttpOnly',
+    'SameSite=Strict',
+    'Max-Age=0'
+  ];
+
+  if (options.secure !== false) parts.push('Secure');
+  return parts.join('; ');
+}

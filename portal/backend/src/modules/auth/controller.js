@@ -1,9 +1,8 @@
 import { json } from '../../core/http/response.js';
 import { readJson } from '../../core/http/request.js';
-import { authenticateUser } from './service.js';
+import { authenticateUser, getAuthenticatedUser, logoutUser } from './service.js';
 import { loginSchema } from './schema.js';
 import { validate } from '../../core/validation/validate.js';
-import { requireAuthentication } from '../../core/security/authentication-middleware.js';
 
 export async function login(req) {
   const body = validate(loginSchema, await readJson(req));
@@ -11,8 +10,12 @@ export async function login(req) {
   return json(200, result.payload, result.headers);
 }
 
-export async function profile(req) {
-  const denied = await requireAuthentication(req);
-  if (denied) return denied;
-  return json(200, { user: req.user });
+export async function logout(req) {
+  const result = await logoutUser(req);
+  return json(200, result.payload, result.headers);
+}
+
+export async function me(req) {
+  const user = await getAuthenticatedUser(req);
+  return json(200, { user });
 }

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createApp } from '../src/app.js';
@@ -33,6 +33,33 @@ test('migration registry table is created', async () => {
   await ensureMigrationRegistry(pool);
 
   assert.equal(queries.some(sql => sql.includes('create table if not exists schema_migrations')), true);
+});
+
+test('real migration registry includes authentication foundation migration', async () => {
+  const files = await listMigrationFiles();
+
+  assert.equal(files.includes('004_authentication-foundation.sql'), true);
+  assert.deepEqual(files, [...files].sort((first, second) => first.localeCompare(second)));
+});
+
+test('authentication foundation migration safely backfills username', async () => {
+  const migration = await readFile(
+    new URL('../src/database/migrations/004_authentication-foundation.sql', import.meta.url),
+    'utf8'
+  );
+
+  const addColumn = migration.indexOf('alter table users add column if not exists username text');
+  const backfill = migration.indexOf('for user_record in');
+  const setNotNull = migration.indexOf('alter table users alter column username set not null');
+  const uniqueIndex = migration.indexOf('create unique index if not exists users_username_lower_unique');
+
+  assert.ok(addColumn >= 0);
+  assert.ok(backfill > addColumn);
+  assert.ok(setNotNull > backfill);
+  assert.ok(uniqueIndex > setNotNull);
+  assert.match(migration, /split_part\(user_record\.normalized_email, '@', 1\)/);
+  assert.match(migration, /candidate_username := base_username \|\| '-' \|\| suffix::text/);
+  assert.match(migration, /lower\(username\)/);
 });
 
 test('database url redaction hides credentials', () => {

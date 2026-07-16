@@ -14,6 +14,11 @@ export function loadEnv(rawEnv = process.env) {
     database,
     security,
     session,
+    adminBootstrap: {
+      email: rawEnv.ADMIN_EMAIL || '',
+      username: rawEnv.ADMIN_USERNAME || '',
+      password: rawEnv.ADMIN_PASSWORD || ''
+    },
     configurationValid: true
   };
 }

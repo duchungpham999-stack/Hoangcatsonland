@@ -30,6 +30,7 @@ portal/
           login-attempts/
           device-access/
           account-recovery/
+          admin-create-cli.js
         users/
         roles/
         permissions/
@@ -72,6 +73,9 @@ portal/
 - `backend/src/modules/*/repository.js`: persistence boundary owned by the module.
 - `backend/src/modules/*/schema.js`: input contract for the module.
 - `backend/src/modules/*/types.js`: public type vocabulary for the module.
+- `backend/src/modules/auth/password`: password hashing and verification; never stores plaintext passwords.
+- `backend/src/modules/auth/session`: session token generation, token hashing, cookie handling, and session revocation.
+- `backend/src/modules/auth/admin-create-cli.js`: local operational CLI for creating the first admin without hard-coded credentials.
 - `frontend/src/features/*`: page or feature UI owned by one portal feature.
 - `frontend/src/shared`: frontend utilities that are not business-specific.
 

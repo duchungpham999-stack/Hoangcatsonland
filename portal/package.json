@@ -1,0 +1,12 @@
+{
+  "name": "ids-hrm-gis-portal",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node backend/src/server.js",
+    "test": "node --test backend/tests/app.test.js backend/src/modules/auth/tests/auth.test.js frontend/tests/structure.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

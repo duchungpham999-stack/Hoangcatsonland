@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Liên hệ | Hoa Lư Land</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        /* ==========================================================================
+           BẢN FIX: CỐ ĐỊNH TRANG LIÊN HỆ GỌN GÀNG TRÊN ĐIỆN THOẠI (DƯỚI 768PX)
+           ========================================================================== */
+        @media (max-width: 768px) {
+            /* Giảm bớt khoảng đệm padding của toàn bộ vùng liên hệ */
+            .contact-section {
+                padding: 15px 10px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            /* Chuyển lưới từ hàng ngang (máy tính) thành hàng dọc (điện thoại) */
+            .contact-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 20px !important;
+                width: 100% !important;
+            }
+
+            /* 1. KHỐI THÔNG TIN BÊN TRÁI */
+            .contact-info {
+                width: 100% !important;
+                box-sizing: border-box !important;
+                padding: 0 5px !important;
+            }
+
+            /* Thu nhỏ tiêu đề công nghiệp để không gãy chữ */
+            .contact-info .section-title {
+                font-size: 16px !important;
+                line-height: 1.4 !important;
+                margin-bottom: 15px !important;
+                color: #d32f2f;
+                font-weight: 700;
+            }
+
+            /* Thu nhỏ các icon và chữ địa chỉ, hotline, email */
+            .info-content {
+                gap: 10px !important;
+            }
+
+            .info-item {
+                gap: 10px !important;
+                align-items: flex-start !important;
+            }
+
+            .info-item i {
+                font-size: 14px !important; /* Thu nhỏ icon */
+                margin-top: 3px;
+                width: 15px;
+            }
+
+            .info-item p {
+                font-size: 13px !important; /* Hạ size chữ thông tin xuống 13px */
+                line-height: 1.4 !important;
+                margin: 0 !important;
+            }
+
+            /* 2. KHỐI FORM GỬI YÊU CẦU BÊN PHẢI */
+            .contact-form-container {
+                width: 100% !important;
+                box-sizing: border-box !important;
+                padding: 15px !important; /* Thu hẹp khoảng đệm lề trong form */
+                background: #f9f9f9;
+                border-radius: 8px;
+            }
+
+            .form-container-title {
+                font-size: 15px !important; /* Thu nhỏ tiêu đề form */
+                margin-bottom: 15px !important;
+                text-align: center;
+            }
+
+            /* Thu nhỏ các ô nhập họ tên, email, sđt */
+            .form-group {
+                margin-bottom: 10px !important; /* Ép sát các ô lại với nhau */
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 10px 12px !important; /* Thu hẹp độ dày ô nhập */
+                font-size: 13px !important;     /* Hạ chữ nhỏ gọn */
+                border-radius: 4px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            /* Giới hạn chiều cao ô nhập nội dung tư vấn để không kéo dài trang */
+            .form-group textarea {
+                rows: 3 !important;
+                height: 80px !important;
+            }
+
+            /* Ép khung Google reCAPTCHA co vừa màn hình di động không bị tràn lề */
+            .g-recaptcha {
+                transform: scale(0.85) !important;
+                -webkit-transform: scale(0.85) !important;
+                transform-origin: 0 0 !important;
+                -webkit-transform-origin: 0 0 !important;
+                margin-bottom: 5px !important;
+            }
+
+            /* Thu nhỏ nút bấm gửi yêu cầu */
+            .btn-send {
+                width: 100% !important;
+                padding: 10px !important; /* Nút mảnh và gọn hơn */
+                font-size: 14px !important;
+                font-weight: 600;
+                border-radius: 4px !important;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="hero-padding"> 
+        <section class="contact-banner">
+            <div class="overlay">
+                <h1>LIÊN HỆ VỚI CHÚNG TÔI</h1>
+            </div>
+        </section>
+
+        <div class="contact-section" id="contact-form-section">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2 class="section-title">CÔNG TY CỔ PHẦN HOÀNG CÁT SƠN</h2>
+            
+                    <div class="info-content">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p><strong>Địa chỉ:</strong> 178 - 180 đường Nguyễn Tuân, phường Thanh Xuân, thành phố Hà Nội, Việt Nam</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-building"></i>
+                            <p><strong>Văn phòng đại diện:</strong> Tầng 3B, tòa nhà Hoàng Cầu Skyline, số 36 Hoàng Cầu, phường Ô Chợ Dừa, thành phố Hà Nội, Việt Nam</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <p><strong>Điện thoại:</strong> (+84) 349 301 248</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <p><strong>Email:</strong> duchungpham2001@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="map-box">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5082.857823675118!2d105.80031307639166!3d20.99895468064284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135acbd21de7411%3A0xc4f60374ac64721c!2zMTc4IMSQLiBOZ3V54buFbiBUdcOibiwgVGhhbmggWHXDom4sIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!5e1!3m2!1svi!2s!4v1778569898043!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+               <div class="contact-form-container">
+                    <h2 class="section-title border-title">GỬI YÊU CẦU TƯ VẤN</h2>
+                    <form id="mainContactForm" action="https://script.google.com/macros/s/AKfycbyQqQAxSVgIG0wsPghpAJ4w5d99sXdRN-ZlZkzruY_XfzgRF9fSpYCy8GqH0TaqsfQu/exec" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="fullname" placeholder="Họ và tên *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Email *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="phone" placeholder="Số điện thoại">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" rows="4" placeholder="Nội dung cần tư vấn"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <div class="g-recaptcha" data-sitekey="6Lc6GMIsAAAAAPa-ZbAI2IzjArvIh4wuFu2feqrX"></div>
+                        </div>
+                        <button type="submit" class="btn-send">Gửi yêu cầu</button>
+                        <div id="contact-status"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </section>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="../../js/script.js"></script>
+</body>
+</html>

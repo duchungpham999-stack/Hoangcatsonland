@@ -1,0 +1,45 @@
+services:
+  portal-backend:
+    image: node:24-bookworm
+    working_dir: /workspace/portal
+    command: sh -c "npm install && npm run db:migrate && npm start"
+    ports:
+      - "${PORT:-4173}:4173"
+    environment:
+      NODE_ENV: development
+      HOST: 0.0.0.0
+      PORT: 4173
+      APP_ORIGIN: http://localhost:4173
+      DATABASE_URL: postgres://portal_dev:portal_dev_password@postgres:5432/portal_dev
+      DATABASE_POOL_MAX: 10
+      DATABASE_CONNECTION_TIMEOUT_MS: 5000
+      DATABASE_IDLE_TIMEOUT_MS: 30000
+      SESSION_COOKIE_NAME: __Host-ids_session
+      SESSION_SECRET: development-only-session-secret-change-before-production
+      ALLOWED_DEVICE_CLASSES: desktop
+    volumes:
+      - ..:/workspace
+      - portal-node-modules:/workspace/portal/node_modules
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: portal_dev
+      POSTGRES_USER: portal_dev
+      POSTGRES_PASSWORD: portal_dev_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - portal-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U portal_dev -d portal_dev"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  portal-node-modules:
+  portal-postgres-data:

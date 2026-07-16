@@ -11,8 +11,13 @@ portal/
     src/
       app.js
       server.js
+      config/
+        env.js
+        app.config.js
+        database.config.js
+        session.config.js
+        security.config.js
       core/
-        config/
         http/
         security/
         validation/
@@ -56,7 +61,8 @@ portal/
 
 - `backend/src/app.js`: assembles middleware and module routes.
 - `backend/src/server.js`: starts the HTTP process only.
-- `backend/src/core/config`: environment loading without secrets in source.
+- `backend/src/config/env.js`: the only environment configuration entrypoint and the only file allowed to read `process.env`.
+- `backend/src/config/*.config.js`: validated app, database, session, and security config builders without direct `process.env` access.
 - `backend/src/core/http`: routing, request parsing, response helpers.
 - `backend/src/core/security`: authentication middleware, authorization guard, validation-adjacent security controls, CSRF, rate limiting, secure cookies, audit logging, exception handling, device policy.
 - `backend/src/core/validation`: shared schema validation helpers.

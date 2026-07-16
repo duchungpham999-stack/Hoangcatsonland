@@ -9,11 +9,11 @@ import { devicePolicy } from './core/security/device-policy.js';
 import { getReadiness } from './core/readiness/readiness.js';
 import { registerModuleRoutes } from './modules/index.js';
 
-export function createApp(env) {
+export function createApp(env, dependencies = {}) {
   const router = createRouter();
 
   router.get('/api/health', async () => json(200, { status: 'ok', service: 'ids-hrm-gis-portal' }));
-  router.get('/api/ready', async () => getReadiness(env));
+  router.get('/api/ready', async () => getReadiness(env, dependencies));
   registerModuleRoutes(router);
 
   return createServer(exceptionHandler(async (req, res) => {

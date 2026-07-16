@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createApp } from '../src/app.js';
-import { loadEnv } from '../src/core/config/env.js';
+import { loadEnv } from '../src/config/env.js';
 
 async function withTestServer(run, envOverrides = {}) {
   const server = createApp({ ...loadEnv(), ...envOverrides, port: 0 });

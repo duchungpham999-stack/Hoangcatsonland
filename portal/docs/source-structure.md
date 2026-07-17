@@ -24,6 +24,7 @@ portal/
       modules/
         auth/
           password/
+          csrf/
           mfa/
           webauthn/
           session/
@@ -74,6 +75,7 @@ portal/
 - `backend/src/modules/*/schema.js`: input contract for the module.
 - `backend/src/modules/*/types.js`: public type vocabulary for the module.
 - `backend/src/modules/auth/password`: password hashing and verification; never stores plaintext passwords.
+- `backend/src/modules/auth/csrf`: signed double-submit CSRF token issuance and validation.
 - `backend/src/modules/auth/session`: session token generation, token hashing, cookie handling, and session revocation.
 - `backend/src/modules/auth/admin-create-cli.js`: local operational CLI for creating the first admin without hard-coded credentials.
 - `frontend/src/features/*`: page or feature UI owned by one portal feature.

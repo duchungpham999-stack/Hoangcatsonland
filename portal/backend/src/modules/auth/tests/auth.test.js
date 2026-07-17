@@ -30,11 +30,13 @@ test('login, me, and logout session flow works without exposing secrets', async 
   });
 
   await withAuthServer(fixture.dependencies, async baseUrl => {
+    const csrf = await fetchCsrf(baseUrl);
     const loginResponse = await fetch(`${baseUrl}/api/auth/login`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'x-csrf-token': 'test'
+        'x-csrf-token': csrf.token,
+        cookie: csrf.cookie
       },
       body: JSON.stringify({ email: 'admin@example.test', password: 'correct horse battery' })
     });
@@ -54,13 +56,14 @@ test('login, me, and logout session flow works without exposing secrets', async 
 
     assert.equal(meResponse.status, 200);
     assert.deepEqual(meBody.user.roles, ['system_admin']);
+    assert.deepEqual(meBody.user.permissions, ['ids.access', 'hrm.access', 'gis.access']);
     assert.equal(JSON.stringify(meBody).includes('password_hash'), false);
 
     const logoutResponse = await fetch(`${baseUrl}/api/auth/logout`, {
       method: 'POST',
       headers: {
-        'x-csrf-token': 'test',
-        cookie
+        'x-csrf-token': csrf.token,
+        cookie: `${cookie}; ${csrf.cookie}`
       }
     });
     const logoutBody = await logoutResponse.json();
@@ -85,11 +88,13 @@ test('login rejects wrong password with generic response', async () => {
   });
 
   await withAuthServer(fixture.dependencies, async baseUrl => {
+    const csrf = await fetchCsrf(baseUrl);
     const response = await fetch(`${baseUrl}/api/auth/login`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'x-csrf-token': 'test'
+        'x-csrf-token': csrf.token,
+        cookie: csrf.cookie
       },
       body: JSON.stringify({ email: 'admin@example.test', password: 'wrong horse battery' })
     });
@@ -115,11 +120,13 @@ test('login rejects disabled users with generic response', async () => {
   });
 
   await withAuthServer(fixture.dependencies, async baseUrl => {
+    const csrf = await fetchCsrf(baseUrl);
     const response = await fetch(`${baseUrl}/api/auth/login`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'x-csrf-token': 'test'
+        'x-csrf-token': csrf.token,
+        cookie: csrf.cookie
       },
       body: JSON.stringify({ email: 'admin@example.test', password: 'correct horse battery' })
     });
@@ -134,11 +141,13 @@ test('mobile device policy blocks login in backend', async () => {
   const fixture = createAuthFixture();
 
   await withAuthServer(fixture.dependencies, async baseUrl => {
+    const csrf = await fetchCsrf(baseUrl);
     const response = await fetch(`${baseUrl}/api/auth/login`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'x-csrf-token': 'test',
+        'x-csrf-token': csrf.token,
+        cookie: csrf.cookie,
         'user-agent': 'Mozilla/5.0 iPhone Mobile'
       },
       body: JSON.stringify({ email: 'admin@example.test', password: 'correct horse battery' })
@@ -150,6 +159,27 @@ test('mobile device policy blocks login in backend', async () => {
   });
 });
 
+test('invalid csrf token is rejected', async () => {
+  const fixture = createAuthFixture();
+
+  await withAuthServer(fixture.dependencies, async baseUrl => {
+    const csrf = await fetchCsrf(baseUrl);
+    const response = await fetch(`${baseUrl}/api/auth/login`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'x-csrf-token': 'wrong-token',
+        cookie: csrf.cookie
+      },
+      body: JSON.stringify({ email: 'admin@example.test', password: 'correct horse battery' })
+    });
+    const body = await response.json();
+
+    assert.equal(response.status, 403);
+    assert.equal(body.error, 'csrf_token_required');
+  });
+});
+
 function createAuthFixture(options = {}) {
   const sessions = new Map();
   const user = options.user || null;
@@ -158,7 +188,7 @@ function createAuthFixture(options = {}) {
       return user;
     },
     async getUserRolesAndPermissions() {
-      return { roles: ['system_admin'], permissions: ['portal:read'] };
+      return { roles: ['system_admin'], permissions: ['ids.access', 'hrm.access', 'gis.access'] };
     }
   };
   const sessionRepository = {
@@ -194,7 +224,7 @@ function createAuthFixture(options = {}) {
       return true;
     },
     async getUserRolesAndPermissions() {
-      return { roles: ['system_admin'], permissions: ['portal:read'] };
+      return { roles: ['system_admin'], permissions: ['ids.access', 'hrm.access', 'gis.access'] };
     }
   };
 
@@ -223,4 +253,13 @@ async function withAuthServer(dependencies, run) {
   } finally {
     await new Promise(resolve => server.close(resolve));
   }
+}
+
+async function fetchCsrf(baseUrl) {
+  const response = await fetch(`${baseUrl}/api/auth/csrf`);
+  const body = await response.json();
+  return {
+    token: body.csrfToken,
+    cookie: response.headers.get('set-cookie')
+  };
 }

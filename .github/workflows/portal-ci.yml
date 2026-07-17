@@ -1,0 +1,33 @@
+name: Portal CI
+
+on:
+  push:
+    paths:
+      - 'portal/**'
+  pull_request:
+    paths:
+      - 'portal/**'
+
+jobs:
+  test:
+    name: Test portal
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: portal
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Run tests
+        run: npm test
+
+      - name: Check JavaScript syntax
+        run: find . -name "*.js" -type f -print0 | xargs -0 -n 1 node --check

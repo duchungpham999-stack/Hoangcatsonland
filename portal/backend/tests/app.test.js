@@ -29,6 +29,74 @@ test('health endpoint responds with ok', async () => {
   });
 });
 
+test('root serves frontend index html', async () => {
+  await withTestServer(async baseUrl => {
+    const response = await fetch(`${baseUrl}/`);
+    const body = await response.text();
+
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get('content-type'), 'text/html; charset=utf-8');
+    assert.equal(body.includes('<title>IDS-HRM-GIS Portal</title>'), true);
+  });
+});
+
+test('frontend javascript asset is served with javascript mime', async () => {
+  await withTestServer(async baseUrl => {
+    const response = await fetch(`${baseUrl}/src/main.js`);
+    const body = await response.text();
+
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get('content-type'), 'application/javascript; charset=utf-8');
+    assert.equal(body.includes('renderApp'), true);
+  });
+});
+
+test('frontend css asset is served with css mime', async () => {
+  await withTestServer(async baseUrl => {
+    const response = await fetch(`${baseUrl}/src/styles.css`);
+    const body = await response.text();
+
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get('content-type'), 'text/css; charset=utf-8');
+    assert.equal(body.includes('.auth-page'), true);
+  });
+});
+
+test('static serving blocks path traversal', async () => {
+  await withTestServer(async baseUrl => {
+    const response = await fetch(`${baseUrl}/src/..%2Fbackend%2F.env`);
+
+    assert.equal(response.status, 403);
+  });
+});
+
+test('static serving blocks backend env access', async () => {
+  await withTestServer(async baseUrl => {
+    const response = await fetch(`${baseUrl}/backend/.env`);
+
+    assert.equal(response.status, 403);
+  });
+});
+
+test('unknown frontend route falls back to index html', async () => {
+  await withTestServer(async baseUrl => {
+    const response = await fetch(`${baseUrl}/unknown-frontend-route`);
+    const body = await response.text();
+
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get('content-type'), 'text/html; charset=utf-8');
+    assert.equal(body.includes('<main id="app"></main>'), true);
+  });
+});
+
+test('favicon request does not crash backend', async () => {
+  await withTestServer(async baseUrl => {
+    const response = await fetch(`${baseUrl}/favicon.ico`);
+
+    assert.equal(response.status, 204);
+  });
+});
+
 test('valid incoming request id is preserved', async () => {
   await withTestServer(async baseUrl => {
     const requestId = 'client-request-123';
@@ -87,11 +155,13 @@ test('unknown route still responds with not_found', async () => {
 test('exception response is sanitized in production', async () => {
   await withTestServer(async baseUrl => {
     const requestId = 'prod-error-123';
+    const csrf = await fetchCsrf(baseUrl);
     const response = await fetch(`${baseUrl}/api/auth/login`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'x-csrf-token': 'test',
+        'x-csrf-token': csrf.token,
+        cookie: csrf.cookie,
         'x-request-id': requestId
       },
       body: '{'
@@ -107,3 +177,12 @@ test('exception response is sanitized in production', async () => {
     assert.equal(serializedBody.includes('backend'), false);
   }, { nodeEnv: 'production' });
 });
+
+async function fetchCsrf(baseUrl) {
+  const response = await fetch(`${baseUrl}/api/auth/csrf`);
+  const body = await response.json();
+  return {
+    token: body.csrfToken,
+    cookie: response.headers.get('set-cookie')
+  };
+}

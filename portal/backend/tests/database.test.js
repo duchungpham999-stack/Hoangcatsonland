@@ -62,6 +62,31 @@ test('authentication foundation migration safely backfills username', async () =
   assert.match(migration, /lower\(username\)/);
 });
 
+test('permission foundation migration creates system admin permissions safely', async () => {
+  const migration = await readFile(
+    new URL('../src/database/migrations/005_permission-foundation.sql', import.meta.url),
+    'utf8'
+  );
+
+  for (const permission of [
+    'ids.access',
+    'hrm.access',
+    'gis.access',
+    'users.manage',
+    'roles.manage',
+    'audit.read'
+  ]) {
+    assert.equal(migration.includes(permission), true);
+  }
+
+  assert.match(migration, /insert into permissions/i);
+  assert.match(migration, /insert into roles/i);
+  assert.match(migration, /system_admin/);
+  assert.match(migration, /insert into role_permissions/i);
+  assert.match(migration, /where not exists/i);
+  assert.equal(/insert into users/i.test(migration), false);
+});
+
 test('database url redaction hides credentials', () => {
   const redacted = redactDatabaseUrl('postgres://portal_user:super-secret@localhost:5432/portal');
 

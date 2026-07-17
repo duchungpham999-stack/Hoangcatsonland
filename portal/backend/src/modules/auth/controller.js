@@ -1,6 +1,7 @@
 import { json } from '../../core/http/response.js';
 import { readJson } from '../../core/http/request.js';
 import { authenticateUser, getAuthenticatedUser, logoutUser } from './service.js';
+import { createCsrfResponse } from './csrf/csrf-service.js';
 import { loginSchema } from './schema.js';
 import { validate } from '../../core/validation/validate.js';
 
@@ -8,6 +9,10 @@ export async function login(req) {
   const body = validate(loginSchema, await readJson(req));
   const result = await authenticateUser(body, req);
   return json(200, result.payload, result.headers);
+}
+
+export async function csrf(req) {
+  return createCsrfResponse(req.app.env);
 }
 
 export async function logout(req) {

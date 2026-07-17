@@ -7,6 +7,8 @@ import { rateLimit } from './core/security/rate-limiter.js';
 import { csrfProtection } from './core/security/csrf-protection.js';
 import { devicePolicy } from './core/security/device-policy.js';
 import { getReadiness } from './core/readiness/readiness.js';
+import { getFrontendAsset } from './core/http/static-files.js';
+import { writeResponse } from './core/http/write-response.js';
 import { registerModuleRoutes } from './modules/index.js';
 
 export function createApp(env, dependencies = {}) {
@@ -22,6 +24,15 @@ export function createApp(env, dependencies = {}) {
     await rateLimit(req, env);
     await devicePolicy(req, env);
     await csrfProtection(req);
+
+    if (req.method === 'GET' && !new URL(req.url, 'http://localhost').pathname.startsWith('/api/')) {
+      const staticAsset = await getFrontendAsset(req);
+      if (staticAsset) {
+        writeResponse(req, res, staticAsset);
+        return;
+      }
+    }
+
     await router.handle(req, res);
   }, env));
 }

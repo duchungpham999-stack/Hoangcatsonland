@@ -37,6 +37,7 @@ The CLI does not print the password and refuses duplicate users.
 - `GET /api/auth/csrf`
 - `POST /api/auth/login`
 - `POST /api/auth/logout`
+- `POST /api/auth/change-password`
 - `GET /api/auth/me`
 
 Login returns a safe user object and sets an HTTP-only cookie. It never returns the session token in JSON.
@@ -65,6 +66,7 @@ Dashboard modules are shown from real permissions returned by `GET /api/auth/me`
 - `gis.access` shows GIS.
 
 The `system_admin` role receives the foundation permissions from migration `005_permission-foundation.sql`.
+Users with `mustChangePassword: true` are redirected to the change-password screen before dashboard access. The password change endpoint verifies the current password, requires a new password of at least 12 characters, keeps the active session, revokes other sessions, and records `password_changed`.
 
 ## PowerShell Smoke Test
 

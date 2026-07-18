@@ -1,4 +1,5 @@
 import { renderLogin } from './features/auth/auth-page.js';
+import { renderChangePassword } from './features/auth/change-password-page.js';
 import { renderDashboard } from './features/portal-dashboard/dashboard-page.js';
 import { apiGet } from './shared/api-client.js';
 
@@ -10,6 +11,10 @@ export async function renderApp(root) {
 async function showDashboardOrLogin(root) {
   try {
     const { user } = await apiGet('/api/auth/me');
+    if (user.mustChangePassword) {
+      root.replaceChildren(renderChangePassword(() => showDashboardOrLogin(root)));
+      return;
+    }
     root.replaceChildren(renderDashboard(user, () => showLogin(root)));
   } catch (error) {
     if (error.message.includes('401')) {

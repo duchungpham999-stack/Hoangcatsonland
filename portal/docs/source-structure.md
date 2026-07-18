@@ -33,6 +33,7 @@ portal/
           account-recovery/
           admin-create-cli.js
         users/
+        admin/
         roles/
         permissions/
         devices/
@@ -49,6 +50,7 @@ portal/
       main.js
       features/
         auth/
+        admin/
         portal-dashboard/
         ids/
         hrm/
@@ -78,6 +80,13 @@ portal/
 - `backend/src/modules/auth/csrf`: signed double-submit CSRF token issuance and validation.
 - `backend/src/modules/auth/session`: session token generation, token hashing, cookie handling, and session revocation.
 - `backend/src/modules/auth/admin-create-cli.js`: local operational CLI for creating the first admin without hard-coded credentials.
+- `backend/src/modules/admin`: protected user, role, permission, password-reset, and session-revocation administration APIs.
+- `backend/src/database/migrations/006_user-administration.sql`: account administration columns and indexes without seed users.
+- `backend/src/database/migrations/007_employee-identity-and-department-history.sql`: employee code, department, employment status, and department transfer history foundation.
+- `backend/src/database/migrations/008_employee-code-sequence.sql`: per-department employee code sequence table for backend-only employee code generation.
+- `backend/src/database/migrations/009_employment-date-only.sql`: date-only employment start/end fields, backfilled from older timestamptz columns without touching system timestamps.
+- `frontend/src/features/admin`: minimal administration UI for user management, role management, reset password, role assignment, and session revocation.
+- `frontend/src/features/auth/change-password-page.js`: forced password change screen for accounts with `mustChangePassword`.
 - `frontend/src/features/*`: page or feature UI owned by one portal feature.
 - `frontend/src/shared`: frontend utilities that are not business-specific.
 

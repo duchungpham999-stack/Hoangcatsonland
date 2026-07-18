@@ -1,0 +1,43 @@
+import {
+  departmentsCreate,
+  departmentsIndex,
+  departmentsShow,
+  departmentsUpdate,
+  permissionsIndex,
+  rolesCreate,
+  rolesIndex,
+  rolesPermissions,
+  rolesUpdate,
+  usersCreate,
+  usersIndex,
+  usersResetPassword,
+  usersRevokeSessions,
+  usersRoles,
+  usersDepartmentHistory,
+  usersShow,
+  usersStatus,
+  usersTransferDepartment,
+  usersUpdate
+} from './controller.js';
+
+export const routes = [
+  { method: 'GET', path: '/api/admin/users', handler: usersIndex },
+  { method: 'GET', path: '/api/admin/users/:id', handler: usersShow },
+  { method: 'POST', path: '/api/admin/users', handler: usersCreate },
+  { method: 'PATCH', path: '/api/admin/users/:id', handler: usersUpdate },
+  { method: 'PATCH', path: '/api/admin/users/:id/status', handler: usersStatus },
+  { method: 'PATCH', path: '/api/admin/users/:id/roles', handler: usersRoles },
+  { method: 'POST', path: '/api/admin/users/:id/reset-password', handler: usersResetPassword },
+  { method: 'POST', path: '/api/admin/users/:id/revoke-sessions', handler: usersRevokeSessions },
+  { method: 'POST', path: '/api/admin/users/:id/transfer-department', handler: usersTransferDepartment },
+  { method: 'GET', path: '/api/admin/users/:id/department-history', handler: usersDepartmentHistory },
+  { method: 'GET', path: '/api/admin/departments', handler: departmentsIndex },
+  { method: 'GET', path: '/api/admin/departments/:id', handler: departmentsShow },
+  { method: 'POST', path: '/api/admin/departments', handler: departmentsCreate },
+  { method: 'PATCH', path: '/api/admin/departments/:id', handler: departmentsUpdate },
+  { method: 'GET', path: '/api/admin/roles', handler: rolesIndex },
+  { method: 'GET', path: '/api/admin/permissions', handler: permissionsIndex },
+  { method: 'POST', path: '/api/admin/roles', handler: rolesCreate },
+  { method: 'PATCH', path: '/api/admin/roles/:id', handler: rolesUpdate },
+  { method: 'PATCH', path: '/api/admin/roles/:id/permissions', handler: rolesPermissions }
+];

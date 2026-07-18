@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "start": "node backend/src/server.js",
-    "test": "node --test backend/tests/app.test.js backend/tests/database.test.js backend/tests/env.test.js backend/src/modules/auth/tests/auth.test.js frontend/tests/auth-ui.test.js frontend/tests/structure.test.js",
+    "test": "node --test backend/tests/app.test.js backend/tests/database.test.js backend/tests/env.test.js backend/src/modules/auth/tests/auth.test.js backend/src/modules/admin/tests/admin.test.js frontend/tests/auth-ui.test.js frontend/tests/structure.test.js",
     "db:migrate": "node backend/src/database/migration-runner.js migrate",
     "db:status": "node backend/src/database/migration-runner.js status",
     "db:check": "node backend/src/database/health.js",

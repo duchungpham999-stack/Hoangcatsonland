@@ -1,6 +1,11 @@
 import { serializeExpiredCookie, serializeSecureCookie } from '../../../core/security/secure-cookies.js';
 import { getUserRolesAndPermissions, toPublicUser } from '../../users/repository.js';
-import { createSessionRecord, findSessionByTokenHash, revokeSessionByTokenHash } from './session-repository.js';
+import {
+  createSessionRecord,
+  findSessionByTokenHash,
+  revokeSessionByTokenHash,
+  revokeSessionsByUserId
+} from './session-repository.js';
 import { createSessionToken, getCookieValue, hashSessionToken } from './token-service.js';
 
 const idleSessionMs = 30 * 60 * 1000;
@@ -48,7 +53,8 @@ export async function getCurrentSession(env, req, repository) {
       email: session.email,
       username: session.username,
       display_name: session.display_name,
-      status: session.status
+      status: session.status,
+      must_change_password: session.must_change_password
     }, access)
   };
 }
@@ -60,6 +66,14 @@ export async function revokeCurrentSession(env, req, repository) {
   const tokenHash = hashSessionToken(token);
   const revoked = await (repository?.revokeSessionByTokenHash || revokeSessionByTokenHash)(env, tokenHash);
   return { revoked, tokenHash, headers: clearSessionCookie(env) };
+}
+
+export async function revokeOtherUserSessions(env, userId, currentSessionId, repository) {
+  return (repository?.revokeSessionsByUserId || revokeSessionsByUserId)(env, userId, currentSessionId);
+}
+
+export async function revokeAllUserSessions(env, userId, repository) {
+  return (repository?.revokeSessionsByUserId || revokeSessionsByUserId)(env, userId, null);
 }
 
 export function clearSessionCookie(env) {

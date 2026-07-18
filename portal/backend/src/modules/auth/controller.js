@@ -1,8 +1,8 @@
 import { json } from '../../core/http/response.js';
 import { readJson } from '../../core/http/request.js';
-import { authenticateUser, getAuthenticatedUser, logoutUser } from './service.js';
+import { authenticateUser, changeUserPassword, getAuthenticatedUser, logoutUser } from './service.js';
 import { createCsrfResponse } from './csrf/csrf-service.js';
-import { loginSchema } from './schema.js';
+import { changePasswordSchema, loginSchema } from './schema.js';
 import { validate } from '../../core/validation/validate.js';
 
 export async function login(req) {
@@ -23,4 +23,10 @@ export async function logout(req) {
 export async function me(req) {
   const user = await getAuthenticatedUser(req);
   return json(200, { user });
+}
+
+export async function changePassword(req) {
+  const body = validate(changePasswordSchema, await readJson(req));
+  const result = await changeUserPassword(body, req);
+  return json(200, result.payload, result.headers);
 }

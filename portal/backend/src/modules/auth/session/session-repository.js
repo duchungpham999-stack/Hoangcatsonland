@@ -31,7 +31,8 @@ export async function findSessionByTokenHash(env, sessionTokenHash) {
       u.normalized_email,
       u.username,
       u.display_name,
-      u.status
+      u.status,
+      u.must_change_password
     from sessions s
     join users u on u.id = s.user_id
     where s.session_token_hash = $1
@@ -49,4 +50,17 @@ export async function revokeSessionByTokenHash(env, sessionTokenHash) {
     returning id
   `, [sessionTokenHash]);
   return result.rowCount > 0;
+}
+
+export async function revokeSessionsByUserId(env, userId, exceptSessionId = null) {
+  const pool = await getDatabasePool(env.database);
+  const result = await pool.query(`
+    update sessions
+    set revoked_at = now(), updated_at = now()
+    where user_id = $1
+      and revoked_at is null
+      and ($2::uuid is null or id <> $2::uuid)
+    returning id
+  `, [userId, exceptSessionId]);
+  return result.rowCount;
 }

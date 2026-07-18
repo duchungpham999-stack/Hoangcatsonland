@@ -8,6 +8,7 @@ import { routes as auditRoutes } from './audit/routes.js';
 import { routes as idsRoutes } from './ids/routes.js';
 import { routes as hrmRoutes } from './hrm/routes.js';
 import { routes as gisRoutes } from './gis/routes.js';
+import { routes as adminRoutes } from './admin/routes.js';
 
 const moduleRoutes = [
   ...authRoutes,
@@ -19,7 +20,8 @@ const moduleRoutes = [
   ...auditRoutes,
   ...idsRoutes,
   ...hrmRoutes,
-  ...gisRoutes
+  ...gisRoutes,
+  ...adminRoutes
 ];
 
 export function registerModuleRoutes(router) {

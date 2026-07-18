@@ -1,6 +1,7 @@
 import { renderIdsPanel } from '../ids/ids-page.js';
 import { renderHrmPanel } from '../hrm/hrm-page.js';
 import { renderGisPanel } from '../gis/gis-page.js';
+import { renderAdminPanel } from '../admin/admin-page.js';
 import { apiPost } from '../../shared/api-client.js';
 import { fetchCsrfToken, getCsrfToken } from '../../shared/csrf-client.js';
 import { getVisibleModuleKeys } from './module-access.js';
@@ -33,6 +34,13 @@ export function renderDashboard(user, onLogout) {
     <div><strong>Permissions</strong><span>${escapeHtml((user.permissions || []).join(', ') || 'None')}</span></div>
   `;
 
+  const admin = document.createElement('section');
+  admin.className = 'dashboard-admin';
+  const canAdminUsers = (user.permissions || []).includes('users.manage');
+  const canAdminRoles = (user.permissions || []).includes('roles.manage');
+  const canAdminDepartments = (user.permissions || []).includes('departments.manage');
+  if (canAdminUsers || canAdminRoles || canAdminDepartments) admin.append(renderAdminPanel(user));
+
   const modules = document.createElement('section');
   modules.className = 'module-grid';
   const renderers = {
@@ -43,7 +51,7 @@ export function renderDashboard(user, onLogout) {
   const cards = getVisibleModuleKeys(user.permissions || []).map(key => renderers[key]());
 
   modules.replaceChildren(...cards);
-  section.replaceChildren(header, access, modules);
+  section.replaceChildren(header, access, modules, admin);
   return section;
 }
 

@@ -7,7 +7,7 @@ export async function findUserByEmailOrUsername(env, identifier) {
   const pool = await getDatabasePool(env.database);
   const normalized = normalizeIdentifier(identifier);
   const result = await pool.query(`
-    select id, email, normalized_email, username, display_name, password_hash, status
+    select id, email, normalized_email, username, display_name, password_hash, status, must_change_password
     from users
     where normalized_email = $1 or lower(username) = $1
     limit 1
@@ -19,7 +19,7 @@ export async function findPublicUserById(env, userId) {
   const { getDatabasePool } = await import('../../database/connection.js');
   const pool = await getDatabasePool(env.database);
   const result = await pool.query(`
-    select id, email, normalized_email, username, display_name, status
+    select id, email, normalized_email, username, display_name, status, must_change_password
     from users
     where id = $1
     limit 1
@@ -36,6 +36,27 @@ export async function createUser(env, user) {
     returning id, email, normalized_email, username, display_name, status, created_at, updated_at
   `, [user.email, user.username, user.displayName || user.username, user.passwordHash, user.status || 'active']);
   return result.rows[0];
+}
+
+export async function updateLastLoginAt(env, userId) {
+  const { getDatabasePool } = await import('../../database/connection.js');
+  const pool = await getDatabasePool(env.database);
+  await pool.query('update users set last_login_at = now(), updated_at = now() where id = $1', [userId]);
+}
+
+export async function updateUserPassword(env, userId, passwordHash, mustChangePassword) {
+  const { getDatabasePool } = await import('../../database/connection.js');
+  const pool = await getDatabasePool(env.database);
+  const result = await pool.query(`
+    update users
+    set password_hash = $2,
+        must_change_password = $3,
+        password_changed_at = case when $3 then password_changed_at else now() end,
+        updated_at = now()
+    where id = $1
+    returning id, email, normalized_email, username, display_name, status, must_change_password
+  `, [userId, passwordHash, mustChangePassword]);
+  return result.rows[0] || null;
 }
 
 export async function getUserRolesAndPermissions(env, userId) {
@@ -88,6 +109,7 @@ export function toPublicUser(user, access = {}) {
     username: user.username,
     displayName: user.display_name,
     status: user.status,
+    mustChangePassword: Boolean(user.must_change_password),
     roles: access.roles || user.roles || [],
     permissions: access.permissions || user.permissions || []
   };

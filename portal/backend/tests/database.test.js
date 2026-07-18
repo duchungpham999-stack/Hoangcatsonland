@@ -87,6 +87,73 @@ test('permission foundation migration creates system admin permissions safely', 
   assert.equal(/insert into users/i.test(migration), false);
 });
 
+test('user administration migration adds safe account administration fields', async () => {
+  const migration = await readFile(
+    new URL('../src/database/migrations/006_user-administration.sql', import.meta.url),
+    'utf8'
+  );
+
+  assert.match(migration, /alter table users add column if not exists display_name text/i);
+  assert.match(migration, /must_change_password boolean not null default true/i);
+  assert.match(migration, /password_changed_at timestamptz/i);
+  assert.match(migration, /last_login_at timestamptz/i);
+  assert.match(migration, /created_by_user_id uuid/i);
+  assert.match(migration, /foreign key \(created_by_user_id\) references users\(id\)/i);
+  assert.match(migration, /on delete set null/i);
+  assert.match(migration, /users_status_idx/i);
+  assert.match(migration, /users_created_at_idx/i);
+  assert.match(migration, /users_created_by_user_id_idx/i);
+  assert.equal(/insert into users/i.test(migration), false);
+});
+
+test('employee identity migration creates departments and immutable employee code foundation', async () => {
+  const migration = await readFile(
+    new URL('../src/database/migrations/007_employee-identity-and-department-history.sql', import.meta.url),
+    'utf8'
+  );
+
+  assert.match(migration, /create table if not exists departments/i);
+  assert.match(migration, /employee_code varchar\(30\)/i);
+  assert.match(migration, /\^HCS_\[A-Z\]\{2,10\}\[0-9\]\{3,5\}\$/);
+  assert.match(migration, /users_employee_code_unique/i);
+  assert.match(migration, /create table if not exists employee_department_history/i);
+  assert.match(migration, /employee_department_history_one_active/i);
+  assert.match(migration, /departments.manage/);
+  assert.equal(/drop table/i.test(migration), false);
+  assert.equal(/delete from users/i.test(migration), false);
+});
+
+test('employee code sequence migration creates non-negative department sequence table', async () => {
+  const migration = await readFile(
+    new URL('../src/database/migrations/008_employee-code-sequence.sql', import.meta.url),
+    'utf8'
+  );
+
+  assert.match(migration, /create table if not exists department_employee_sequences/i);
+  assert.match(migration, /department_id uuid primary key references departments\(id\) on delete restrict/i);
+  assert.match(migration, /last_sequence integer not null default 0/i);
+  assert.match(migration, /last_sequence >= 0/i);
+  assert.equal(/max\s*\(/i.test(migration), false);
+});
+
+test('employment date migration adds date-only labor fields without touching system timestamps', async () => {
+  const migration = await readFile(
+    new URL('../src/database/migrations/009_employment-date-only.sql', import.meta.url),
+    'utf8'
+  );
+
+  assert.match(migration, /employment_started_on date/i);
+  assert.match(migration, /employment_ended_on date/i);
+  assert.match(migration, /employment_started_at::date/i);
+  assert.match(migration, /employment_ended_at::date/i);
+  assert.match(migration, /employment_ended_on >= employment_started_on/i);
+  assert.equal(/drop column/i.test(migration), false);
+  assert.equal(/created_at/i.test(migration), false);
+  assert.equal(/updated_at/i.test(migration), false);
+  assert.equal(/last_login_at/i.test(migration), false);
+  assert.equal(/password_changed_at/i.test(migration), false);
+});
+
 test('database url redaction hides credentials', () => {
   const redacted = redactDatabaseUrl('postgres://portal_user:super-secret@localhost:5432/portal');
 

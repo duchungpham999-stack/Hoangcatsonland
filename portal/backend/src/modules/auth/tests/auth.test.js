@@ -180,15 +180,73 @@ test('invalid csrf token is rejected', async () => {
   });
 });
 
+test('change password updates flag and revokes other sessions', async () => {
+  const passwordHash = await hashPassword('correct horse battery');
+  const fixture = createAuthFixture({
+    user: {
+      id: 'user_1',
+      email: 'admin@example.test',
+      username: 'admin',
+      display_name: 'admin',
+      status: 'active',
+      must_change_password: true,
+      password_hash: passwordHash
+    }
+  });
+
+  await withAuthServer(fixture.dependencies, async baseUrl => {
+    const loginCsrf = await fetchCsrf(baseUrl);
+    const loginResponse = await fetch(`${baseUrl}/api/auth/login`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'x-csrf-token': loginCsrf.token,
+        cookie: loginCsrf.cookie
+      },
+      body: JSON.stringify({ email: 'admin@example.test', password: 'correct horse battery' })
+    });
+    const cookie = loginResponse.headers.get('set-cookie');
+    const csrf = await fetchCsrf(baseUrl);
+    const response = await fetch(`${baseUrl}/api/auth/change-password`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'x-csrf-token': csrf.token,
+        cookie: `${cookie}; ${csrf.cookie}`
+      },
+      body: JSON.stringify({
+        currentPassword: 'correct horse battery',
+        newPassword: 'new correct horse battery',
+        confirmPassword: 'new correct horse battery'
+      })
+    });
+    const body = await response.json();
+
+    assert.equal(response.status, 200);
+    assert.equal(body.status, 'password_changed');
+    assert.equal(fixture.user.must_change_password, false);
+    assert.equal(fixture.revokedOtherSessions, 1);
+  });
+});
+
 function createAuthFixture(options = {}) {
   const sessions = new Map();
   const user = options.user || null;
+  let revokedOtherSessions = 0;
   const userRepository = {
     async findUserByEmailOrUsername() {
       return user;
     },
     async getUserRolesAndPermissions() {
       return { roles: ['system_admin'], permissions: ['ids.access', 'hrm.access', 'gis.access'] };
+    },
+    async updateUserPassword(env, userId, passwordHash, mustChangePassword) {
+      user.password_hash = passwordHash;
+      user.must_change_password = mustChangePassword;
+      return user;
+    },
+    async updateLastLoginAt() {
+      user.last_login_at = new Date();
     }
   };
   const sessionRepository = {
@@ -214,7 +272,8 @@ function createAuthFixture(options = {}) {
         normalized_email: user.email,
         username: user.username,
         display_name: user.display_name,
-        status: user.status
+        status: user.status,
+        must_change_password: user.must_change_password
       };
     },
     async revokeSessionByTokenHash(env, tokenHash) {
@@ -225,11 +284,17 @@ function createAuthFixture(options = {}) {
     },
     async getUserRolesAndPermissions() {
       return { roles: ['system_admin'], permissions: ['ids.access', 'hrm.access', 'gis.access'] };
+    },
+    async revokeSessionsByUserId() {
+      revokedOtherSessions += 1;
+      return 0;
     }
   };
 
   return {
     sessions,
+    user,
+    get revokedOtherSessions() { return revokedOtherSessions; },
     dependencies: {
       userRepository,
       sessionRepository,

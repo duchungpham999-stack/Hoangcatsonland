@@ -1,7 +1,8 @@
-import { verifyPassword } from './password/password-service.js';
+import { hashPassword, verifyPassword } from './password/password-service.js';
 import { verifyDeviceAccess } from './device-access/device-access-service.js';
-import { createServerSession, getCurrentSession, revokeCurrentSession } from './session/session-service.js';
+import { createServerSession, getCurrentSession, revokeCurrentSession, revokeOtherUserSessions } from './session/session-service.js';
 import { assertUserCanLogin, getUserForLogin } from '../users/service.js';
+import { updateLastLoginAt, updateUserPassword } from '../users/repository.js';
 import { recordLoginAttempt, shouldTemporarilyLockLogin } from './login-attempts/login-attempt-service.js';
 import { countRecentFailures as countRecentDbFailures, recordLoginAttempt as recordDbLoginAttempt } from './login-attempts/login-attempt-repository.js';
 import { writeAuditEvent } from '../audit/audit-service.js';
@@ -42,6 +43,7 @@ export async function authenticateUser(credentials, req) {
   }
 
   const session = await createServerSession(env, user, req, dependencies.sessionRepository);
+  await (dependencies.userRepository?.updateLastLoginAt || updateLastLoginAt)(env, user.id);
   await auditAuth(env, dependencies, req, user, 'login_success', 'success');
 
   return {
@@ -74,6 +76,32 @@ export async function logoutUser(req) {
 
   await auditAuth(env, dependencies, req, session?.user, 'logout', 'success');
   return { payload: { status: 'logged_out' }, headers: result.headers };
+}
+
+export async function changeUserPassword(input, req) {
+  const env = req.app.env;
+  const dependencies = req.app.dependencies || {};
+  const session = await getCurrentSession(env, req, dependencies.sessionRepository);
+  if (!session) {
+    throw { statusCode: 401, headers: { 'content-type': 'application/json' }, body: '{"error":"unauthenticated"}' };
+  }
+
+  if (String(input.newPassword || '').length < 12 || input.newPassword !== input.confirmPassword) {
+    throw { statusCode: 400, headers: { 'content-type': 'application/json' }, body: '{"error":"invalid_password_change"}' };
+  }
+
+  const user = await getUserForLogin(env, session.user.username || session.user.email, dependencies.userRepository);
+  const currentOk = user ? await verifyPassword(input.currentPassword, user.password_hash || user.passwordHash) : false;
+  if (!currentOk || await verifyPassword(input.newPassword, user.password_hash || user.passwordHash)) {
+    await auditAuth(env, dependencies, req, session.user, 'password_changed', 'failure', { reason: 'invalid_password_change' });
+    throw { statusCode: 401, headers: { 'content-type': 'application/json' }, body: '{"error":"invalid_password_change"}' };
+  }
+
+  const passwordHash = await hashPassword(input.newPassword);
+  await (dependencies.userRepository?.updateUserPassword || updateUserPassword)(env, session.user.id, passwordHash, false);
+  await revokeOtherUserSessions(env, session.user.id, session.id, dependencies.sessionRepository);
+  await auditAuth(env, dependencies, req, session.user, 'password_changed', 'success');
+  return { payload: { status: 'password_changed' } };
 }
 
 function invalidCredentials() {
